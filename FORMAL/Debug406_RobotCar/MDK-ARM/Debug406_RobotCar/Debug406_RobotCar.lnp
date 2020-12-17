@@ -1,0 +1,18 @@
+--cpu Cortex-M7.fp.dp
+"debug406_robotcar\startup_stm32h743xx.o"
+"debug406_robotcar\main.o"
+"debug406_robotcar\gpio.o"
+"debug406_robotcar\usart.o"
+"debug406_robotcar\stm32h7xx_it.o"
+"debug406_robotcar\stm32h7xx_ll_exti.o"
+"debug406_robotcar\stm32h7xx_ll_gpio.o"
+"debug406_robotcar\stm32h7xx_ll_rcc.o"
+"debug406_robotcar\stm32h7xx_ll_utils.o"
+"debug406_robotcar\stm32h7xx_ll_usart.o"
+"debug406_robotcar\stm32h7xx_ll_dma.o"
+"debug406_robotcar\stm32h7xx_ll_pwr.o"
+"debug406_robotcar\system_stm32h7xx.o"
+--strict --scatter "Debug406_RobotCar\Debug406_RobotCar.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "Debug406_RobotCar.map" -o Debug406_RobotCar\Debug406_RobotCar.axf
