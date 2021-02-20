@@ -313,7 +313,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>6</Optim>
+            <Optim>7</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>STM32H743xx,USE_HAL_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc;../Drivers/CMSIS/Device/ST/STM32H7xx/Include;../Drivers/CMSIS/Include;../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;..\MyFiles\Inc;..\MyDrivers\Inc</IncludePath>
+              <IncludePath>../Core/Inc; ../Drivers/STM32H7xx_HAL_Driver/Inc; ../Drivers/CMSIS/Device/ST/STM32H7xx/Include; ../Drivers/CMSIS/Include; ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy; ..\MyFiles\Inc; ..\MyDrivers\Inc; ..\MyMiddleware\Inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -442,6 +442,33 @@
         </Group>
         <Group>
           <GroupName>Application/User/MyFiles</GroupName>
+          <Files>
+            <File>
+              <FileName>Miscellaneous.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MyFiles\Src\Miscellaneous.c</FilePath>
+            </File>
+            <File>
+              <FileName>UserMain.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MyFiles\Src\UserMain.c</FilePath>
+            </File>
+            <File>
+              <FileName>UserScript.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MyFiles\Src\UserScript.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Application/User/Doc</GroupName>
+          <Files>
+            <File>
+              <FileName>README.md</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\README.md</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Drivers/CMSIS</GroupName>
@@ -579,7 +606,17 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>Driver/MyMiddleware</GroupName>
+        </Group>
+        <Group>
           <GroupName>Drivers/MyDrivers</GroupName>
+          <Files>
+            <File>
+              <FileName>Gyro.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MyDrivers\Src\Gyro.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>

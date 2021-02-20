@@ -9,6 +9,9 @@
 "debug406_robotcar\usart.o"
 "debug406_robotcar\stm32h7xx_it.o"
 "debug406_robotcar\stm32h7xx_hal_msp.o"
+"debug406_robotcar\miscellaneous.o"
+"debug406_robotcar\usermain.o"
+"debug406_robotcar\userscript.o"
 "debug406_robotcar\system_stm32h7xx.o"
 "debug406_robotcar\stm32h7xx_hal_adc.o"
 "debug406_robotcar\stm32h7xx_hal_adc_ex.o"
@@ -34,6 +37,7 @@
 "debug406_robotcar\stm32h7xx_hal_tim_ex.o"
 "debug406_robotcar\stm32h7xx_hal_uart.o"
 "debug406_robotcar\stm32h7xx_hal_uart_ex.o"
+"debug406_robotcar\gyro.o"
 --strict --scatter "Debug406_RobotCar\Debug406_RobotCar.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

@@ -43,4 +43,4 @@ debug406_robotcar/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h \
   ..\Core\Inc\adc.h ..\Core\Inc\main.h ..\Core\Inc\i2c.h \
   ..\Core\Inc\spi.h ..\Core\Inc\tim.h ..\Core\Inc\usart.h \
-  ..\Core\Inc\gpio.h
+  ..\Core\Inc\gpio.h ..\MyFiles\Inc\UserMain.h
