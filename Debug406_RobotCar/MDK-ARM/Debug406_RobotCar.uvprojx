@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>STM32H743xx,USE_HAL_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;  ../Drivers/STM32H7xx_HAL_Driver/Inc;  ../Drivers/CMSIS/Device/ST/STM32H7xx/Include;  ../Drivers/CMSIS/Include;  ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;  ..\MyFiles\Inc;  ..\MyDrivers\Inc;  ..\MyMiddleware\Inc</IncludePath>
+              <IncludePath>../Core/Inc;    ../Drivers/STM32H7xx_HAL_Driver/Inc;    ../Drivers/CMSIS/Device/ST/STM32H7xx/Include;    ../Drivers/CMSIS/Include;    ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;    ..\MyFiles\Inc;    ..\MyDrivers\Inc;    ..\MyMiddleware\Inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -607,6 +607,13 @@
         </Group>
         <Group>
           <GroupName>Driver/MyMiddleware</GroupName>
+          <Files>
+            <File>
+              <FileName>BasicAction.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MyMiddleware\Src\BasicAction.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Drivers/MyDrivers</GroupName>
@@ -615,6 +622,11 @@
               <FileName>Gyro.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\MyDrivers\Src\Gyro.c</FilePath>
+            </File>
+            <File>
+              <FileName>GraySensor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MyDrivers\Src\GraySensor.c</FilePath>
             </File>
           </Files>
         </Group>

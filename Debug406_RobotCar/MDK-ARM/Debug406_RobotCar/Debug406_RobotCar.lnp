@@ -37,7 +37,9 @@
 "debug406_robotcar\stm32h7xx_hal_tim_ex.o"
 "debug406_robotcar\stm32h7xx_hal_uart.o"
 "debug406_robotcar\stm32h7xx_hal_uart_ex.o"
+"debug406_robotcar\basicaction.o"
 "debug406_robotcar\gyro.o"
+"debug406_robotcar\graysensor.o"
 --strict --scatter "Debug406_RobotCar\Debug406_RobotCar.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
