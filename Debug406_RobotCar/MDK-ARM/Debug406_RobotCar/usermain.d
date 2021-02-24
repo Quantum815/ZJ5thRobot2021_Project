@@ -42,6 +42,4 @@ debug406_robotcar/usermain.o: ..\MyFiles\Src\UserMain.c \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h \
-  ..\Core\Inc\adc.h ..\Core\Inc\main.h ..\Core\Inc\i2c.h \
-  ..\Core\Inc\spi.h ..\Core\Inc\tim.h ..\Core\Inc\usart.h \
-  ..\Core\Inc\gpio.h
+  ..\MyDrivers\Inc\Gyro.h ..\Core\Inc\i2c.h ..\Core\Inc\main.h
