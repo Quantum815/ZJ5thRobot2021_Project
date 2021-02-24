@@ -8,4 +8,7 @@
 #define GYRO_I2C_SDA_GPIO_PORT  GPIOB      
 #define GYRO_I2C_SDA_GPIO_PIN   GPIO_PIN_7
 
+void Short2Char(short sData, unsigned char cData[]);
+short Char2Short(unsigned char cData[]);
+
 #endif

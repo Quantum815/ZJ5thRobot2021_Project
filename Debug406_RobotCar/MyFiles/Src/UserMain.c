@@ -1,11 +1,25 @@
+/**
+  ******************************************************************************
+  * @file    UserMain.c
+  * @author  YL
+  * @brief   主程序
+  *
+	@verbatim
+	
+	@endverbatim
+  * @{
+**/
+
+/* Includes ------------------------------------------------------------------*/
 #include "UserMain.h"
-#include "main.h"
+#include "stm32h7xx_hal.h"
+#include "Miscellaneous.h"
 #include "Gyro.h"
 
 /**
-  * @brief  Main program initialization
-  * @param  None
-  * @retval None
+  * @brief  主程序初始化
+  * @param  无
+  * @retval 无
   */
 void UserInit(void)
 {
@@ -13,12 +27,12 @@ void UserInit(void)
 }
 
 /**
-  * @brief  Main program loop
-  * @param  None
-  * @retval None
+  * @brief  主程序循环
+  * @param  无
+  * @retval 无
   */
 void UserLoop(void)
 {
-		HAL_GPIO_TogglePin(LED_GPIO_PORT, LED_GPIO_PIN);
-		HAL_Delay(1000);
+//	Debug();
+	
 }

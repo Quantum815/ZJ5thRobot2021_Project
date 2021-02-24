@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>STM32H743xx,USE_HAL_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;     ../Drivers/STM32H7xx_HAL_Driver/Inc;     ../Drivers/CMSIS/Device/ST/STM32H7xx/Include;     ../Drivers/CMSIS/Include;     ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;     ..\MyFiles\Inc;     ..\MyDrivers\Inc;     ..\MyMiddleware\Inc</IncludePath>
+              <IncludePath>../Core/Inc;      ../Drivers/STM32H7xx_HAL_Driver/Inc;      ../Drivers/CMSIS/Device/ST/STM32H7xx/Include;      ../Drivers/CMSIS/Include;      ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;      ..\MyFiles\Inc;      ..\MyDrivers\Inc;      ..\MyMiddleware\Inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
