@@ -13,8 +13,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "UserMain.h"
 #include "stm32h7xx_hal.h"
-#include "Miscellaneous.h"
-#include "Gyro.h"
 
 /**
   * @brief  主程序初始化
@@ -33,6 +31,16 @@ void UserInit(void)
   */
 void UserLoop(void)
 {
-//	Debug();
-	
+	Debug();
+}
+
+/**
+  * @brief  测试
+  * @param  无
+  * @retval 无
+  */
+void Debug(void)
+{
+	HAL_GPIO_TogglePin(LED_GPIO_PORT, LED_GPIO_PIN);
+	HAL_Delay(1000);
 }

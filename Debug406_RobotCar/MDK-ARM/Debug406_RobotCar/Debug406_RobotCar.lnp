@@ -3,7 +3,6 @@
 "debug406_robotcar\main.o"
 "debug406_robotcar\gpio.o"
 "debug406_robotcar\adc.o"
-"debug406_robotcar\i2c.o"
 "debug406_robotcar\spi.o"
 "debug406_robotcar\tim.o"
 "debug406_robotcar\usart.o"
@@ -40,7 +39,7 @@
 "debug406_robotcar\basicaction.o"
 "debug406_robotcar\gyro.o"
 "debug406_robotcar\graysensor.o"
---strict --scatter "Debug406_RobotCar\Debug406_RobotCar.sct"
+--library_type=microlib --strict --scatter "Debug406_RobotCar\Debug406_RobotCar.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list "Debug406_RobotCar.map" -o Debug406_RobotCar\Debug406_RobotCar.axf

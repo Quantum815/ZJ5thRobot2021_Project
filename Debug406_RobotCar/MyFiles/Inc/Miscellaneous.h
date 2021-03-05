@@ -1,9 +1,10 @@
 #ifndef MISCELLANEOUS_H_
 #define MISCELLANEOUS_H_
 
-#define LED_GPIO_PORT  GPIOI      
-#define LED_GPIO_PIN   GPIO_PIN_8 
+#include <stdio.h>
+#include "usart.h"
 
-void Debug(void);
+int fputc(int ch,FILE *f);
+int fgetc(FILE *f);
 
 #endif

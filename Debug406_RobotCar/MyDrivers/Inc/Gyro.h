@@ -1,14 +1,18 @@
 #ifndef GYRO_H_
 #define GYRO_H_
 
-#include "i2c.h"
+#include "usart.h"
 
-#define GYRO_I2C_SCL_GPIO_PORT  GPIOB      
-#define GYRO_I2C_SCL_GPIO_PIN   GPIO_PIN_6
-#define GYRO_I2C_SDA_GPIO_PORT  GPIOB      
-#define GYRO_I2C_SDA_GPIO_PIN   GPIO_PIN_7
+#define GYRO_USART_TX_GPIO_PORT  GPIOB      
+#define GYRO_USART_TX_GPIO_PIN   GPIO_PIN_12
+#define GYRO_USART_RX_GPIO_PORT  GPIOB      
+#define GYRO_USART_RX_GPIO_PIN   GPIO_PIN_13
+
+extern double RollAngle, PitchAngle, YawAngle;
 
 void Short2Char(short sData, unsigned char cData[]);
 short Char2Short(unsigned char cData[]);
+double GyroEulerAnglesProcess(unsigned char cData[]);
+
 
 #endif
