@@ -45,4 +45,5 @@ debug406_robotcar/adc.o: ..\Core\Src\adc.c ..\Core\Inc\adc.h \
   C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
   ..\Core\Inc\usart.h \
   C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
-  ..\MyDrivers\Inc\Gyro.h ..\MyDrivers\Inc\GraySensor.h
+  ..\MyMiddleware\Inc\CallBackAction.h ..\MyDrivers\Inc\Gyro.h \
+  ..\MyDrivers\Inc\GraySensor.h

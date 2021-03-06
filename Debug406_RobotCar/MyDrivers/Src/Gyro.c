@@ -23,7 +23,8 @@
 #include "Gyro.h"
 
 /* Define\Declare ------------------------------------------------------------*/
-double RollAngle, PitchAngle, YawAngle;
+volatile double RollAngle, PitchAngle, YawAngle;
+uint8_t GyroReceiveNum;
 uint8_t GyroReceiveBuffer[11];
 uint8_t GyroUnlockInstruction[5] = {0xff, 0xaa, 0x69, 0x88, 0xb5};  //解锁指令
 uint8_t GyroAutoCalibration[5] = {0xff, 0xaa, 0x63, 0x00, 0x00};  //陀螺仪自动校准
@@ -78,10 +79,11 @@ double GyroEulerAnglesProcess(uint8_t cData[])
 **/
 void GyroInit(void)
 {
-	HAL_UART_Transmit(&huart5, GyroUnlockInstruction, 5, 10);
-	HAL_Delay(100);
-	HAL_UART_Transmit(&huart5, GyroAutoCalibration, 5, 10);
-	HAL_Delay(100);
-	HAL_UART_Transmit(&huart5, GyroKeepConfiguration, 5, 10);
-	HAL_Delay(100);
+//	HAL_UART_Transmit(&huart5, GyroUnlockInstruction, 5, 10);
+//	HAL_Delay(100);
+//	HAL_UART_Transmit(&huart5, GyroAutoCalibration, 5, 10);
+//	HAL_Delay(100);
+//	HAL_UART_Transmit(&huart5, GyroKeepConfiguration, 5, 10);
+//	HAL_Delay(100);
+	HAL_UART_Receive_IT(&huart5, &GyroReceiveBuffer[0], 1);
 }

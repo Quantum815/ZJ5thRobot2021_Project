@@ -45,6 +45,6 @@ debug406_robotcar/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
   ..\Core\Inc\usart.h ..\Core\Inc\main.h \
   C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
-  ..\MyDrivers\Inc\Gyro.h ..\MyDrivers\Inc\GraySensor.h \
-  ..\Core\Inc\adc.h ..\Core\Inc\spi.h ..\Core\Inc\tim.h \
-  ..\Core\Inc\gpio.h
+  ..\MyMiddleware\Inc\CallBackAction.h ..\MyDrivers\Inc\Gyro.h \
+  ..\MyDrivers\Inc\GraySensor.h ..\Core\Inc\adc.h ..\Core\Inc\spi.h \
+  ..\Core\Inc\tim.h ..\Core\Inc\gpio.h

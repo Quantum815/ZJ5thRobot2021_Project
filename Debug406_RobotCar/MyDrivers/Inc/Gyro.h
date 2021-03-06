@@ -8,7 +8,8 @@
 #define GYRO_USART_RX_GPIO_PORT  GPIOB      
 #define GYRO_USART_RX_GPIO_PIN   GPIO_PIN_13
 
-extern double RollAngle, PitchAngle, YawAngle;
+extern volatile double RollAngle, PitchAngle, YawAngle;
+extern uint8_t GyroReceiveNum;
 extern uint8_t GyroReceiveBuffer[11];
 
 void Short2Char(short sData, uint8_t cData[]);
