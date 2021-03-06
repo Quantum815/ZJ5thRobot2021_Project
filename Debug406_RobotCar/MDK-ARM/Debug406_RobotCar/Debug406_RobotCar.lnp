@@ -37,9 +37,10 @@
 "debug406_robotcar\stm32h7xx_hal_uart.o"
 "debug406_robotcar\stm32h7xx_hal_uart_ex.o"
 "debug406_robotcar\basicaction.o"
+"debug406_robotcar\callbackaction.o"
 "debug406_robotcar\gyro.o"
 "debug406_robotcar\graysensor.o"
---library_type=microlib --strict --scatter "Debug406_RobotCar\Debug406_RobotCar.sct"
+--strict --scatter "Debug406_RobotCar\Debug406_RobotCar.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list "Debug406_RobotCar.map" -o Debug406_RobotCar\Debug406_RobotCar.axf

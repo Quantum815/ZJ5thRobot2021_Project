@@ -43,6 +43,8 @@ debug406_robotcar/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h \
   ..\MyFiles\Inc\UserMain.h ..\MyFiles\Inc\Miscellaneous.h \
   C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
-  ..\Core\Inc\usart.h ..\Core\Inc\main.h ..\MyDrivers\Inc\Gyro.h \
-  ..\MyDrivers\Inc\GraySensor.h ..\Core\Inc\adc.h ..\Core\Inc\spi.h \
-  ..\Core\Inc\tim.h ..\Core\Inc\gpio.h
+  ..\Core\Inc\usart.h ..\Core\Inc\main.h \
+  C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
+  ..\MyDrivers\Inc\Gyro.h ..\MyDrivers\Inc\GraySensor.h \
+  ..\Core\Inc\adc.h ..\Core\Inc\spi.h ..\Core\Inc\tim.h \
+  ..\Core\Inc\gpio.h

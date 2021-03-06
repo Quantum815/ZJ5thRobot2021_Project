@@ -44,4 +44,5 @@ debug406_robotcar/graysensor.o: ..\MyDrivers\Src\GraySensor.c \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h \
   ..\MyFiles\Inc\UserMain.h ..\MyFiles\Inc\Miscellaneous.h \
   C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
+  C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\MyDrivers\Inc\Gyro.h

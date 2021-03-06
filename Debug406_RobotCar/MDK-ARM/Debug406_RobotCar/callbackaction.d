@@ -1,4 +1,5 @@
-debug406_robotcar/usart.o: ..\Core\Src\usart.c ..\Core\Inc\usart.h \
+debug406_robotcar/callbackaction.o: ..\MyMiddleware\Src\CallBackAction.c \
+  ..\MyMiddleware\Inc\CallBackAction.h ..\Core\Inc\usart.h \
   ..\Core\Inc\main.h ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h \
   ..\Core\Inc\stm32h7xx_hal_conf.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc.h \

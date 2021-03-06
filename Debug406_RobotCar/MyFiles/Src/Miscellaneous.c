@@ -16,7 +16,7 @@
 int fputc(int ch,FILE *f)
 {	
 	uint8_t temp[1]={ch};
-	HAL_UART_Transmit(&huart4,temp,1,10);
+	HAL_UART_Transmit(&huart4, temp, 1, 10);
 	return ch;
 }
 

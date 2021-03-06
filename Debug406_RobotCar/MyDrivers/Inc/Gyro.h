@@ -9,10 +9,13 @@
 #define GYRO_USART_RX_GPIO_PIN   GPIO_PIN_13
 
 extern double RollAngle, PitchAngle, YawAngle;
+extern uint8_t GyroReceiveBuffer[11];
 
-void Short2Char(short sData, unsigned char cData[]);
-short Char2Short(unsigned char cData[]);
-double GyroEulerAnglesProcess(unsigned char cData[]);
+void Short2Char(short sData, uint8_t cData[]);
+short Char2Short(uint8_t cData[]);
+uint8_t GyroCheckSumJudge(void);
+double GyroEulerAnglesProcess(uint8_t cData[]);
 
+void GyroInit(void);
 
 #endif
