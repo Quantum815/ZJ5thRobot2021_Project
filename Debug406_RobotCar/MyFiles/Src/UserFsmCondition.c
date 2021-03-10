@@ -1,14 +1,20 @@
 /**
   ******************************************************************************
-  * @file    UserScript.c
+  * @file    UserFsmCondition.c
   * @author  YL
-  * @brief   脚本内容
+  * @brief   状态机
   *
-  @verbatim
+	@verbatim
 	
 	@endverbatim
   * @{
 **/
 
 /* Includes ------------------------------------------------------------------*/
-#include "UserScript.h"
+#include "UserFsmCondition.h"
+
+//状态跳转条件判断函数
+uint8_t NoCondition(void)
+{
+	return 1;
+}

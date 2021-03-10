@@ -3,7 +3,7 @@
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	//串口5接收中断（陀螺仪）
-	if(huart == &huart5)
+	if(huart == &huart2)
 	{
 		if(GyroReceiveNum == 0 && GyroReceiveBuffer[0] != 0x55)
 		{
@@ -17,19 +17,16 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
     {
 			if(GyroCheckSumJudge())
 			{
-				RollAngle = GyroEulerAnglesProcess(&GyroReceiveBuffer[2]);
-				PitchAngle = GyroEulerAnglesProcess(&GyroReceiveBuffer[4]);
-				YawAngle = GyroEulerAnglesProcess(&GyroReceiveBuffer[6]);
+				GyroGetAllAngles();
 				GyroReceiveNum = 0;
 			}
 			else
 			{
-				printf("ff\r\n");
 				GyroReceiveNum = 0;
 			}
     }
 		else
 			GyroReceiveNum++;
-		HAL_UART_Receive_IT(&huart5,&GyroReceiveBuffer[GyroReceiveNum],1);
+		HAL_UART_Receive_IT(&huart2,&GyroReceiveBuffer[GyroReceiveNum],1);
 	}
 }

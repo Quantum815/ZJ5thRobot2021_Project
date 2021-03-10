@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>STM32H743xx,USE_HAL_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;                        ../Drivers/STM32H7xx_HAL_Driver/Inc;                        ../Drivers/CMSIS/Device/ST/STM32H7xx/Include;                        ../Drivers/CMSIS/Include;                        ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;                        ..\MyFiles\Inc;                        ..\MyDrivers\Inc;                        ..\MyMiddleware\Inc</IncludePath>
+              <IncludePath>../Core/Inc;                          ../Drivers/STM32H7xx_HAL_Driver/Inc;                          ../Drivers/CMSIS/Device/ST/STM32H7xx/Include;                          ../Drivers/CMSIS/Include;                          ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;                          ..\MyFiles\Inc;                          ..\MyDrivers\Inc;                          ..\MyMiddleware\Inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -409,6 +409,11 @@
               <FilePath>../Core/Src/adc.c</FilePath>
             </File>
             <File>
+              <FileName>i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Core/Src/i2c.c</FilePath>
+            </File>
+            <File>
               <FileName>spi.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Core/Src/spi.c</FilePath>
@@ -449,9 +454,19 @@
               <FilePath>..\MyFiles\Src\UserMain.c</FilePath>
             </File>
             <File>
-              <FileName>UserScript.c</FileName>
+              <FileName>UserFsmFrame.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\MyFiles\Src\UserScript.c</FilePath>
+              <FilePath>..\MyFiles\Src\UserFsmFrame.c</FilePath>
+            </File>
+            <File>
+              <FileName>UserFsmCondition.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MyFiles\Src\UserFsmCondition.c</FilePath>
+            </File>
+            <File>
+              <FileName>UserFsmJump.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MyFiles\Src\UserFsmJump.c</FilePath>
             </File>
           </Files>
         </Group>

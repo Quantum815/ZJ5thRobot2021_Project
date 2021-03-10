@@ -10,7 +10,6 @@
 #define LED_GPIO_PORT  GPIOI      
 #define LED_GPIO_PIN   GPIO_PIN_8 
 
-
 void UserInit(void);
 void UserLoop(void);
 
