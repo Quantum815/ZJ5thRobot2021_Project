@@ -4,4 +4,9 @@
 #include "usart.h"
 #include "Gyro.h"
 
+//陀螺仪相关参数
+extern uint8_t GyroReceiveNum;
+extern uint8_t GyroReceiveBuffer[11];
+extern uint8_t GyroOpenFlag;
+
 #endif

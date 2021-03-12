@@ -16,6 +16,7 @@
 	(++) I2C设备地址：0x50
 	(#) 其余内容默认
 	@endverbatim
+	安装时上侧朝前，
   * @{
 **/
  
@@ -26,6 +27,9 @@
 static double RollAngle, PitchAngle, YawAngle;
 uint8_t GyroReceiveNum;
 uint8_t GyroReceiveBuffer[11];
+uint8_t GyroOpenFlag;
+
+//指令
 uint8_t GyroUnlockInstruction[5] = {0xff, 0xaa, 0x69, 0x88, 0xb5};  //解锁指令
 uint8_t GyroAutoCalibration[5] = {0xff, 0xaa, 0x63, 0x00, 0x00};  //陀螺仪自动校准
 uint8_t GyroKeepConfiguration[5] = {0xff, 0xaa, 0x00, 0x00, 0x00};  //保持配置
@@ -51,16 +55,11 @@ short Char2Short(uint8_t cData[])
 uint8_t GyroCheckSumJudge(void)
 {
 	uint8_t sum = 0;
-	sum += GyroReceiveBuffer[0];
-	sum += GyroReceiveBuffer[1];
-	sum += GyroReceiveBuffer[2];
-	sum += GyroReceiveBuffer[3];
-	sum += GyroReceiveBuffer[4];
-	sum += GyroReceiveBuffer[5];
-	sum += GyroReceiveBuffer[6];
-	sum += GyroReceiveBuffer[7];
-	sum += GyroReceiveBuffer[8];
-	sum += GyroReceiveBuffer[9];
+	int i;
+	
+	for(i=0; i<10; i++)
+		sum += GyroReceiveBuffer[i];
+	
 	if(GyroReceiveBuffer[10] != sum)
 		return 0;
 	else
@@ -82,19 +81,30 @@ double GyroEulerAnglesProcess(uint8_t cData[])
 
 void GyroInit(void)
 {
-//	HAL_UART_Transmit(&huart5, GyroUnlockInstruction, 5, 10);
-//	HAL_Delay(100);
-//	HAL_UART_Transmit(&huart5, GyroAutoCalibration, 5, 10);
-//	HAL_Delay(100);
-//	HAL_UART_Transmit(&huart5, GyroKeepConfiguration, 5, 10);
-//	HAL_Delay(100);
+	HAL_UART_Transmit(&huart2, GyroUnlockInstruction, 5, 10);
+	HAL_Delay(100);
+	HAL_UART_Transmit(&huart2, GyroAutoCalibration, 5, 10);
+	HAL_Delay(100);
+	HAL_UART_Transmit(&huart2, GyroKeepConfiguration, 5, 10);
+	HAL_Delay(100);
 	HAL_UART_Receive_IT(&huart2, &GyroReceiveBuffer[0], 1);
+}
+
+void GyroOpen(void)
+{
+	GyroOpenFlag = 1;
+	HAL_UART_Receive_IT(&huart2, &GyroReceiveBuffer[0], 1);
+}
+
+void GyroClose(void)
+{
+	GyroOpenFlag = 0;
 }
 
 void GyroGetAllAngles(void)
 {
-	RollAngle = GyroEulerAnglesProcess(&GyroReceiveBuffer[2]);
-	PitchAngle = GyroEulerAnglesProcess(&GyroReceiveBuffer[4]);
+	PitchAngle = GyroEulerAnglesProcess(&GyroReceiveBuffer[2]);
+	RollAngle = GyroEulerAnglesProcess(&GyroReceiveBuffer[4]);
 	YawAngle = GyroEulerAnglesProcess(&GyroReceiveBuffer[6]);
 }
 
@@ -106,17 +116,25 @@ void GyroGetAllAngles(void)
  *
 **/
 
-double GyroGetRollAngle(void)
+//滚动角左负右正 -80~+80
+double GetGyroRollAngle(void)
 {
 	return RollAngle;
 }
 
-double GyroGetPitchAngle(void)
+//俯仰角上正下负数 -180~+180
+double GetGyroPitchAngle(void)
 {
 	return PitchAngle;
 }
 
-double GyroGetYawAngle(void)
+//偏航角逆时针变大 -180~180
+double GetGyroYawAngle(void)
 {
 	return YawAngle;
+}
+
+uint8_t* GetGyroReceiveBuffer(void)
+{
+	return GyroReceiveBuffer;
 }
