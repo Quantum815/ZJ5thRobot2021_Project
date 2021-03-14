@@ -2,6 +2,7 @@
 #define GRAYSENSOR_H_
 
 #include "usart.h"
+#inlcude "adc.h"
 
 #define GRAYSENSOR_TX_GPIO_PORT GPIOC
 #define GRAYSENSOR_TX_GPIO_PIN  GPIO_PIN_6
