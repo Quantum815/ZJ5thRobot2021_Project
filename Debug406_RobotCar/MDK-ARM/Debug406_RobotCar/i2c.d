@@ -46,4 +46,4 @@ debug406_robotcar/i2c.o: ..\Core\Src\i2c.c ..\Core\Inc\i2c.h \
   ..\Core\Inc\usart.h \
   C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\MyMiddleware\Inc\CallBackAction.h ..\MyDrivers\Inc\Gyro.h \
-  ..\MyDrivers\Inc\GraySensor.h
+  ..\MyDrivers\Inc\GraySensor.h ..\Core\Inc\adc.h

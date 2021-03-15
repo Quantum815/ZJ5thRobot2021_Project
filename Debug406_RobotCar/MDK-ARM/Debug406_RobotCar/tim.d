@@ -46,4 +46,4 @@ debug406_robotcar/tim.o: ..\Core\Src\tim.c ..\Core\Inc\tim.h \
   ..\Core\Inc\usart.h \
   C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\MyMiddleware\Inc\CallBackAction.h ..\MyDrivers\Inc\Gyro.h \
-  ..\MyDrivers\Inc\GraySensor.h
+  ..\MyDrivers\Inc\GraySensor.h ..\Core\Inc\adc.h

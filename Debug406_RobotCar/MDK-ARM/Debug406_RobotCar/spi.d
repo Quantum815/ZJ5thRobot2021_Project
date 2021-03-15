@@ -46,4 +46,4 @@ debug406_robotcar/spi.o: ..\Core\Src\spi.c ..\Core\Inc\spi.h \
   ..\Core\Inc\usart.h \
   C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\MyMiddleware\Inc\CallBackAction.h ..\MyDrivers\Inc\Gyro.h \
-  ..\MyDrivers\Inc\GraySensor.h
+  ..\MyDrivers\Inc\GraySensor.h ..\Core\Inc\adc.h

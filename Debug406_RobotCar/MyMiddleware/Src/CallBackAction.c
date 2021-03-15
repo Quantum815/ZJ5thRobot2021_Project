@@ -3,7 +3,7 @@
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	//串口2接收中断（陀螺仪）
-	if(huart == &huart2 && GyroOpenFlag)
+	if(huart == &huart5 && GyroOpenFlag)
 	{
 		if(GyroReceiveNum == 0 && GyroReceiveBuffer[0] != 0x55)
 		{
@@ -25,6 +25,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
     }
 		else
 			GyroReceiveNum++;
-			HAL_UART_Receive_IT(&huart2,&GyroReceiveBuffer[GyroReceiveNum],1);
+			HAL_UART_Receive_IT(&huart5,&GyroReceiveBuffer[GyroReceiveNum],1);
 	}
 }

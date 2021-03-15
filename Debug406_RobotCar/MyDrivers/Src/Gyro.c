@@ -38,7 +38,7 @@ uint8_t GyroKeepConfiguration[5] = {0xff, 0xaa, 0x00, 0x00, 0x00};  //保持配置
 /**
  ******************************************************************************
  *  @defgroup 底层调用
- *  @brief Short2Char, Char2Short, GyroEulerAnglesProcess
+ *  @brief 
  *
 **/
 void Short2Char(short sData,uint8_t cData[])
@@ -81,19 +81,19 @@ double GyroEulerAnglesProcess(uint8_t cData[])
 
 void GyroInit(void)
 {
-	HAL_UART_Transmit(&huart2, GyroUnlockInstruction, 5, 10);
+	HAL_UART_Transmit(&huart5, GyroUnlockInstruction, 5, 10);
 	HAL_Delay(100);
-	HAL_UART_Transmit(&huart2, GyroAutoCalibration, 5, 10);
+	HAL_UART_Transmit(&huart5, GyroAutoCalibration, 5, 10);
 	HAL_Delay(100);
-	HAL_UART_Transmit(&huart2, GyroKeepConfiguration, 5, 10);
+	HAL_UART_Transmit(&huart5, GyroKeepConfiguration, 5, 10);
 	HAL_Delay(100);
-	HAL_UART_Receive_IT(&huart2, &GyroReceiveBuffer[0], 1);
+	HAL_UART_Receive_IT(&huart5, &GyroReceiveBuffer[0], 1);
 }
 
 void GyroOpen(void)
 {
 	GyroOpenFlag = 1;
-	HAL_UART_Receive_IT(&huart2, &GyroReceiveBuffer[0], 1);
+	HAL_UART_Receive_IT(&huart5, &GyroReceiveBuffer[0], 1);
 }
 
 void GyroClose(void)
