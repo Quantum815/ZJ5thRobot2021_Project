@@ -9,6 +9,8 @@
 #define DEBUG_UART8_RX_GPIO_PORT  GPIOE      
 #define DEBUG_UART8_RX_GPIO_PIN   GPIO_PIN_0
 
-int fputc(int ch,FILE *f);
+#define DebugUartHandle huart8
+
+int fputc(int ch, FILE *f);
 
 #endif

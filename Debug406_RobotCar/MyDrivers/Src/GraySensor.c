@@ -207,5 +207,5 @@ uint8_t* GetGraySensorConfirmResult(void)
 
 uint8_t* GetGraySensorFifteenValue(void)
 {
-	return GraySensorReceiveBuffer;
+	return GraySensorReceiveBuffer+3;
 }
