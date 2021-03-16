@@ -15,15 +15,9 @@
 
 int fputc(int ch,FILE *f)
 {	
-	uint8_t temp[1]={ch};
-	HAL_UART_Transmit(&huart4, temp, 1, 10);
-	return ch;
-}
+  /* Place your implementation of fputc here */
+  /* e.g. write a character to the USART1 and Loop until the end of transmission */
+  HAL_UART_Transmit(&huart8, (uint8_t *)&ch, 1, 0xFFFF);
 
-int fgetc(FILE *f)
-{
-	uint8_t ch;
-	while (__HAL_UART_GET_FLAG(&huart4, UART_FLAG_RXNE) == RESET);
-	HAL_UART_Receive(&huart4, (uint8_t*)&ch, 2, 10);
-	return ch;
+  return ch;
 }

@@ -3,12 +3,31 @@
 
 #include "usart.h"
 
-#define GRAYSENSOR_TX_GPIO_PORT GPIOC
-#define GRAYSENSOR_TX_GPIO_PIN  GPIO_PIN_6
-#define GRAYSENSOR_RX_GPIO_PORT GPIOC
-#define GRAYSENSOR_RX_GPIO_PIN  GPIO_PIN_7
+#define GRAYSENSOR_UART4_TX_GPIO_PORT GPIOA
+#define GRAYSENSOR_UART4_TX_GPIO_PIN  GPIO_PIN_0
+#define GRAYSENSOR_UART4_RX_GPIO_PORT GPIOA
+#define GRAYSENSOR_UART4_RX_GPIO_PIN  GPIO_PIN_1
+
+#define GraySensorUartHandle huart4
+
+//≈‰÷√÷∏¡Ó
+void GraySensorConfigTest(void);
+void GraySensorConfigLineLight(void);
+void GraySensorConfigGroundLight(void);
+void GraySensorManualConfigLight(uint8_t light);
+void GraySensorConfigLineAd(void);
+void GraySensorConfigGroundAd(void);
+void GraySensorManualConfigThresholdValue(uint8_t num, uint8_t threshold);
+
+//∂¡»°÷∏¡Ó
+void GraySensorFifteenThresholdValueGet(void);
+void GraySensorFifteenDigitalValueGet(void);
+void GraySensorFifteenAnalogValueGet(void);
+void GraySensorConfigFifteenSigleAnalogValueGet(void);
 
 void GraySensorInit(void);
-void AdcGetGraysensor(uint8_t* buffer, uint8_t FilterTimes);
+
+uint8_t* GetGraySensorConfirmResult(void);
+uint8_t* GetGraySensorFifteenValue(void);
 
 #endif

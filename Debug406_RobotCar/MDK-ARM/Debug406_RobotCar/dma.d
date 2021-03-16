@@ -1,5 +1,5 @@
-debug406_robotcar/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
-  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h \
+debug406_robotcar/dma.o: ..\Core\Src\dma.c ..\Core\Inc\dma.h \
+  ..\Core\Inc\main.h ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h \
   ..\Core\Inc\stm32h7xx_hal_conf.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_def.h \
@@ -36,8 +36,7 @@ debug406_robotcar/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h \
   ..\MyFiles\Inc\UserMain.h ..\MyFiles\Inc\Miscellaneous.h \
   C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
-  ..\Core\Inc\usart.h ..\Core\Inc\main.h \
+  ..\Core\Inc\usart.h \
   C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\MyMiddleware\Inc\CallBackAction.h ..\MyDrivers\Inc\Gyro.h \
-  ..\MyDrivers\Inc\GraySensor.h ..\Core\Inc\dma.h ..\Core\Inc\i2c.h \
-  ..\Core\Inc\gpio.h
+  ..\MyDrivers\Inc\GraySensor.h

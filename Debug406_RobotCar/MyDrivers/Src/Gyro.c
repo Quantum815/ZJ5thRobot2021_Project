@@ -24,15 +24,15 @@
 #include "Gyro.h"
 
 /* Define\Declare ------------------------------------------------------------*/
-static double RollAngle, PitchAngle, YawAngle;
+volatile static double RollAngle, PitchAngle, YawAngle;
 uint8_t GyroReceiveNum;
 uint8_t GyroReceiveBuffer[11];
 uint8_t GyroOpenFlag;
 
 //指令
-uint8_t GyroUnlockInstruction[5] = {0xff, 0xaa, 0x69, 0x88, 0xb5};  //解锁指令
-uint8_t GyroAutoCalibration[5] = {0xff, 0xaa, 0x63, 0x00, 0x00};  //陀螺仪自动校准
-uint8_t GyroKeepConfiguration[5] = {0xff, 0xaa, 0x00, 0x00, 0x00};  //保持配置
+static uint8_t GyroUnlockInstruction[5] = {0xff, 0xaa, 0x69, 0x88, 0xb5};  //解锁指令
+static uint8_t GyroAutoCalibration[5] = {0xff, 0xaa, 0x63, 0x00, 0x00};  //陀螺仪自动校准
+static uint8_t GyroKeepConfiguration[5] = {0xff, 0xaa, 0x00, 0x00, 0x00};  //保持配置
 
 
 /**
@@ -81,19 +81,19 @@ double GyroEulerAnglesProcess(uint8_t cData[])
 
 void GyroInit(void)
 {
-	HAL_UART_Transmit(&huart5, GyroUnlockInstruction, 5, 10);
-	HAL_Delay(100);
-	HAL_UART_Transmit(&huart5, GyroAutoCalibration, 5, 10);
-	HAL_Delay(100);
-	HAL_UART_Transmit(&huart5, GyroKeepConfiguration, 5, 10);
-	HAL_Delay(100);
-	HAL_UART_Receive_IT(&huart5, &GyroReceiveBuffer[0], 1);
+	while(HAL_UART_Transmit(&GyroUartHandle, GyroUnlockInstruction, 5, 10) != HAL_OK);
+	while (HAL_UART_GetState(&GyroUartHandle) != HAL_UART_STATE_READY);
+	while(HAL_UART_Transmit(&GyroUartHandle, GyroAutoCalibration, 5, 10) != HAL_OK);
+	while (HAL_UART_GetState(&GyroUartHandle) != HAL_UART_STATE_READY);
+	while(HAL_UART_Transmit(&GyroUartHandle, GyroKeepConfiguration, 5, 10) != HAL_OK);
+	while (HAL_UART_GetState(&GyroUartHandle) != HAL_UART_STATE_READY);
+	HAL_UART_Receive_IT(&GyroUartHandle, &GyroReceiveBuffer[0], 1);
 }
 
 void GyroOpen(void)
 {
 	GyroOpenFlag = 1;
-	HAL_UART_Receive_IT(&huart5, &GyroReceiveBuffer[0], 1);
+	HAL_UART_Receive_IT(&GyroUartHandle, &GyroReceiveBuffer[0], 1);
 }
 
 void GyroClose(void)

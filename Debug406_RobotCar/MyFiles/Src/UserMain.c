@@ -21,8 +21,9 @@
   */
 void UserInit(void)
 {
-	GyroInit();
-	GyroOpen();
+	GraySensorInit();
+//	GyroInit();
+//	GyroOpen();
 }
 
 /**
@@ -32,7 +33,15 @@ void UserInit(void)
   */
 void UserLoop(void)
 {
-	printf("%lf  %lf  %lf\r\n", GetGyroRollAngle(), GetGyroPitchAngle(), GetGyroYawAngle());
+	uint8_t* test;
+	GraySensorManualConfigLight(20);
+	GraySensorFifteenAnalogValueGet();
+	test = GetGraySensorFifteenValue();
+	int i;
+	for(i=0; i<15; i++)
+		printf("%d ", test[i]);
+	printf("test\n");
+//	printf("%lf  %lf  %lf\r\n", GetGyroRollAngle(), GetGyroPitchAngle(), GetGyroYawAngle());
 	HAL_Delay(10);
 }
 

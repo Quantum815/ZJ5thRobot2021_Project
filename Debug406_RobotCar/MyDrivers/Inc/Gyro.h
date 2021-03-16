@@ -8,6 +8,8 @@
 #define GYRO_USART_RX_GPIO_PORT  GPIOA      
 #define GYRO_USART_RX_GPIO_PIN   GPIO_PIN_3
 
+#define GyroUartHandle huart8
+
 void Short2Char(short sData, uint8_t cData[]);
 short Char2Short(uint8_t cData[]);
 uint8_t GyroCheckSumJudge(void);
