@@ -189,7 +189,7 @@
             <hadIRAM2>1</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
-            <useUlib>1</useUlib>
+            <useUlib>0</useUlib>
             <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
             <nSecure>0</nSecure>
@@ -313,7 +313,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>2</Optim>
+            <Optim>1</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>STM32H743xx,USE_HAL_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;                                              ../Drivers/STM32H7xx_HAL_Driver/Inc;                                              ../Drivers/CMSIS/Device/ST/STM32H7xx/Include;                                              ../Drivers/CMSIS/Include;                                              ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;                                              ..\MyFiles\Inc;                                              ..\MyDrivers\Inc;                                              ..\MyMiddleware\Inc</IncludePath>
+              <IncludePath>../Core/Inc;                                               ../Drivers/STM32H7xx_HAL_Driver/Inc;                                               ../Drivers/CMSIS/Device/ST/STM32H7xx/Include;                                               ../Drivers/CMSIS/Include;                                               ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;                                               ..\MyFiles\Inc;                                               ..\MyDrivers\Inc;                                               ..\MyMiddleware\Inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -714,6 +714,31 @@
               <FileName>GraySensor.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\MyDrivers\Src\GraySensor.c</FilePath>
+            </File>
+            <File>
+              <FileName>DiffuseReflectionLaser.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MyDrivers\Src\DiffuseReflectionLaser.c</FilePath>
+            </File>
+            <File>
+              <FileName>RangingLaser.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MyDrivers\Src\RangingLaser.c</FilePath>
+            </File>
+            <File>
+              <FileName>RaspberryPi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MyDrivers\Src\RaspberryPi.c</FilePath>
+            </File>
+            <File>
+              <FileName>InductiveMotor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MyDrivers\Src\InductiveMotor.c</FilePath>
+            </File>
+            <File>
+              <FileName>ServoMotor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MyDrivers\Src\ServoMotor.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -43,14 +43,12 @@ static uint8_t GraySensorGetFifteenSigleAnalogValue[2] = {0x00, 0xdb};  //读取单
 void GraySensorConfigTest(void)  //测试
 {
 	GraySensorInstructionNum = 1;
-	HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorTestConfiguration, 2);
-	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY)
-	{
-	}
-	HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorConfigConfirm, 2);
-	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY)
-	{
-	}
+	if(HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorTestConfiguration, 2) != HAL_OK)
+		Error_Handler();
+	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY);
+	if(HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorConfigConfirm, 2) != HAL_OK)
+		Error_Handler();
+	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY);
 }
 
 void GraySensorConfigLineLight(void)  //自动线上亮度配置
