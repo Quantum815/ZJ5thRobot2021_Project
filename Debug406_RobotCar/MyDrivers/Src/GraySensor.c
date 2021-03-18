@@ -14,8 +14,7 @@
 #include "GraySensor.h"
 
 /* Define\Declare ------------------------------------------------------------*/
-uint8_t GraySensorConfigConfirm[2];
-uint8_t GraySensorReceiveBuffer[18];
+uint8_t GraySensorConfirmOrReceiveBuffer[18];
 uint8_t GraySensorInstructionNum;
 
 //≈‰÷√÷∏¡Ó
@@ -46,7 +45,7 @@ void GraySensorConfigTest(void)  //≤‚ ‘
 	if(HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorTestConfiguration, 2) != HAL_OK)
 		Error_Handler();
 	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY);
-	if(HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorConfigConfirm, 2) != HAL_OK)
+	if(HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorConfirmOrReceiveBuffer, 2) != HAL_OK)
 		Error_Handler();
 	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY);
 }
@@ -54,81 +53,69 @@ void GraySensorConfigTest(void)  //≤‚ ‘
 void GraySensorConfigLineLight(void)  //◊‘∂Øœﬂ…œ¡¡∂»≈‰÷√
 {
 	GraySensorInstructionNum = 2;
-	HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorLineLightConfiguration, 2);
-	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY)
-	{
-	}
-	HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorConfigConfirm, 2);
-	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY)
-	{
-	}
+	if(HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorLineLightConfiguration, 2) != HAL_OK)
+		Error_Handler();
+	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY);
+	if(HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorConfirmOrReceiveBuffer, 2) != HAL_OK)
+		Error_Handler();
+	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY);
 }
 
 void GraySensorConfigGroundLight(void)  //◊‘∂Øµÿ…œ¡¡∂»≈‰÷√
 {
 	GraySensorInstructionNum = 3;
-	HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorGroundLightConfiguration, 2);
-	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY)
-	{
-	}
-	HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorConfigConfirm, 2);
-	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY)
-	{
-	}
+	if(HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorGroundLightConfiguration, 2) != HAL_OK)
+		Error_Handler();
+	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY);
+	if(HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorConfirmOrReceiveBuffer, 2) != HAL_OK)
+		Error_Handler();
+	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY);
 }
 
 void GraySensorManualConfigLight(uint8_t light)  // ÷∂Ø…Ë÷√¡¡∂»
 {
 	GraySensorInstructionNum = 4;
 	uint8_t GraySensorLightConfiguration[3] = {0x00, 0xc6, light};
-	HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorLightConfiguration, 3);
-	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY)
-	{
-	}
-	HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorConfigConfirm, 2);
-	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY)
-	{
-	}
+	if(HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorLightConfiguration, 3) != HAL_OK)
+		Error_Handler();
+	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY);
+	if(HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorConfirmOrReceiveBuffer, 3) != HAL_OK)
+		Error_Handler();
+	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY);
 }
 
 void GraySensorConfigLineAd(void)  //◊‘∂Ø…Ë÷√œﬂAD÷µ
 {
 	GraySensorInstructionNum = 5;
-	HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorLineAdConfiguration, 2);
-	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY)
-	{
-	}
-	HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorConfigConfirm, 2);
-	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY)
-	{
-	}
+	if(HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorLineAdConfiguration, 2) != HAL_OK)
+		Error_Handler();
+	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY);
+	if(HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorConfirmOrReceiveBuffer, 2) != HAL_OK)
+		Error_Handler();
+	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY);
 }
 
 void GraySensorConfigGroundAd(void)  //◊‘∂Ø…Ë÷√µÿAD÷µ
 {
 	GraySensorInstructionNum = 6;
-	HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorGroundAdConfiguration, 2);
-	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY)
-	{
-	}
-	HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorConfigConfirm, 2);
-	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY)
-	{
-	}
+	if(HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorGroundAdConfiguration, 2) != HAL_OK)
+		Error_Handler();
+	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY);
+	if(HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorConfirmOrReceiveBuffer, 2) != HAL_OK)
+		Error_Handler();
+	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY);
 }
 
 void GraySensorManualConfigThresholdValue(uint8_t num, uint8_t threshold)  // ÷∂Ø…Ë÷√ƒ≥“ª¬∑AD„–÷µ£®num = 1~15£©
 {
 	GraySensorInstructionNum = 7;
 	uint8_t GraySensorThresholdValueConfiguration[4] = {0x00, 0xc7, num, threshold};
-	HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorThresholdValueConfiguration, 4);
-	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY)
-	{
-	}
-	HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorConfigConfirm, 2);
-	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY)
-	{
-	}
+	if(HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorThresholdValueConfiguration, 4) != HAL_OK)
+		Error_Handler();
+	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY);
+	if(HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorConfirmOrReceiveBuffer, 2) != HAL_OK)
+		Error_Handler();
+	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY);
 }
 
 
@@ -137,53 +124,45 @@ void GraySensorManualConfigThresholdValue(uint8_t num, uint8_t threshold)  // ÷∂
 void GraySensorFifteenThresholdValueGet(void)  //∂¡»°15¬∑„–÷µ
 {
 	GraySensorInstructionNum = 8;
-	HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorGetFifteenThresholdValue, 2);
-	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY)
-	{
-	}
-	HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorReceiveBuffer, 18);
-	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY)
-	{
-	}
+	if(HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorGetFifteenThresholdValue, 2) != HAL_OK)
+		Error_Handler();
+	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY);
+	if(HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorConfirmOrReceiveBuffer, 18) != HAL_OK)
+		Error_Handler();
+	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY);
 }
 
 void GraySensorFifteenDigitalValueGet(void)  //∂¡»°15¬∑ ˝◊÷¡ø
 {
 	GraySensorInstructionNum = 9;
-	HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorGetFifteenDigitalValue, 2);
-	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY)
-	{
-	}
-	HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorReceiveBuffer, 5);
-	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY)
-	{
-	}
+	if(HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorGetFifteenDigitalValue, 2) != HAL_OK)
+		Error_Handler();
+	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY);
+	if(HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorConfirmOrReceiveBuffer, 5) != HAL_OK)
+		Error_Handler();
+	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY);
 }
 
 void GraySensorFifteenAnalogValueGet(void)  //∂¡»°15¬∑ƒ£ƒ‚¡ø
 {
 	GraySensorInstructionNum = 10;
-	HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorGetFifteenAnalogValue, 2);
-	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY)
-	{
-	}
-	HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorReceiveBuffer, 18);
-	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY)
-	{
-	}
+	if(HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorGetFifteenAnalogValue, 2) != HAL_OK)
+		Error_Handler();
+	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY);
+	if(HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorConfirmOrReceiveBuffer, 18) != HAL_OK)
+		Error_Handler();
+	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY);
 }
 
 void GraySensorConfigFifteenSigleAnalogValueGet(void)  //∂¡»°µ•ƒ£ƒ‚¡ø÷µ
 {
 	GraySensorInstructionNum = 11;
-	HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorGetFifteenSigleAnalogValue, 2);
-	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY)
-	{
-	}
-	HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorReceiveBuffer, 5);
-	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY)
-	{
-	}
+	if(HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorGetFifteenSigleAnalogValue, 2) != HAL_OK)
+		Error_Handler();
+	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY);
+	if(HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorConfirmOrReceiveBuffer, 5) != HAL_OK)
+		Error_Handler();
+	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY);
 }
 
 void GraySensorInit(void)
@@ -198,12 +177,7 @@ void GraySensorInit(void)
  *  @brief
  *
 **/
-uint8_t* GetGraySensorConfirmResult(void)
+uint8_t* GetGraySensorComfirmOrReceiveValue(void)
 {
-	return GraySensorConfigConfirm;
-}
-
-uint8_t* GetGraySensorFifteenValue(void)
-{
-	return GraySensorReceiveBuffer+3;
+	return GraySensorConfirmOrReceiveBuffer;
 }

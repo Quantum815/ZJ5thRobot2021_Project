@@ -27,7 +27,6 @@ void GraySensorConfigFifteenSigleAnalogValueGet(void);
 
 void GraySensorInit(void);
 
-uint8_t* GetGraySensorConfirmResult(void);
-uint8_t* GetGraySensorFifteenValue(void);
+uint8_t* GetGraySensorComfirmOrReceiveValue(void);
 
 #endif
