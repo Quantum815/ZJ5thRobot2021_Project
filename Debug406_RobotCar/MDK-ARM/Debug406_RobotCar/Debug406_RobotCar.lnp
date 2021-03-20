@@ -39,9 +39,10 @@
 "debug406_robotcar\graysensor.o"
 "debug406_robotcar\diffusereflectionlaser.o"
 "debug406_robotcar\ranginglaser.o"
-"debug406_robotcar\raspberrypi.o"
 "debug406_robotcar\inductivemotor.o"
 "debug406_robotcar\servomotor.o"
+"debug406_robotcar\matrixkeyboard.o"
+"debug406_robotcar\imageprocess.o"
 --strict --scatter "Debug406_RobotCar\Debug406_RobotCar.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

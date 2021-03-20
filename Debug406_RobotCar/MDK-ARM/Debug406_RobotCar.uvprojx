@@ -726,11 +726,6 @@
               <FilePath>..\MyDrivers\Src\RangingLaser.c</FilePath>
             </File>
             <File>
-              <FileName>RaspberryPi.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\MyDrivers\Src\RaspberryPi.c</FilePath>
-            </File>
-            <File>
               <FileName>InductiveMotor.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\MyDrivers\Src\InductiveMotor.c</FilePath>
@@ -739,6 +734,16 @@
               <FileName>ServoMotor.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\MyDrivers\Src\ServoMotor.c</FilePath>
+            </File>
+            <File>
+              <FileName>MatrixKeyBoard.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MyDrivers\Src\MatrixKeyBoard.c</FilePath>
+            </File>
+            <File>
+              <FileName>ImageProcess.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MyDrivers\Src\ImageProcess.c</FilePath>
             </File>
           </Files>
         </Group>

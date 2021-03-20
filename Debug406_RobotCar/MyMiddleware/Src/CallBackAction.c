@@ -1,5 +1,6 @@
 #include "CallBackAction.h"
 
+//串口中断
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	//陀螺仪
@@ -32,4 +33,10 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 	{
 
 	}
+}
+
+//外部中断
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+
 }
