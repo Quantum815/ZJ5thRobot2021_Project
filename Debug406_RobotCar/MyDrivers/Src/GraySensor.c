@@ -154,7 +154,7 @@ void GraySensorFifteenAnalogValueGet(void)  //读取15路模拟量
 	while(HAL_UART_GetState(&GraySensorUartHandle) != HAL_UART_STATE_READY);
 }
 
-void GraySensorConfigFifteenSigleAnalogValueGet(void)  //读取单模拟量值
+void GraySensorSigleAnalogValueGet(void)  //读取单模拟量值
 {
 	GraySensorInstructionNum = 11;
 	if(HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorGetFifteenSigleAnalogValue, 2) != HAL_OK)
@@ -177,7 +177,7 @@ void GraySensorInit(void)
  *  @brief
  *
 **/
-uint8_t* GetGraySensorComfirmOrReceiveValue(void)
+uint8_t GetGraySensorOneOfFifteenReceiveValue(uint8_t num)
 {
-	return GraySensorConfirmOrReceiveBuffer;
+	return GraySensorConfirmOrReceiveBuffer[num+3];
 }

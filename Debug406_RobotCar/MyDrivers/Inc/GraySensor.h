@@ -23,10 +23,10 @@ void GraySensorManualConfigThresholdValue(uint8_t num, uint8_t threshold);
 void GraySensorFifteenThresholdValueGet(void);
 void GraySensorFifteenDigitalValueGet(void);
 void GraySensorFifteenAnalogValueGet(void);
-void GraySensorConfigFifteenSigleAnalogValueGet(void);
+void GraySensorSigleAnalogValueGet(void);
 
 void GraySensorInit(void);
 
-uint8_t* GetGraySensorComfirmOrReceiveValue(void);
+uint8_t GetGraySensorOneOfFifteenReceiveValue(uint8_t num);
 
 #endif
