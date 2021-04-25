@@ -45,7 +45,7 @@
 "debug406_robotcar\servomotor.o"
 "debug406_robotcar\matrixkeyboard.o"
 "debug406_robotcar\imageprocess.o"
---strict --scatter "Debug406_RobotCar\Debug406_RobotCar.sct"
+--library_type=microlib --strict --scatter "Debug406_RobotCar\Debug406_RobotCar.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list "Debug406_RobotCar.map" -o Debug406_RobotCar\Debug406_RobotCar.axf
