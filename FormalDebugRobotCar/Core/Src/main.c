@@ -19,6 +19,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "dma.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -86,10 +87,10 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_UART4_Init();
-  MX_UART5_Init();
-  MX_UART7_Init();
+  MX_DMA_Init();
   MX_UART8_Init();
+  MX_USART1_UART_Init();
+  MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
 	UserInit();
   /* USER CODE END 2 */
@@ -179,6 +180,8 @@ void Error_Handler(void)
   __disable_irq();
   while (1)
   {
+		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+		HAL_Delay(50);
   }
   /* USER CODE END Error_Handler_Debug */
 }

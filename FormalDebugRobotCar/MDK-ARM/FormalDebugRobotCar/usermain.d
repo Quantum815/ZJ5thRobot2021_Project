@@ -37,6 +37,6 @@ formaldebugrobotcar/usermain.o: ..\MyFiles\Src\UserMain.c \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pwr_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h \
+  ..\MyDrivers\Inc\Gyro.h \
   C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
-  ..\MyMiddleware\Inc\CallBackAction.h ..\MyDrivers\Inc\Gyro.h \
-  ..\MyDrivers\Inc\GraySensor.h
+  ..\MyDrivers\Inc\GraySensor.h ..\MyMiddleware\Inc\CallBackAction.h

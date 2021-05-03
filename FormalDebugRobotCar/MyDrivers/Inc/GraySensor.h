@@ -1,14 +1,15 @@
 #ifndef GRAYSENSOR_H_
 #define GRAYSENSOR_H_
 
+#include <string.h>
 #include "usart.h"
 
-#define GRAYSENSOR_UART4_TX_GPIO_PORT GPIOA
-#define GRAYSENSOR_UART4_TX_GPIO_PIN  GPIO_PIN_0
-#define GRAYSENSOR_UART4_RX_GPIO_PORT GPIOA
-#define GRAYSENSOR_UART4_RX_GPIO_PIN  GPIO_PIN_1
+#define GRAYSENSOR_UART4_TX_GPIO_PORT GPIOB
+#define GRAYSENSOR_UART4_TX_GPIO_PIN  GPIO_PIN_10
+#define GRAYSENSOR_UART4_RX_GPIO_PORT GPIOB
+#define GRAYSENSOR_UART4_RX_GPIO_PIN  GPIO_PIN_11
 
-#define GraySensorUartHandle huart4
+#define GraySensorUartHandle huart3
 
 //≈‰÷√÷∏¡Ó
 void GraySensorConfigTest(void);
@@ -21,9 +22,11 @@ void GraySensorManualConfigThresholdValue(uint8_t num, uint8_t threshold);
 
 //∂¡»°÷∏¡Ó
 void GraySensorFifteenThresholdValueGet(void);
+void GraySensorFifteenLineValueGet(void);
+void GraySensorFifteenGroundValueGet(void);
 void GraySensorFifteenDigitalValueGet(void);
 void GraySensorFifteenAnalogValueGet(void);
-void GraySensorSigleAnalogValueGet(void);
+void GraySensorSingleAnalogValueGet(void);
 
 void GraySensorInit(void);
 

@@ -21,3 +21,27 @@ int fputc(int ch, FILE *f)
 
   return ch;
 }
+
+
+/**
+ ******************************************************************************
+ *  @defgroup 数据测试
+ *  @brief
+ *
+**/
+void DebugGyro(void)  //陀螺仪数据
+{
+	int i;
+	printf("%lf %lf %lf\n", GyroRollAngleGet(), GyroPitchAngleGet(), GyroYawAngleGet());
+	for(i=0; i<11; i++)
+		printf("%d ", GyroOneOfElevenReceiveBufferGet(i));
+	printf("\n");
+}
+
+void DebugGraySensor(void)
+{
+	int i;
+	for(i=0; i<15; i++)
+		printf("%d ", GetGraySensorOneOfFifteenReceiveValue(i));
+	printf("\n");
+}

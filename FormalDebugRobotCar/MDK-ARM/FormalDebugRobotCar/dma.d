@@ -1,8 +1,5 @@
-formaldebugrobotcar/graysensor.o: ..\MyDrivers\Src\GraySensor.c \
-  ..\MyDrivers\Inc\GraySensor.h \
-  C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
-  ..\Core\Inc\usart.h ..\Core\Inc\main.h \
-  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h \
+formaldebugrobotcar/dma.o: ..\Core\Src\dma.c ..\Core\Inc\dma.h \
+  ..\Core\Inc\main.h ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h \
   ..\Core\Inc\stm32h7xx_hal_conf.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_def.h \

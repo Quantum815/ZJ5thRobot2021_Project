@@ -2,6 +2,7 @@
 "formaldebugrobotcar\startup_stm32h743xx.o"
 "formaldebugrobotcar\main.o"
 "formaldebugrobotcar\gpio.o"
+"formaldebugrobotcar\dma.o"
 "formaldebugrobotcar\usart.o"
 "formaldebugrobotcar\stm32h7xx_it.o"
 "formaldebugrobotcar\stm32h7xx_hal_msp.o"

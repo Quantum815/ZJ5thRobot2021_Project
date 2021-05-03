@@ -1,5 +1,8 @@
 formaldebugrobotcar/gyro.o: ..\MyDrivers\Src\Gyro.c \
-  ..\MyDrivers\Inc\Gyro.h ..\Core\Inc\usart.h ..\Core\Inc\main.h \
+  ..\MyDrivers\Inc\Gyro.h \
+  C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
+  C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
+  ..\Core\Inc\usart.h ..\Core\Inc\main.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h \
   ..\Core\Inc\stm32h7xx_hal_conf.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc.h \

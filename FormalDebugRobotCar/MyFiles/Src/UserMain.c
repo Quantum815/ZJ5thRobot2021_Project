@@ -14,33 +14,22 @@
 #include "UserMain.h"
 #include "stm32h7xx_hal.h"
 
-/**
-  * @brief  主程序初始化
-  * @param  无
-  * @retval 无
-  */
-void UserInit(void)
+void UserInit(void)  //主程序初始化
 {
-		GraySensorManualConfigLight(40);
-//	GraySensorInit();
+	//陀螺仪初始化
 //	GyroInit();
 //	GyroOpen();
+	
+	//灰度传感器初始化
+//	GraySensorInit();
 }
 
-/**
-  * @brief  主程序循环
-  * @param  无
-  * @retval 无
-  */
-void UserLoop(void)
+void UserLoop(void)  //主程序循环
 {
-//	printf("test\n");
-	GraySensorFifteenAnalogValueGet();
-	int i;
-	for(i=0; i<15; i++)
-		printf("%d ", GetGraySensorOneOfFifteenReceiveValue(i));
-	printf("\n");
-//	printf("%lf  %lf  %lf\r\n", GetGyroRollAngle(), GetGyroPitchAngle(), GetGyroYawAngle());
-	HAL_Delay(10);
+//	DebugGyro();
+
+//	GraySensorFifteenAnalogValueGet();
+//	DebugGraySensor();
+	HAL_Delay(100);
 }
 

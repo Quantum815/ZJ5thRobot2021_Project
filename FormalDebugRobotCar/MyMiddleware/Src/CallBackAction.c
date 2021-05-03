@@ -1,42 +1,47 @@
 #include "CallBackAction.h"
 
-//串口中断
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)  //串口中断
 {
-	//陀螺仪
+	//陀螺仪（基本完善）  5.2
 	if(huart == &GyroUartHandle && GyroOpenFlag)
 	{
-		if(GyroReceiveNum == 0 && GyroReceiveBuffer[0] != 0x55)
+		if(GyroReceiveNum == 0)
 		{
-			GyroReceiveNum = 0;
-		}
-		else if(GyroReceiveNum == 1 && GyroReceiveBuffer[1] != 0x53)
-		{
-			GyroReceiveNum = 0;
-		}
-		else if(GyroReceiveNum == 10)
-    {
-			if(GyroCheckSumJudge())
-			{
-				GyroGetAllAngles();
+			if(GyroReceiveBuffer[0] != 0x55)
 				GyroReceiveNum = 0;
+			else
+				GyroReceiveNum = 1;
+			HAL_UART_Receive_IT(&GyroUartHandle,&GyroReceiveBuffer[GyroReceiveNum],1);
+		}
+		else if(GyroReceiveNum == 1)
+		{
+			if(GyroReceiveBuffer[1] != 0x53)
+			{
+				GyroReceiveNum = 0;
+				HAL_UART_Receive_IT(&GyroUartHandle,&GyroReceiveBuffer[GyroReceiveNum],1);
 			}
 			else
-				GyroReceiveNum = 0;
+			{
+				GyroReceiveNum = 2;
+				HAL_UART_Receive_IT(&GyroUartHandle,&GyroReceiveBuffer[GyroReceiveNum],9);
+			}
+		}
+		else if(GyroReceiveNum == 2)
+    {
+			if(GyroCheckSumJudge())
+				GyroGetAllAngles();
+			GyroReceiveNum = 0;
+			HAL_UART_Receive_IT(&GyroUartHandle,&GyroReceiveBuffer[GyroReceiveNum],1);
     }
 		else
-			GyroReceiveNum++;
+		{
+			GyroReceiveNum = 0;
 			HAL_UART_Receive_IT(&GyroUartHandle,&GyroReceiveBuffer[GyroReceiveNum],1);
+		}
 	}
 	//灰度传感器
 	else if(huart == &GraySensorUartHandle)
 	{
 
 	}
-}
-
-//外部中断
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
-{
-
 }
