@@ -1,4 +1,22 @@
+/**
+  ******************************************************************************
+  * @file    CallBackAction.c
+  * @author  YL
+  * @brief   回调函数
+  *
+	@verbatim
+	
+	@endverbatim
+  * @{
+**/
+
+/* Includes ------------------------------------------------------------------*/
 #include "CallBackAction.h"
+#include "main.h"
+#include "dma.h"
+#include "tim.h"
+#include "usart.h"
+#include "gpio.h"
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)  //串口中断
 {
@@ -39,9 +57,28 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)  //串口中断
 			HAL_UART_Receive_IT(&GyroUartHandle,&GyroReceiveBuffer[GyroReceiveNum],1);
 		}
 	}
-	//灰度传感器
+	//灰度传感器（基本完善）5.3
 	else if(huart == &GraySensorUartHandle)
 	{
+		//空（请勿添加任何代码）
+	}
+}
 
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)  //定时器中断
+{
+  //10ms 状态机
+	if(htim == &htim2)
+	{
+		
+	}
+  //10ms 传感器读取
+	else if(htim == &htim3)
+	{
+//		GraySensorFifteenAnalogValueGet();
+	}
+  //1000ms LED判断工作状态（基本完善）
+	else if(htim == &htim4)
+	{
+		HAL_GPIO_TogglePin(LED_GPIO_PORT, LED_GPIO_PIN);
 	}
 }

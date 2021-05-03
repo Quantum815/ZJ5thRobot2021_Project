@@ -1,7 +1,7 @@
 #ifndef GYRO_H_
 #define GYRO_H_
 
-#include <stdio.h>
+#include "Miscellaneous.h"
 #include <string.h>
 #include "usart.h"
 

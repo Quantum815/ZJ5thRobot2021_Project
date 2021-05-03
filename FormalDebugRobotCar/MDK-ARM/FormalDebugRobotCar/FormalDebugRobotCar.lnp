@@ -3,6 +3,7 @@
 "formaldebugrobotcar\main.o"
 "formaldebugrobotcar\gpio.o"
 "formaldebugrobotcar\dma.o"
+"formaldebugrobotcar\tim.o"
 "formaldebugrobotcar\usart.o"
 "formaldebugrobotcar\stm32h7xx_it.o"
 "formaldebugrobotcar\stm32h7xx_hal_msp.o"

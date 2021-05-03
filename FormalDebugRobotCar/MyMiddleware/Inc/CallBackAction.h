@@ -1,9 +1,13 @@
 #ifndef CALLBACKACTION_H_
 #define CALLBACKACTION_H_
 
-#include "usart.h"
+#include "Miscellaneous.h"
 #include "Gyro.h"
 #include "GraySensor.h"
+
+//LED
+#define LED_GPIO_PORT  GPIOC      
+#define LED_GPIO_PIN   GPIO_PIN_13 
 
 //陀螺仪相关参数
 extern uint8_t GyroOpenFlag;

@@ -11,9 +11,6 @@
 #define DEBUG_UART4_RX_GPIO_PORT  GPIOB      
 #define DEBUG_UART4_RX_GPIO_PIN   GPIO_PIN_15
 
-#define LED_GPIO_PORT  GPIOC      
-#define LED_GPIO_PIN   GPIO_PIN_13 
-
 #define DebugUartHandle huart1
 
 int fputc(int ch, FILE *f);

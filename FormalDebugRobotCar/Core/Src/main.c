@@ -20,6 +20,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "dma.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -91,6 +92,9 @@ int main(void)
   MX_UART8_Init();
   MX_USART1_UART_Init();
   MX_USART3_UART_Init();
+  MX_TIM2_Init();
+  MX_TIM3_Init();
+  MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
 	UserInit();
   /* USER CODE END 2 */
@@ -180,8 +184,7 @@ void Error_Handler(void)
   __disable_irq();
   while (1)
   {
-		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-		HAL_Delay(50);
+		HAL_GPIO_WritePin(LED_GPIO_PORT, LED_GPIO_PIN, GPIO_PIN_SET);  //之后可以改为蜂鸣器
   }
   /* USER CODE END Error_Handler_Debug */
 }
