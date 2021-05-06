@@ -42,7 +42,8 @@
 "formaldebugrobotcar\inductivemotor.o"
 "formaldebugrobotcar\matrixkeyboard.o"
 "formaldebugrobotcar\ranginglaser.o"
-"formaldebugrobotcar\servomotor.o"
+"formaldebugrobotcar\armservomotor.o"
+"formaldebugrobotcar\headservomotor.o"
 --library_type=microlib --strict --scatter "FormalDebugRobotCar\FormalDebugRobotCar.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

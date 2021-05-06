@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * @file    ServoMotor.c
+  * @file    ArmServoMotor.c
   * @author  YL
-  * @brief   伺服电机驱动（单）
+  * @brief   手臂伺服电机驱动
   *
   @verbatim
 	
@@ -11,4 +11,4 @@
 **/
 
 /* Includes ------------------------------------------------------------------*/
-#include "ServoMotor.h"
+#include "ArmServoMotor.h"

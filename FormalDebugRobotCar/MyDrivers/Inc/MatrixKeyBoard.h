@@ -4,23 +4,23 @@
 #include "gpio.h"
 
 //ÁÐ
-#define Row1_GPIO_PORT     GPIOE
-#define Row1_PIN           GPIO_PIN_2
-#define Row2_GPIO_PORT     GPIOE
-#define Row2_PIN           GPIO_PIN_3
-#define Row3_GPIO_PORT     GPIOE
-#define Row3_PIN           GPIO_PIN_4
-#define Row4_GPIO_PORT     GPIOE
-#define Row4_PIN           GPIO_PIN_5
+#define Row1_GPIO_PORT     GPIOD
+#define Row1_PIN           GPIO_PIN_0
+#define Row2_GPIO_PORT     GPIOD
+#define Row2_PIN           GPIO_PIN_1
+#define Row3_GPIO_PORT     GPIOD
+#define Row3_PIN           GPIO_PIN_2
+#define Row4_GPIO_PORT     GPIOD
+#define Row4_PIN           GPIO_PIN_3
 //ÐÐ
-#define Column1_GPIO_PORT  GPIOA
-#define Column1_PIN        GPIO_PIN_0
-#define Column2_GPIO_PORT  GPIOA
-#define Column2_PIN        GPIO_PIN_1
-#define Column3_GPIO_PORT  GPIOA
-#define Column3_PIN        GPIO_PIN_2
-#define Column4_GPIO_PORT  GPIOA
-#define Column4_PIN        GPIO_PIN_3
+#define Column1_GPIO_PORT  GPIOD
+#define Column1_PIN        GPIO_PIN_4
+#define Column2_GPIO_PORT  GPIOD
+#define Column2_PIN        GPIO_PIN_5
+#define Column3_GPIO_PORT  GPIOD
+#define Column3_PIN        GPIO_PIN_6
+#define Column4_GPIO_PORT  GPIOD
+#define Column4_PIN        GPIO_PIN_7
 
 typedef enum
 {

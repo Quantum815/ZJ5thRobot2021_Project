@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32H743xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;                                         ../Drivers/STM32H7xx_HAL_Driver/Inc;                                         ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;                                         ../Drivers/CMSIS/Device/ST/STM32H7xx/Include;                                         ../Drivers/CMSIS/Include;                                         ..\MyFiles\Inc;                                         ..\MyMiddleware\Inc;                                         ..\MyDrivers\Inc</IncludePath>
+              <IncludePath>../Core/Inc;                                             ../Drivers/STM32H7xx_HAL_Driver/Inc;                                             ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;                                             ../Drivers/CMSIS/Device/ST/STM32H7xx/Include;                                             ../Drivers/CMSIS/Include;                                             ..\MyFiles\Inc;                                             ..\MyMiddleware\Inc;                                             ..\MyDrivers\Inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -736,9 +736,14 @@
               <FilePath>..\MyDrivers\Src\RangingLaser.c</FilePath>
             </File>
             <File>
-              <FileName>ServoMotor.c</FileName>
+              <FileName>ArmServoMotor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\MyDrivers\Src\ServoMotor.c</FilePath>
+              <FilePath>..\MyDrivers\Src\ArmServoMotor.c</FilePath>
+            </File>
+            <File>
+              <FileName>HeadServoMotor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MyDrivers\Src\HeadServoMotor.c</FilePath>
             </File>
           </Files>
         </Group>

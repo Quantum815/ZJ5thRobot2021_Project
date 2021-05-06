@@ -24,6 +24,7 @@ void UserInit(void)  //主程序初始化
 	HAL_TIM_Base_Start_IT(&htim2);
 	HAL_TIM_Base_Start_IT(&htim3);
 	HAL_TIM_Base_Start_IT(&htim4);
+	HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1);
 	//陀螺仪初始化
 //	GyroInit();
 //	GyroOpen();
@@ -34,10 +35,17 @@ void UserInit(void)  //主程序初始化
 
 void UserLoop(void)  //主程序循环
 {
+	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 5);
+	HAL_Delay(2000);
+	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 10);
+	HAL_Delay(2000);
+	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 15);
+	HAL_Delay(2000);
+	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 20);
 //	DebugGyro();
 
 //	DebugGraySensor();
 	
-	HAL_Delay(100);
+	HAL_Delay(2000);
 }
 
