@@ -18,7 +18,8 @@
 #include "usart.h"
 #include "gpio.h"
 
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)  //串口中断
+//串口中断
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	//陀螺仪（基本完善）  5.2
 	if(huart == &GyroUartHandle && GyroOpenFlag)
@@ -64,9 +65,11 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)  //串口中断
 	}
 }
 
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)  //定时器中断
+//*****************************************************************
+//定时器中断
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-  //10ms 状态机
+  //10ms 状态机,10ms读取传感器
 	if(htim == &htim2)
 	{
 		
@@ -76,9 +79,21 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)  //定时器中断
 	{
 //		GraySensorFifteenAnalogValueGet();
 	}
-  //1000ms LED判断工作状态（基本完善）
+  //500ms LED判断工作状态（基本完善）
 	else if(htim == &htim4)
 	{
 		HAL_GPIO_TogglePin(LED_GPIO_PORT, LED_GPIO_PIN);
 	}
+}
+
+//*****************************************************************
+//外部中断
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+  switch(GPIO_Pin)
+  {
+    case LEFT_DRLASER_GPIO_PIN: LeftDiffuseReflectionLaserChangeSet(); break;
+    case RIGHT_DRLASER_GPIO_PIN: RightDiffuseReflectionLaserChangeSet(); break;
+    default: DiffuseReflectionLaserChangeClear(); break;
+  }
 }

@@ -20,7 +20,7 @@ typedef struct
 	
 	double YawAngle;  //Æ«º½½Ç
 	
-} GYRO_AngleTypeDef;
+} Gyro_AngleTypeDef;
 
 
 void Short2Char(short sData, uint8_t cData[]);

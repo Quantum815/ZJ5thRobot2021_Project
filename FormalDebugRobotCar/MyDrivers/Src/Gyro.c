@@ -24,7 +24,7 @@
 #include "Gyro.h"
 
 /* Define\Declare ------------------------------------------------------------*/
-volatile GYRO_AngleTypeDef *Gyro_Angle;
+volatile Gyro_AngleTypeDef *Gyro_Angle;
 
 uint8_t GyroOpenFlag;
 uint8_t GyroReceiveNum;
@@ -93,6 +93,7 @@ void GyroInit(void)  //陀螺仪初始化
 void GyroOpen(void)  //陀螺仪数据获取开启
 {
 	GyroOpenFlag = 1;
+	GyroReceiveNum = 0;
 	HAL_UART_Receive_IT(&GyroUartHandle, &GyroReceiveBuffer[GyroReceiveNum], 1);
 }
 

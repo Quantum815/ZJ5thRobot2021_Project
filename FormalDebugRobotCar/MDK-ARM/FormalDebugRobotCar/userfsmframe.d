@@ -43,5 +43,6 @@ formaldebugrobotcar/userfsmframe.o: ..\MyFiles\Src\UserFsmFrame.c \
   ..\MyDrivers\Inc\Gyro.h ..\MyFiles\Inc\Miscellaneous.h \
   C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\MyDrivers\Inc\GraySensor.h ..\MyMiddleware\Inc\CallBackAction.h \
+  ..\MyDrivers\Inc\DiffuseReflectionLaser.h ..\Core\Inc\gpio.h \
   ..\MyFiles\Inc\UserFsmCondition.h ..\MyFiles\Inc\UserFsmFrame.h \
   ..\MyFiles\Inc\UserFsmJump.h

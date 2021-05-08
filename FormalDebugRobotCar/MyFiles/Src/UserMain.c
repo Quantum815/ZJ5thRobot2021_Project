@@ -20,11 +20,11 @@
 
 void UserInit(void)  //主程序初始化
 {
-	//定时器中断开启
+	//定时器开启
+	HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1);
 	HAL_TIM_Base_Start_IT(&htim2);
 	HAL_TIM_Base_Start_IT(&htim3);
 	HAL_TIM_Base_Start_IT(&htim4);
-	HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1);
 	//陀螺仪初始化
 //	GyroInit();
 //	GyroOpen();

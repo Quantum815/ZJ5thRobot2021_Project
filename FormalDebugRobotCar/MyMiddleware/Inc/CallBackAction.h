@@ -4,6 +4,7 @@
 #include "Miscellaneous.h"
 #include "Gyro.h"
 #include "GraySensor.h"
+#include "DiffuseReflectionLaser.h"
 
 //LED
 #define LED_GPIO_PORT  GPIOC      
@@ -16,5 +17,9 @@ extern uint8_t GyroReceiveBuffer[11];
 
 //灰度传感器相关参数
 extern uint8_t GraySensorReceiveBuffer[18];
+
+//漫反射激光传感器相关参数
+extern DiffuseReflectionLaser_Change_State Left_DFLaser_Change_State;
+extern DiffuseReflectionLaser_Change_State Right_DFLaser_Change_State;
 
 #endif

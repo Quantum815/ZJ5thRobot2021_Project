@@ -42,4 +42,5 @@ formaldebugrobotcar/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
   ..\MyDrivers\Inc\Gyro.h ..\MyFiles\Inc\Miscellaneous.h \
   C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
-  ..\MyDrivers\Inc\GraySensor.h ..\MyMiddleware\Inc\CallBackAction.h
+  ..\MyDrivers\Inc\GraySensor.h ..\MyMiddleware\Inc\CallBackAction.h \
+  ..\MyDrivers\Inc\DiffuseReflectionLaser.h
