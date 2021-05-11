@@ -18,9 +18,9 @@ void DiffuseReflectionLaser_Init(void);
 void DiffuseReflectionLaserInit(void);
 void LeftDiffuseReflectionLaserChangeSet(void);
 void RightDiffuseReflectionLaserChangeSet(void);
-void LeftDiffuseReflectionLaserChangeClear(void);
-void RightDiffuseReflectionLaserChangeClear(void);
-void DiffuseReflectionLaserChangeClear(void);
+void LeftDiffuseReflectionLaserChangeReset(void);
+void RightDiffuseReflectionLaserChangeReset(void);
+void DiffuseReflectionLaserChangeReset(void);
 void DiffuseReflectionLaserStateJudge(void);
 
 GPIO_PinState LeftDiffuseReflectionLaserStateGet(void);

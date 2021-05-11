@@ -29,7 +29,7 @@ int fputc(int ch, FILE *f)
  *  @brief
  *
 **/
-void DebugGyro(void)  //陀螺仪数据
+void DebugGyro(void)  //陀螺仪数据测试
 {
 	int i;
 	printf("%lf %lf %lf\n", GyroRollAngleGet(), GyroPitchAngleGet(), GyroYawAngleGet());
@@ -42,6 +42,6 @@ void DebugGraySensor(void)
 {
 	int i;
 	for(i=0; i<15; i++)
-		printf("%d ", GetGraySensorOneOfFifteenReceiveValue(i));
+		printf("%d ", GraySensorOneOfFifteenReceiveValueGet(i));
 	printf("\n");
 }

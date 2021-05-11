@@ -10,7 +10,7 @@
 #define GRAYSENSOR_UART4_RX_GPIO_PIN  GPIO_PIN_11
 
 #define GraySensorUartHandle huart3
-
+	
 //≈‰÷√÷∏¡Ó
 void GraySensorConfigTest(void);
 void GraySensorConfigLineLight(void);
@@ -30,6 +30,6 @@ void GraySensorSingleAnalogValueGet(void);
 
 void GraySensorInit(void);
 
-uint8_t GetGraySensorOneOfFifteenReceiveValue(uint8_t num);
+uint8_t GraySensorOneOfFifteenReceiveValueGet(uint8_t num);
 
 #endif

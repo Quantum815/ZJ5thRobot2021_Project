@@ -26,26 +26,27 @@ void UserInit(void)  //主程序初始化
 	HAL_TIM_Base_Start_IT(&htim3);
 	HAL_TIM_Base_Start_IT(&htim4);
 	//陀螺仪初始化
-//	GyroInit();
-//	GyroOpen();
-	
+	GyroInit();
+	GyroOpen();
 	//灰度传感器初始化
-//	GraySensorInit();
+	GraySensorInit();
+	GraySensorFifteenAnalogValueGet();
 }
 
 void UserLoop(void)  //主程序循环
 {
-	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 5);
-	HAL_Delay(2000);
-	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 10);
-	HAL_Delay(2000);
-	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 15);
-	HAL_Delay(2000);
-	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 20);
-//	DebugGyro();
+//	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 5);
+//	HAL_Delay(2000);
+//	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 10);
+//	HAL_Delay(2000);
+//	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 15);
+//	HAL_Delay(2000);
+//	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 20);
 
-//	DebugGraySensor();
+//测试
+	DebugGyro();
+	DebugGraySensor();
 	
-	HAL_Delay(2000);
+	HAL_Delay(10);
 }
 

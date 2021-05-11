@@ -16,7 +16,7 @@
 	(++) I2C设备地址：0x50
 	(#) 其余内容默认
 	@endverbatim
-	安装时上侧朝前
+	安装时上侧朝前，使用3.3v电源
   * @{
 **/
  
@@ -77,6 +77,9 @@ double GyroEulerAnglesProcess(uint8_t cData[])
 
 void GyroInit(void)  //陀螺仪初始化
 {
+	Gyro_Angle->RollAngle = 0;
+	Gyro_Angle->PitchAngle = 0;
+	Gyro_Angle->YawAngle = 0;
 //	//指令
 //	uint8_t GyroUnlockInstruction[5] = {0xff, 0xaa, 0x69, 0x88, 0xb5};  //解锁指令
 //	uint8_t GyroAutoCalibration[5] = {0xff, 0xaa, 0x63, 0x00, 0x00};  //陀螺仪自动校准
