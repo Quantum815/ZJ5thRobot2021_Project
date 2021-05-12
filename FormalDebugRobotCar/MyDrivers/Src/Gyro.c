@@ -2,7 +2,7 @@
   ******************************************************************************
   * @file    Gyro.c
   * @author  YL
-  * @brief   陀螺仪JY901S驱动（基本完善） 5.2
+  * @brief   陀螺仪JY901S驱动（完善） 5.12
   *
   @verbatim
 	(#) JY901S设置
@@ -16,7 +16,7 @@
 	(++) I2C设备地址：0x50
 	(#) 其余内容默认
 	@endverbatim
-	安装时上侧朝前，使用3.3v电源
+	安装时上侧朝前，使用3.3V电源
   * @{
 **/
  
@@ -24,7 +24,7 @@
 #include "Gyro.h"
 
 /* Define\Declare ------------------------------------------------------------*/
-volatile Gyro_AngleTypeDef *Gyro_Angle;
+Gyro_AngleTypeDef *Gyro_Angle;
 
 uint8_t GyroOpenFlag;
 uint8_t GyroReceiveNum;
@@ -33,8 +33,70 @@ uint8_t GyroReceiveBuffer[11];
 
 /**
  ******************************************************************************
- *  @defgroup 底层调用
+ *  @defgroup 外部调用
  *  @brief 
+ *
+**/
+//陀螺仪初始化（默认开启陀螺仪）
+void GyroInit(void)  
+{
+	Gyro_Angle->RollAngle = 0;
+	Gyro_Angle->PitchAngle = 0;
+	Gyro_Angle->YawAngle = 0;
+	GyroOpen();
+}
+
+//陀螺仪数据获取开启（必须在GyroClose()后使用）
+void GyroOpen(void)  
+{
+	GyroOpenFlag = 1;
+	GyroReceiveNum = 0;
+	if(HAL_UART_Receive_DMA(&GyroUartHandle, &GyroReceiveBuffer[GyroReceiveNum], 1) != HAL_OK)
+		Error_Handler();
+}
+
+//陀螺仪数据获取关闭（必须在GyroOpen()后使用）
+void GyroClose(void)  
+{
+	GyroOpenFlag = 0;
+	GyroReceiveNum = 0;
+}
+
+//脚本获取滚动角左负右正 -80~+80
+double GyroRollAngleGet(void)  
+{
+	return Gyro_Angle->RollAngle;
+}
+
+//脚本获取俯仰角上正下负数 -180~+180
+double GyroPitchAngleGet(void)  
+{
+	return Gyro_Angle->PitchAngle;
+}
+
+//脚本获取偏航角逆时针变大 -180~180
+double GyroYawAngleGet(void)  
+{
+	return Gyro_Angle->YawAngle;
+}
+
+//脚本获取陀螺仪11位数据包某一位（一般用不到） num范围0~10
+uint8_t GyroOneOfElevenReceiveBufferGet(uint8_t num)  
+{
+	if(num >= 0 && num <= 10)
+		return GyroReceiveBuffer[num];
+	else 
+		return 1;
+}
+
+
+//此行以下请勿随意修改和使用！！！！！！
+//*****************************************************************
+//*****************************************************************
+/**
+ ******************************************************************************
+ *  @defgroup 内部调用
+ *  @brief
  *
 **/
 void Short2Char(short sData,uint8_t cData[])
@@ -67,75 +129,9 @@ double GyroEulerAnglesProcess(uint8_t cData[])
 	return (double)Char2Short(&cData[0])/32768.0*180.0;
 }
 
-
-/**
- ******************************************************************************
- *  @defgroup 驱动
- *  @brief
- *
-**/
-
-void GyroInit(void)  //陀螺仪初始化
-{
-	Gyro_Angle->RollAngle = 0;
-	Gyro_Angle->PitchAngle = 0;
-	Gyro_Angle->YawAngle = 0;
-//	//指令
-//	uint8_t GyroUnlockInstruction[5] = {0xff, 0xaa, 0x69, 0x88, 0xb5};  //解锁指令
-//	uint8_t GyroAutoCalibration[5] = {0xff, 0xaa, 0x63, 0x00, 0x00};  //陀螺仪自动校准
-//	uint8_t GyroKeepConfiguration[5] = {0xff, 0xaa, 0x00, 0x00, 0x00};  //保持配置
-//	while(HAL_UART_Transmit(&GyroUartHandle, GyroUnlockInstruction, 5, 10) != HAL_OK);
-//	while (HAL_UART_GetState(&GyroUartHandle) != HAL_UART_STATE_READY);
-//	while(HAL_UART_Transmit(&GyroUartHandle, GyroAutoCalibration, 5, 10) != HAL_OK);
-//	while (HAL_UART_GetState(&GyroUartHandle) != HAL_UART_STATE_READY);
-//	while(HAL_UART_Transmit(&GyroUartHandle, GyroKeepConfiguration, 5, 10) != HAL_OK);
-//	while (HAL_UART_GetState(&GyroUartHandle) != HAL_UART_STATE_READY);
-//	memset(GyroReceiveBuffer, 0x00, sizeof(*GyroReceiveBuffer));
-}
-
-void GyroOpen(void)  //陀螺仪数据获取开启
-{
-	GyroOpenFlag = 1;
-	GyroReceiveNum = 0;
-	HAL_UART_Receive_IT(&GyroUartHandle, &GyroReceiveBuffer[GyroReceiveNum], 1);
-}
-
-void GyroClose(void)  //陀螺仪数据获取关闭（用于节约CPU资源）
-{
-	GyroOpenFlag = 0;
-	GyroReceiveNum = 0;
-}
-
-void GyroGetAllAngles(void)  //陀螺仪数据处理
+void GyroGetAllAngles(void)
 {
 	Gyro_Angle->PitchAngle = GyroEulerAnglesProcess(&GyroReceiveBuffer[2]);
 	Gyro_Angle->RollAngle = GyroEulerAnglesProcess(&GyroReceiveBuffer[4]);
 	Gyro_Angle->YawAngle = GyroEulerAnglesProcess(&GyroReceiveBuffer[6]);
-}
-
-/**
- ******************************************************************************
- *  @defgroup 数据获取
- *  @brief
- *
-**/
-
-double GyroRollAngleGet(void)  //滚动角左负右正 -80~+80
-{
-	return Gyro_Angle->RollAngle;
-}
-
-double GyroPitchAngleGet(void)  //俯仰角上正下负数 -180~+180
-{
-	return Gyro_Angle->PitchAngle;
-}
-
-double GyroYawAngleGet(void)  //偏航角逆时针变大 -180~180
-{
-	return Gyro_Angle->YawAngle;
-}
-
-uint8_t GyroOneOfElevenReceiveBufferGet(uint8_t num)  //陀螺仪数据包某一位0~11
-{
-	return GyroReceiveBuffer[num];
 }

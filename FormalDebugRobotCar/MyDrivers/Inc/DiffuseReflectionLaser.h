@@ -14,18 +14,19 @@ typedef enum
 }DiffuseReflectionLaser_Change_State;  //漫反射激光值改变情况
 
 
-void DiffuseReflectionLaser_Init(void);
 void DiffuseReflectionLaserInit(void);
+GPIO_PinState LeftDiffuseReflectionLaserStateGet(void);
+GPIO_PinState RightDiffuseReflectionLaserStateGet(void);
+DiffuseReflectionLaser_Change_State LeftDiffuseReflectionLaserIsChange(void);
+DiffuseReflectionLaser_Change_State RightDiffuseReflectionLaserIsChange(void);
+
+void DiffuseReflectionLaserStateJudge(void);
 void LeftDiffuseReflectionLaserChangeSet(void);
 void RightDiffuseReflectionLaserChangeSet(void);
 void LeftDiffuseReflectionLaserChangeReset(void);
 void RightDiffuseReflectionLaserChangeReset(void);
 void DiffuseReflectionLaserChangeReset(void);
-void DiffuseReflectionLaserStateJudge(void);
 
-GPIO_PinState LeftDiffuseReflectionLaserStateGet(void);
-GPIO_PinState RightDiffuseReflectionLaserStateGet(void);
-DiffuseReflectionLaser_Change_State LeftDiffuseReflectionLaserIsChange(void);
-DiffuseReflectionLaser_Change_State RightDiffuseReflectionLaserIsChange(void);
+
 
 #endif

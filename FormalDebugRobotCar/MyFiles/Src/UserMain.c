@@ -18,35 +18,36 @@
 #include "usart.h"
 #include "gpio.h"
 
-void UserInit(void)  //主程序初始化
+//主程序初始化
+void UserInit(void)  
 {
-	//定时器开启
-	HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1);
-	HAL_TIM_Base_Start_IT(&htim2);
-	HAL_TIM_Base_Start_IT(&htim3);
-	HAL_TIM_Base_Start_IT(&htim4);
 	//陀螺仪初始化
 	GyroInit();
-	GyroOpen();
 	//灰度传感器初始化
 	GraySensorInit();
-	GraySensorFifteenAnalogValueGet();
+	//漫反射激光传感器初始化
+	DiffuseReflectionLaserInit();
+	//舵机初始化
+	ServoMotorInit();
+	//定时器开启
+	HAL_TIM_Base_Start_IT(&htim4);
+	HAL_TIM_Base_Start_IT(&htim3);
+	HAL_TIM_Base_Start_IT(&htim2);
+	//初始化延迟
+	HAL_Delay(500);
 }
 
-void UserLoop(void)  //主程序循环
+//主程序循环
+void UserLoop(void)  
 {
-//	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 5);
-//	HAL_Delay(2000);
-//	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 10);
-//	HAL_Delay(2000);
-//	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 15);
-//	HAL_Delay(2000);
-//	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 20);
 
 //测试
-	DebugGyro();
-	DebugGraySensor();
+//	DebugGyro();
 	
-	HAL_Delay(10);
+//	DebugGraySensor();
+	
+//	DebugServoMotor();
+	
+//	DebugDiffuseReflectionLaser();
 }
 

@@ -1,7 +1,5 @@
 formaldebugrobotcar/gyro.o: ..\MyDrivers\Src\Gyro.c \
-  ..\MyDrivers\Inc\Gyro.h ..\MyFiles\Inc\Miscellaneous.h \
-  C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
-  ..\Core\Inc\usart.h ..\Core\Inc\main.h \
+  ..\MyDrivers\Inc\Gyro.h ..\Core\Inc\usart.h ..\Core\Inc\main.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h \
   ..\Core\Inc\stm32h7xx_hal_conf.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc.h \
@@ -38,6 +36,4 @@ formaldebugrobotcar/gyro.o: ..\MyDrivers\Src\Gyro.c \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart.h \
-  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h \
-  ..\MyDrivers\Inc\GraySensor.h \
-  C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h
+  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h
