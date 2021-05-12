@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * @file    "MatrixKeyBoard.c
+  * @file    MatrixKeyBoard.c
   * @author  YL
   * @brief   4*4æÿ’Ûº¸≈Ã
   *
@@ -13,10 +13,12 @@
 /* Includes ------------------------------------------------------------------*/
 #include "MatrixKeyBoard.h"
 
+/* Define\Declare ------------------------------------------------------------*/
 int KeyFlag;
-Matrix_KeyState keyState = Key_Up;
-Matrix_KeyMode keyMode = Key_NoPress;
+Matrix_KeyState keyState[4][4] = {{Key_Up}, {Key_Up}, {Key_Up}, {Key_Up}};  //œ»––∫Û¡–
+Matrix_KeyMode keyMode[4][4] = {{Key_NoPress}, {Key_NoPress}, {Key_NoPress}, {Key_NoPress}};
 
+//æÿ’Û¡–…®√Ë
 void MatrixKeyboardScanning(void)
 {
 	HAL_GPIO_WritePin(Row1_GPIO_PORT, Row1_PIN, GPIO_PIN_RESET);
@@ -25,27 +27,19 @@ void MatrixKeyboardScanning(void)
 	HAL_GPIO_WritePin(Row4_GPIO_PORT, Row4_PIN, GPIO_PIN_SET);
 	if(!HAL_GPIO_ReadPin(Column1_GPIO_PORT, Column1_PIN))
 	{
-		HAL_Delay(5);
-		if(!HAL_GPIO_ReadPin(Column1_GPIO_PORT, Column1_PIN))
-			KeyFlag = 1;
+		keyState[1][0] = Key_Shake;
 	}
 	else if(!HAL_GPIO_ReadPin(Column2_GPIO_PORT, Column2_PIN))
 	{
-		HAL_Delay(5);
-		if(!HAL_GPIO_ReadPin(Column2_GPIO_PORT, Column2_PIN))
-			KeyFlag = 2;
+		keyState[1][0] = Key_Shake;
 	}
 	else if(!HAL_GPIO_ReadPin(Column3_GPIO_PORT, Column3_PIN))
 	{
-		HAL_Delay(5);
-		if(!HAL_GPIO_ReadPin(Column3_GPIO_PORT, Column3_PIN))
-			KeyFlag = 3;
+		keyState[2][0] = Key_Shake;
 	}
 	else if(!HAL_GPIO_ReadPin(Column4_GPIO_PORT, Column4_PIN))
 	{
-		HAL_Delay(5);
-		if(!HAL_GPIO_ReadPin(Column4_GPIO_PORT, Column4_PIN))
-			KeyFlag = 4;
+		keyState[3][0] = Key_Shake;
 	}
 	else
 		KeyFlag = 0;
@@ -56,27 +50,19 @@ void MatrixKeyboardScanning(void)
 	HAL_GPIO_WritePin(Row4_GPIO_PORT, Row4_PIN, GPIO_PIN_SET);
 	if(!HAL_GPIO_ReadPin(Column1_GPIO_PORT, Column1_PIN))
 	{
-		HAL_Delay(5);
-		if(!HAL_GPIO_ReadPin(Column1_GPIO_PORT, Column1_PIN))
-			KeyFlag = 5;
+		keyState[0][1] = Key_Shake;
 	}
 	else if(!HAL_GPIO_ReadPin(Column2_GPIO_PORT, Column2_PIN))
 	{
-		HAL_Delay(5);
-		if(!HAL_GPIO_ReadPin(Column2_GPIO_PORT, Column2_PIN))
-			KeyFlag = 6;
+		keyState[1][1] = Key_Shake;
 	}
 	else if(!HAL_GPIO_ReadPin(Column3_GPIO_PORT, Column3_PIN))
 	{
-		HAL_Delay(5);
-		if(!HAL_GPIO_ReadPin(Column3_GPIO_PORT, Column3_PIN))
-			KeyFlag = 7;
+		keyState[2][1] = Key_Shake;
 	}
 	else if(!HAL_GPIO_ReadPin(Column4_GPIO_PORT, Column4_PIN))
 	{
-		HAL_Delay(5);
-		if(!HAL_GPIO_ReadPin(Column4_GPIO_PORT, Column4_PIN))
-			KeyFlag = 8;
+		keyState[3][1] = Key_Shake;
 	}
 
 	HAL_GPIO_WritePin(Row1_GPIO_PORT, Row1_PIN, GPIO_PIN_SET);
@@ -85,27 +71,19 @@ void MatrixKeyboardScanning(void)
 	HAL_GPIO_WritePin(Row4_GPIO_PORT, Row4_PIN, GPIO_PIN_SET);	
 	if(!HAL_GPIO_ReadPin(Column1_GPIO_PORT, Column1_PIN))
 	{
-		HAL_Delay(5);
-		if(!HAL_GPIO_ReadPin(Column1_GPIO_PORT, Column1_PIN))
-			KeyFlag = 9;
+		keyState[0][2] = Key_Shake;
 	}
 	else if(!HAL_GPIO_ReadPin(Column2_GPIO_PORT, Column2_PIN))
 	{
-		HAL_Delay(5);
-		if(!HAL_GPIO_ReadPin(Column2_GPIO_PORT, Column2_PIN))
-			KeyFlag = 10;
+		keyState[1][2] = Key_Shake;
 	}
 	else if(!HAL_GPIO_ReadPin(Column3_GPIO_PORT, Column3_PIN))
 	{
-		HAL_Delay(5);
-		if(!HAL_GPIO_ReadPin(Column3_GPIO_PORT, Column3_PIN))
-			KeyFlag = 11;
+		keyState[2][2] = Key_Shake;
 	}
 	else if(!HAL_GPIO_ReadPin(Column4_GPIO_PORT, Column4_PIN))
 	{
-		HAL_Delay(5);
-		if(!HAL_GPIO_ReadPin(Column4_GPIO_PORT, Column4_PIN))
-			KeyFlag = 12;
+		keyState[3][2] = Key_Shake;
 	}
 
 	HAL_GPIO_WritePin(Row1_GPIO_PORT, Row1_PIN, GPIO_PIN_SET);
@@ -114,27 +92,19 @@ void MatrixKeyboardScanning(void)
 	HAL_GPIO_WritePin(Row4_GPIO_PORT, Row4_PIN, GPIO_PIN_RESET);
 	if(!HAL_GPIO_ReadPin(Column1_GPIO_PORT, Column1_PIN))
 	{
-		HAL_Delay(5);
-		if(!HAL_GPIO_ReadPin(Column1_GPIO_PORT, Column1_PIN))
-			KeyFlag = 13;
+		keyState[0][3] = Key_Shake;
 	}
 	else if(!HAL_GPIO_ReadPin(Column2_GPIO_PORT, Column2_PIN))
 	{
-		HAL_Delay(5);
-		if(!HAL_GPIO_ReadPin(Column2_GPIO_PORT, Column2_PIN))
-			KeyFlag = 14;
+		keyState[1][3] = Key_Shake;
 	}
 	else if(!HAL_GPIO_ReadPin(Column3_GPIO_PORT, Column3_PIN))
 	{
-		HAL_Delay(5);
-		if(!HAL_GPIO_ReadPin(Column3_GPIO_PORT, Column3_PIN))
-			KeyFlag = 15;
+		keyState[2][3] = Key_Shake;
 	}
 	else if(!HAL_GPIO_ReadPin(Column4_GPIO_PORT, Column4_PIN))
 	{
-		HAL_Delay(5);
-		if(!HAL_GPIO_ReadPin(Column4_GPIO_PORT, Column4_PIN))
-			KeyFlag = 16;
+		keyState[3][3] = Key_Shake;
 	}
 	
 	switch(KeyFlag)
@@ -159,81 +129,161 @@ void MatrixKeyboardScanning(void)
 	}
 }
 
-void R1C1Function(void)
+void R1C1ShortFunction(void)
 {
 
 }
 
-void R1C2Function(void)
+void R1C2ShortFunction(void)
 {
 
 }
-void R1C3Function(void)
+void R1C3ShortFunction(void)
 {
 
 }
-void R1C4Function(void)
+void R1C4ShortFunction(void)
 {
 
 }
-void R2C1Function(void)
-{
-
-}
-
-void R2C2Function(void)
+void R2C1ShortFunction(void)
 {
 
 }
 
-void R2C3Function(void)
+void R2C2ShortFunction(void)
 {
 
 }
 
-void R2C4Function(void)
+void R2C3ShortFunction(void)
 {
 
 }
 
-void R3C1Function(void)
+void R2C4ShortFunction(void)
 {
 
 }
 
-void R3C2Function(void)
+void R3C1ShortFunction(void)
 {
 
 }
 
-void R3C3Function(void)
+void R3C2ShortFunction(void)
 {
 
 }
 
-void R3C4Function(void)
+void R3C3ShortFunction(void)
 {
 
 }
 
-void R4C1Function(void)
+void R3C4ShortFunction(void)
 {
 
 }
 
-void R4C2Function(void)
+void R41ShortFunction(void)
 {
 
 }
 
-void R4C3Function(void)
+void R4C2ShortFunction(void)
 {
 
 }
 
-void R4C4Function(void)
+void R4C3ShortFunction(void)
 {
 
+}
+
+void R4C4ShortFunction(void)
+{
+
+}
+
+void R1C1LongFunction(void)
+{
+	
+}
+
+void R1C2LongFunction(void)
+{
+	
+}
+
+void R1C3LongFunction(void)
+{
+	
+}
+
+void R1C4LongFunction(void)
+{
+	
+}
+
+void R2C1LongFunction(void)
+{
+	
+}
+
+void R2C2LongFunction(void)
+{
+	
+}
+
+void R2C3LongFunction(void)
+{
+	
+}
+
+void R2C4LongFunction(void)
+{
+	
+}
+
+void R3C1LongFunction(void)
+{
+	
+}
+
+void R3C2LongFunction(void)
+{
+	
+}
+
+void R3C3LongFunction(void)
+{
+	
+}
+
+void R3C4LongFunction(void)
+{
+	
+}
+
+void R4C1LongFunction(void)
+{
+	
+}
+
+void R4C2LongFunction(void)
+{
+	
+}
+
+void R4C3LongFunction(void)
+{
+	
+}
+
+void R4C4LongFunction(void)
+{
+	
 }
 
 void ElseFunction(void)

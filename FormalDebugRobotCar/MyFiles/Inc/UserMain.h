@@ -7,6 +7,7 @@
 #include "GraySensor.h"
 #include "DiffuseReflectionLaser.h"
 #include "ServoMotor.h"
+#include "MatrixKeyBoard.h"
 
 void UserInit(void);
 void UserLoop(void);

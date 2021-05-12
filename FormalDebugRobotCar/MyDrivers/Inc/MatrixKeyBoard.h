@@ -38,22 +38,40 @@ typedef enum
 } Matrix_KeyMode;  //°´¼üÄ£Ê½
 
 void MatrixKeyboardScanning(void);
-void R1C1Function(void);
-void R1C2Function(void);
-void R1C3Function(void);
-void R1C4Function(void);
-void R2C1Function(void);
-void R2C2Function(void);
-void R2C3Function(void);
-void R2C4Function(void);
-void R3C1Function(void);
-void R3C2Function(void);
-void R3C3Function(void);
-void R3C4Function(void);
-void R4C1Function(void);
-void R4C2Function(void);
-void R4C3Function(void);
-void R4C4Function(void);
+void R1C1ShortFunction(void);
+void R1C2ShortFunction(void);
+void R1C3ShortFunction(void);
+void R1C4ShortFunction(void);
+void R2C1ShortFunction(void);
+void R2C2ShortFunction(void);
+void R2C3ShortFunction(void);
+void R2C4ShortFunction(void);
+void R3C1ShortFunction(void);
+void R3C2ShortFunction(void);
+void R3C3ShortFunction(void);
+void R3C4ShortFunction(void);
+void R4C1ShortFunction(void);
+void R4C2ShortFunction(void);
+void R4C3ShortFunction(void);
+void R4C4ShortFunction(void);
+
+void R1C1LongFunction(void);
+void R1C2LongFunction(void);
+void R1C3LongFunction(void);
+void R1C4LongFunction(void);
+void R2C1LongFunction(void);
+void R2C2LongFunction(void);
+void R2C3LongFunction(void);
+void R2C4LongFunction(void);
+void R3C1LongFunction(void);
+void R3C2LongFunction(void);
+void R3C3LongFunction(void);
+void R3C4LongFunction(void);
+void R4C1LongFunction(void);
+void R4C2LongFunction(void);
+void R4C3LongFunction(void);
+void R4C4LongFunction(void);
+
 void ElseFunction(void);
 
 #endif
