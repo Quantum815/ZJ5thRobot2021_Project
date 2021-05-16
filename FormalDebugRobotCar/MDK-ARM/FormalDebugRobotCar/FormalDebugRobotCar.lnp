@@ -43,7 +43,7 @@
 "formaldebugrobotcar\matrixkeyboard.o"
 "formaldebugrobotcar\ranginglaser.o"
 "formaldebugrobotcar\servomotor.o"
---library_type=microlib --strict --scatter "FormalDebugRobotCar\FormalDebugRobotCar.sct"
+--strict --scatter "FormalDebugRobotCar\FormalDebugRobotCar.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list "FormalDebugRobotCar.map" -o FormalDebugRobotCar\FormalDebugRobotCar.axf
