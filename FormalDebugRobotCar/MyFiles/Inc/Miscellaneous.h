@@ -7,6 +7,7 @@
 #include "GraySensor.h"
 #include "DiffuseReflectionLaser.h"
 #include "ServoMotor.h"
+#include "RangingLaser.h"
 
 #define DEBUG_UART4_TX_GPIO_PORT  GPIOB      
 #define DEBUG_UART4_TX_GPIO_PIN   GPIO_PIN_14
@@ -22,5 +23,6 @@ void DebugGyro(void);
 void DebugGraySensor(void);
 void DebugServoMotor(void);
 void DebugDiffuseReflectionLaser(void);
+void DebugRangingLaser(void);
 
 #endif

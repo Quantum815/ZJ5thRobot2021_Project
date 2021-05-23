@@ -16,6 +16,6 @@
 #define RIGHT_ARM_SERVO_CHANNEL TIM_CHANNEL_3
 
 void ServoMotorInit(void);
-void ServoMotorAngleSet(uint32_t Channel, uint8_t angle);
+void ServoMotorAngleSet(uint32_t channel, uint8_t angle);
 
 #endif

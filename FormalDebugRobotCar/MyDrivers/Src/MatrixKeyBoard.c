@@ -14,274 +14,321 @@
 #include "MatrixKeyBoard.h"
 
 /* Define\Declare ------------------------------------------------------------*/
-int KeyFlag;
+uint8_t KeyNum;
 Matrix_KeyState keyState[4][4] = {{Key_Up}, {Key_Up}, {Key_Up}, {Key_Up}};  //先行后列
-Matrix_KeyMode keyMode[4][4] = {{Key_NoPress}, {Key_NoPress}, {Key_NoPress}, {Key_NoPress}};
 
-//矩阵列扫描
-void MatrixKeyboardScanning(void)
+//键盘扫描
+void MatrixScanning(void)
 {
-	HAL_GPIO_WritePin(Row1_GPIO_PORT, Row1_PIN, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(Row2_GPIO_PORT, Row2_PIN, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(Row3_GPIO_PORT, Row3_PIN, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(Row4_GPIO_PORT, Row4_PIN, GPIO_PIN_SET);
-	if(!HAL_GPIO_ReadPin(Column1_GPIO_PORT, Column1_PIN))
+	static uint32_t time = 0;  //时间轮询数
+	static uint8_t KeyOldNum;
+	
+	KeyOldNum = KeyNum;
+	
+	//确定按键
+	KeyNum = 0;
+	while(1)
 	{
-		keyState[1][0] = Key_Shake;
+		HAL_GPIO_WritePin(COLUMN1_GPIO_PORT, COLUMN1_PIN, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(COLUMN2_GPIO_PORT, COLUMN2_PIN, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(COLUMN3_GPIO_PORT, COLUMN3_PIN, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(COLUMN4_GPIO_PORT, COLUMN4_PIN, GPIO_PIN_SET);
+		
+		if(!HAL_GPIO_ReadPin(ROW1_GPIO_PORT, ROW1_PIN))
+		{
+			KeyNum = 1;
+			break;
+		}
+		else if(!HAL_GPIO_ReadPin(ROW2_GPIO_PORT, ROW2_PIN))
+		{
+			KeyNum = 2;
+			break;
+		}
+		else if(!HAL_GPIO_ReadPin(ROW3_GPIO_PORT, ROW3_PIN))
+		{
+			KeyNum = 3;
+			break;
+		}
+		else if(!HAL_GPIO_ReadPin(ROW4_GPIO_PORT, ROW4_PIN))
+		{
+			KeyNum = 4;
+			break;
+		}
+		
+		HAL_GPIO_WritePin(COLUMN1_GPIO_PORT, COLUMN1_PIN, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(COLUMN2_GPIO_PORT, COLUMN2_PIN, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(COLUMN3_GPIO_PORT, COLUMN3_PIN, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(COLUMN4_GPIO_PORT, COLUMN4_PIN, GPIO_PIN_SET);
+		if(!HAL_GPIO_ReadPin(ROW1_GPIO_PORT, ROW1_PIN))
+		{
+			KeyNum = 5;
+			break;
+		}
+		else if(!HAL_GPIO_ReadPin(ROW2_GPIO_PORT, ROW2_PIN))
+		{
+			KeyNum = 6;
+			break;
+		}
+		else if(!HAL_GPIO_ReadPin(ROW3_GPIO_PORT, ROW3_PIN))
+		{
+			KeyNum = 7;
+			break;
+		}
+		else if(!HAL_GPIO_ReadPin(ROW4_GPIO_PORT, ROW4_PIN))
+		{
+			KeyNum = 8;
+			break;
+		}
+
+		HAL_GPIO_WritePin(COLUMN1_GPIO_PORT, COLUMN1_PIN, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(COLUMN2_GPIO_PORT, COLUMN2_PIN, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(COLUMN3_GPIO_PORT, COLUMN3_PIN, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(COLUMN4_GPIO_PORT, COLUMN4_PIN, GPIO_PIN_SET);	
+		if(!HAL_GPIO_ReadPin(ROW1_GPIO_PORT, ROW1_PIN))
+		{
+			KeyNum = 9;
+			break;
+		}
+		else if(!HAL_GPIO_ReadPin(ROW2_GPIO_PORT, ROW2_PIN))
+		{
+			KeyNum = 10;
+			break;
+		}
+		else if(!HAL_GPIO_ReadPin(ROW3_GPIO_PORT, ROW3_PIN))
+		{
+			KeyNum = 11;
+			break;
+		}
+		else if(!HAL_GPIO_ReadPin(ROW4_GPIO_PORT, ROW4_PIN))
+		{
+			KeyNum = 12;
+			break;
+		}
+
+		HAL_GPIO_WritePin(COLUMN1_GPIO_PORT, COLUMN1_PIN, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(COLUMN2_GPIO_PORT, COLUMN2_PIN, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(COLUMN3_GPIO_PORT, COLUMN3_PIN, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(COLUMN4_GPIO_PORT, COLUMN4_PIN, GPIO_PIN_RESET);
+		if(!HAL_GPIO_ReadPin(ROW1_GPIO_PORT, ROW1_PIN))
+		{
+			KeyNum = 13;
+			break;
+		}
+		else if(!HAL_GPIO_ReadPin(ROW2_GPIO_PORT, ROW2_PIN))
+		{
+			KeyNum = 14;
+			break;
+		}
+		else if(!HAL_GPIO_ReadPin(ROW3_GPIO_PORT, ROW3_PIN))
+		{
+			KeyNum = 15;
+			break;
+		}
+		else if(!HAL_GPIO_ReadPin(ROW4_GPIO_PORT, ROW4_PIN))
+		{
+			KeyNum = 16;
+			break;
+		}
+		else
+		{
+			break;
+		}
 	}
-	else if(!HAL_GPIO_ReadPin(Column2_GPIO_PORT, Column2_PIN))
+	
+	if(KeyNum > 0)
 	{
-		keyState[1][0] = Key_Shake;
-	}
-	else if(!HAL_GPIO_ReadPin(Column3_GPIO_PORT, Column3_PIN))
-	{
-		keyState[2][0] = Key_Shake;
-	}
-	else if(!HAL_GPIO_ReadPin(Column4_GPIO_PORT, Column4_PIN))
-	{
-		keyState[3][0] = Key_Shake;
+		if(KeyOldNum == KeyNum)
+		{
+			time++;
+			if(time == 1)
+			{
+				switch(KeyNum)
+				{
+					case 1: keyState[0][0] = Key_Shake; break;
+					case 2: keyState[0][1] = Key_Shake; break;
+					case 3: keyState[0][2] = Key_Shake; break;
+					case 4: keyState[0][3] = Key_Shake; break;
+					case 5: keyState[1][0] = Key_Shake; break;
+					case 6: keyState[1][1] = Key_Shake; break;
+					case 7: keyState[1][2] = Key_Shake; break;
+					case 8: keyState[1][3] = Key_Shake; break;
+					case 9: keyState[2][0] = Key_Shake; break;
+					case 10: keyState[2][1] = Key_Shake; break;
+					case 11: keyState[2][2] = Key_Shake; break;
+					case 12: keyState[2][3] = Key_Shake; break;
+					case 13: keyState[3][0] = Key_Shake; break;
+					case 14: keyState[3][1] = Key_Shake; break;
+					case 15: keyState[3][2] = Key_Shake; break;
+					case 16: keyState[3][3] = Key_Shake; break;
+				}
+			}
+			else if(time <= 1000)
+			{
+				
+			}
+			else
+			{
+				
+			}
+		}	
 	}
 	else
-		KeyFlag = 0;
-	
-	HAL_GPIO_WritePin(Row1_GPIO_PORT, Row1_PIN, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(Row2_GPIO_PORT, Row2_PIN, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(Row3_GPIO_PORT, Row3_PIN, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(Row4_GPIO_PORT, Row4_PIN, GPIO_PIN_SET);
-	if(!HAL_GPIO_ReadPin(Column1_GPIO_PORT, Column1_PIN))
-	{
-		keyState[0][1] = Key_Shake;
-	}
-	else if(!HAL_GPIO_ReadPin(Column2_GPIO_PORT, Column2_PIN))
-	{
-		keyState[1][1] = Key_Shake;
-	}
-	else if(!HAL_GPIO_ReadPin(Column3_GPIO_PORT, Column3_PIN))
-	{
-		keyState[2][1] = Key_Shake;
-	}
-	else if(!HAL_GPIO_ReadPin(Column4_GPIO_PORT, Column4_PIN))
-	{
-		keyState[3][1] = Key_Shake;
-	}
-
-	HAL_GPIO_WritePin(Row1_GPIO_PORT, Row1_PIN, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(Row2_GPIO_PORT, Row2_PIN, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(Row3_GPIO_PORT, Row3_PIN, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(Row4_GPIO_PORT, Row4_PIN, GPIO_PIN_SET);	
-	if(!HAL_GPIO_ReadPin(Column1_GPIO_PORT, Column1_PIN))
-	{
-		keyState[0][2] = Key_Shake;
-	}
-	else if(!HAL_GPIO_ReadPin(Column2_GPIO_PORT, Column2_PIN))
-	{
-		keyState[1][2] = Key_Shake;
-	}
-	else if(!HAL_GPIO_ReadPin(Column3_GPIO_PORT, Column3_PIN))
-	{
-		keyState[2][2] = Key_Shake;
-	}
-	else if(!HAL_GPIO_ReadPin(Column4_GPIO_PORT, Column4_PIN))
-	{
-		keyState[3][2] = Key_Shake;
-	}
-
-	HAL_GPIO_WritePin(Row1_GPIO_PORT, Row1_PIN, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(Row2_GPIO_PORT, Row2_PIN, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(Row3_GPIO_PORT, Row3_PIN, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(Row4_GPIO_PORT, Row4_PIN, GPIO_PIN_RESET);
-	if(!HAL_GPIO_ReadPin(Column1_GPIO_PORT, Column1_PIN))
-	{
-		keyState[0][3] = Key_Shake;
-	}
-	else if(!HAL_GPIO_ReadPin(Column2_GPIO_PORT, Column2_PIN))
-	{
-		keyState[1][3] = Key_Shake;
-	}
-	else if(!HAL_GPIO_ReadPin(Column3_GPIO_PORT, Column3_PIN))
-	{
-		keyState[2][3] = Key_Shake;
-	}
-	else if(!HAL_GPIO_ReadPin(Column4_GPIO_PORT, Column4_PIN))
-	{
-		keyState[3][3] = Key_Shake;
-	}
-	
-	switch(KeyFlag)
-	{
-		case 1: R1C1Function(); break;
-		case 2: R1C2Function(); break;
-		case 3: R1C3Function(); break;
-		case 4: R1C4Function(); break;
-		case 5: R2C1Function(); break;
-		case 6: R2C2Function(); break;
-		case 7: R2C3Function(); break;
-		case 8: R2C4Function(); break;
-		case 9: R3C1Function(); break;
-		case 10: R3C2Function(); break;
-		case 11: R3C3Function(); break;
-		case 12: R3C4Function(); break;
-		case 13: R4C1Function(); break;
-		case 14: R4C2Function(); break;
-		case 15: R4C3Function(); break;
-		case 16: R4C4Function(); break;
-		default: ElseFunction(); break;
-	}
+		time = 0;
 }
 
-void R1C1ShortFunction(void)
+void R1C1ShortClipFunction(void)
 {
 
 }
 
-void R1C2ShortFunction(void)
+void R1C2ShortClipFunction(void)
 {
 
 }
-void R1C3ShortFunction(void)
+void R1C3ShortClipFunction(void)
 {
 
 }
-void R1C4ShortFunction(void)
+void R1C4ShortClipFunction(void)
 {
 
 }
-void R2C1ShortFunction(void)
-{
-
-}
-
-void R2C2ShortFunction(void)
+void R2C1ShortClipFunction(void)
 {
 
 }
 
-void R2C3ShortFunction(void)
+void R2C2ShortClipFunction(void)
 {
 
 }
 
-void R2C4ShortFunction(void)
+void R2C3ShortClipFunction(void)
 {
 
 }
 
-void R3C1ShortFunction(void)
+void R2C4ShortClipFunction(void)
 {
 
 }
 
-void R3C2ShortFunction(void)
+void R3C1ShortClipFunction(void)
 {
 
 }
 
-void R3C3ShortFunction(void)
+void R3C2ShortClipFunction(void)
 {
 
 }
 
-void R3C4ShortFunction(void)
+void R3C3ShortClipFunction(void)
 {
 
 }
 
-void R41ShortFunction(void)
+void R3C4ShortClipFunction(void)
 {
 
 }
 
-void R4C2ShortFunction(void)
+void R41ShortClipFunction(void)
 {
 
 }
 
-void R4C3ShortFunction(void)
+void R4C2ShortClipFunction(void)
 {
 
 }
 
-void R4C4ShortFunction(void)
+void R4C3ShortClipFunction(void)
 {
 
 }
 
-void R1C1LongFunction(void)
+void R4C4ShortClipFunction(void)
+{
+
+}
+
+void R1C1LongClipFunction(void)
 {
 	
 }
 
-void R1C2LongFunction(void)
+void R1C2LongClipFunction(void)
 {
 	
 }
 
-void R1C3LongFunction(void)
+void R1C3LongClipFunction(void)
 {
 	
 }
 
-void R1C4LongFunction(void)
+void R1C4LongClipFunction(void)
 {
 	
 }
 
-void R2C1LongFunction(void)
+void R2C1LongClipFunction(void)
 {
 	
 }
 
-void R2C2LongFunction(void)
+void R2C2LongClipFunction(void)
 {
 	
 }
 
-void R2C3LongFunction(void)
+void R2C3LongClipFunction(void)
 {
 	
 }
 
-void R2C4LongFunction(void)
+void R2C4LongClipFunction(void)
 {
 	
 }
 
-void R3C1LongFunction(void)
+void R3C1LongClipFunction(void)
 {
 	
 }
 
-void R3C2LongFunction(void)
+void R3C2LongClipFunction(void)
 {
 	
 }
 
-void R3C3LongFunction(void)
+void R3C3LongClipFunction(void)
 {
 	
 }
 
-void R3C4LongFunction(void)
+void R3C4LongClipFunction(void)
 {
 	
 }
 
-void R4C1LongFunction(void)
+void R4C1LongClipFunction(void)
 {
 	
 }
 
-void R4C2LongFunction(void)
+void R4C2LongClipFunction(void)
 {
 	
 }
 
-void R4C3LongFunction(void)
+void R4C3LongClipFunction(void)
 {
 	
 }
 
-void R4C4LongFunction(void)
+void R4C4LongClipFunction(void)
 {
 	
 }

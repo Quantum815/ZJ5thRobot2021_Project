@@ -43,5 +43,14 @@ formaldebugrobotcar/usermain.o: ..\MyFiles\Src\UserMain.c \
   C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\MyDrivers\Inc\DiffuseReflectionLaser.h ..\Core\Inc\gpio.h \
   ..\MyDrivers\Inc\ServoMotor.h ..\Core\Inc\tim.h \
+  ..\MyDrivers\Inc\RangingLaser.h ..\Core\Inc\i2c.h \
+  ..\MyDrivers\VL53L0X_1.0.2\Api\core\inc\vl53l0x_api.h \
+  ..\MyDrivers\VL53L0X_1.0.2\Api\core\inc\vl53l0x_api_strings.h \
+  ..\MyDrivers\VL53L0X_1.0.2\Api\core\inc\vl53l0x_def.h \
+  ..\MyDrivers\VL53L0X_1.0.2\Api\core\inc\vl53l0x_device.h \
+  ..\MyDrivers\VL53L0X_1.0.2\Api\platform\inc\vl53l0x_types.h \
+  ..\MyDrivers\VL53L0X_1.0.2\Api\platform\inc\vl53l0x_platform.h \
+  ..\MyDrivers\VL53L0X_1.0.2\Api\core\inc\vl53l0x_def.h \
+  ..\MyDrivers\VL53L0X_1.0.2\Api\platform\inc\vl53l0x_platform_log.h \
   ..\MyMiddleware\Inc\CallBackAction.h ..\MyFiles\Inc\Miscellaneous.h \
   ..\MyDrivers\Inc\MatrixKeyBoard.h ..\Core\Inc\main.h ..\Core\Inc\dma.h

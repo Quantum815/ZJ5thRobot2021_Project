@@ -7,6 +7,8 @@
 #define LEFT_DRLASER_GPIO_PIN   GPIO_PIN_12
 #define RIGHT_DRLASER_GPIO_PIN  GPIO_PIN_3
 
+#define CORRECT_TIME 5000 //轮询错误数据矫正时间
+
 typedef enum
 {
   UnChange = 0U,
@@ -25,8 +27,5 @@ void LeftDiffuseReflectionLaserChangeSet(void);
 void RightDiffuseReflectionLaserChangeSet(void);
 void LeftDiffuseReflectionLaserChangeReset(void);
 void RightDiffuseReflectionLaserChangeReset(void);
-void DiffuseReflectionLaserChangeReset(void);
-
-
 
 #endif

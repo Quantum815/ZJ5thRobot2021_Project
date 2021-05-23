@@ -24,7 +24,7 @@
 #include "Gyro.h"
 
 /* Define\Declare ------------------------------------------------------------*/
-Gyro_AngleTypeDef *Gyro_Angle;
+static Gyro_AngleTypeDef *Gyro_Angle;
 
 uint8_t GyroOpenFlag;
 uint8_t GyroReceiveNum;

@@ -109,11 +109,11 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
 //外部中断
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-	//漫反射激光传感器（基本完善）  5.12
+	//漫反射激光传感器（基本完善）  5.23
   switch(GPIO_Pin)
   {
     case LEFT_DRLASER_GPIO_PIN: LeftDiffuseReflectionLaserChangeSet(); break;
     case RIGHT_DRLASER_GPIO_PIN: RightDiffuseReflectionLaserChangeSet(); break;
-    default: DiffuseReflectionLaserChangeReset(); break;
+		case RANGINGLASER_GPIO1_GPIO_PIN: RangingLaserDistanceProcess();break;
   }
 }

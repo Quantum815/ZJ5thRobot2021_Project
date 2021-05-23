@@ -18,7 +18,7 @@
 #include "GraySensor.h"
 
 /* Define\Declare ------------------------------------------------------------*/
-uint8_t GraySensorReceiveBuffer[18];
+static uint8_t GraySensorReceiveBuffer[18];
 uint8_t GraySensorTransferFlag, GraySensorRecieveFlag;
 
 

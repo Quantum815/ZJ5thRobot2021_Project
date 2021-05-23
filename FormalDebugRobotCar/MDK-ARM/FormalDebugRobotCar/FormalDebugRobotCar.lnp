@@ -3,6 +3,7 @@
 "formaldebugrobotcar\main.o"
 "formaldebugrobotcar\gpio.o"
 "formaldebugrobotcar\dma.o"
+"formaldebugrobotcar\i2c.o"
 "formaldebugrobotcar\tim.o"
 "formaldebugrobotcar\usart.o"
 "formaldebugrobotcar\stm32h7xx_it.o"
@@ -41,9 +42,16 @@
 "formaldebugrobotcar\imageprocess.o"
 "formaldebugrobotcar\inductivemotor.o"
 "formaldebugrobotcar\matrixkeyboard.o"
-"formaldebugrobotcar\ranginglaser.o"
 "formaldebugrobotcar\servomotor.o"
---strict --scatter "FormalDebugRobotCar\FormalDebugRobotCar.sct"
+"formaldebugrobotcar\ranginglaser.o"
+"formaldebugrobotcar\vl53l0x_api.o"
+"formaldebugrobotcar\vl53l0x_api_calibration.o"
+"formaldebugrobotcar\vl53l0x_api_core.o"
+"formaldebugrobotcar\vl53l0x_api_ranging.o"
+"formaldebugrobotcar\vl53l0x_api_strings.o"
+"formaldebugrobotcar\vl53l0x_platform.o"
+"formaldebugrobotcar\vl53l0x_platform_log.o"
+--library_type=microlib --strict --scatter "FormalDebugRobotCar\FormalDebugRobotCar.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list "FormalDebugRobotCar.map" -o FormalDebugRobotCar\FormalDebugRobotCar.axf

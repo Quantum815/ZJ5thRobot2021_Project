@@ -31,7 +31,7 @@ void ServoMotorInit(void)
 }
 
 //∂Êª˙Ω«∂»…Ë÷√
-void ServoMotorAngleSet(uint32_t Channel, uint8_t angle)
+void ServoMotorAngleSet(uint32_t channel, uint8_t angle)
 {
-	__HAL_TIM_SET_COMPARE(&htim1, Channel, 5+angle/9);
+	__HAL_TIM_SET_COMPARE(&htim1, channel, 5+angle/9);
 }

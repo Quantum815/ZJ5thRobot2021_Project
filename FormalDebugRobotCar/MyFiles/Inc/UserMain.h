@@ -8,6 +8,7 @@
 #include "DiffuseReflectionLaser.h"
 #include "ServoMotor.h"
 #include "MatrixKeyBoard.h"
+#include "RangingLaser.h"
 
 void UserInit(void);
 void UserLoop(void);

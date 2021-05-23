@@ -13,7 +13,7 @@
 
 	因此          低反射率到高反射率      负跳变 下降沿
 								高反射率到低反射率      正跳变 上升沿
-	采用10ms消抖，5V供电
+	5V供电
 	@endverbatim
   * @{
 **/
@@ -38,7 +38,8 @@ void DiffuseReflectionLaserInit(void)
 {
 	Left_DRLaser_State = HAL_GPIO_ReadPin(DRLASER_GPIO_PORT, LEFT_DRLASER_GPIO_PIN);
 	Right_DRLaser_State = HAL_GPIO_ReadPin(DRLASER_GPIO_PORT, RIGHT_DRLASER_GPIO_PIN);
-	DiffuseReflectionLaserChangeReset();
+	LeftDiffuseReflectionLaserChangeReset();
+	RightDiffuseReflectionLaserChangeReset();
 }
 
 //左漫反射激光值获取
@@ -77,21 +78,30 @@ DiffuseReflectionLaser_Change_State RightDiffuseReflectionLaserIsChange(void)
 **/
 void DiffuseReflectionLaserStateJudge(void)
 {
-	static uint8_t LeftEliminateShakingFlag = 0;
-	static uint8_t RightEliminateShakingFlag = 0;
+	static int16_t CorrectFlag = 0;
 
 	//如果读到左边电平改变
 	if(LeftDiffuseReflectionLaserIsChange())
 	{
-		Left_DRLaser_State = !Left_DRLaser_State;
 		LeftDiffuseReflectionLaserChangeReset();
-	}
-	
+		Left_DRLaser_State = !Left_DRLaser_State;
+	}	
 	//如果读到右边电平改变
-	if(RightDiffuseReflectionLaserIsChange())
+	else if(RightDiffuseReflectionLaserIsChange())
 	{
-		Right_DRLaser_State = !Right_DRLaser_State;
 		RightDiffuseReflectionLaserChangeReset();
+		Right_DRLaser_State = !Right_DRLaser_State;
+	}
+	//错误矫正
+	else
+	{
+		CorrectFlag++;
+		if(CorrectFlag == CORRECT_TIME/10)
+		{
+			CorrectFlag = 0;
+			Left_DRLaser_State = HAL_GPIO_ReadPin(DRLASER_GPIO_PORT, LEFT_DRLASER_GPIO_PIN);
+			Right_DRLaser_State = HAL_GPIO_ReadPin(DRLASER_GPIO_PORT, RIGHT_DRLASER_GPIO_PIN);
+		}
 	}
 }
 
@@ -117,11 +127,4 @@ void LeftDiffuseReflectionLaserChangeReset(void)
 void RightDiffuseReflectionLaserChangeReset(void)  
 {
 	Right_DFLaser_Change_State = UnChange;
-}
-
-//左右漫反射激光变化标志清零
-void DiffuseReflectionLaserChangeReset(void)  
-{
-  LeftDiffuseReflectionLaserChangeReset();
-	RightDiffuseReflectionLaserChangeReset();
 }
