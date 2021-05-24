@@ -6,9 +6,9 @@
   *
   @verbatim
 	3.3V供电
-	参考：https://msalamon.pl/tani-laserowy-pomiar-odleglosci-z-czujnikiem-tof-vl53l0x/
-				https://msalamon.pl/obsluga-przerwaniowa-czujnika-laserowego-vl53l0x/
-				https://blog.csdn.net/qlexcel/article/details/106154743
+	参考：VL53L0X_API_v1.0.2.4823_externalx
+				VL53L0X说明文档
+				UM2356
 	@endverbatim
   * @{
 **/
