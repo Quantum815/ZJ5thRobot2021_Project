@@ -8,7 +8,7 @@
 	3.3V供电
 	参考：VL53L0X_API_v1.0.2.4823_externalx
 				VL53L0X说明文档
-				UM2356
+				UM2356,UM2039
 	@endverbatim
   * @{
 **/
