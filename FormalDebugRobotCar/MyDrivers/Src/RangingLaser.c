@@ -58,51 +58,56 @@ void RangingLaserInit(void)
   //关闭stm32外部中断
   HAL_NVIC_DisableIRQ(EXTI9_5_IRQn);
 
+	//注意，以下函数顺序不能随意改动！！！！！！
 	//初始化函数类*****************************
-	//等待设备启动
-	VL53L0X_WaitDeviceBooted(Dev);
-	if(Status!=VL53L0X_ERROR_NONE)
-	Error_Handler();
+//	//等待设备启动
+//	VL53L0X_WaitDeviceBooted(Dev);
+//	if(Status!=VL53L0X_ERROR_NONE)
+//	Error_Handler();
 	//数据初始化
-  Status = VL53L0X_DataInit(Dev);
-	if(Status!=VL53L0X_ERROR_NONE)
+	if(Status == VL53L0X_ERROR_NONE)
+	  Status = VL53L0X_DataInit(Dev);
+	else
 		Error_Handler();
 	
   //静态初始化
-  Status = VL53L0X_StaticInit(Dev);
-	if(Status!=VL53L0X_ERROR_NONE)
+	if(Status == VL53L0X_ERROR_NONE)
+		Status = VL53L0X_StaticInit(Dev);
+	else
 		Error_Handler();
 	//*****************************************	
 	
 
 	//数据函数类*******************************
-  //温度校准（正常初始化也可使用）
-	Status = VL53L0X_PerformRefCalibration(Dev, &VhvSettings, &PhaseCal);
-	if(Status!=VL53L0X_ERROR_NONE)
+	//参考SPADs校准：无需特殊环境要求，加盖校准需重新校准（常注释）
+	if(Status == VL53L0X_ERROR_NONE)
+	  Status = VL53L0X_PerformRefSpadManagement(Dev, &refSpadCount, &isApertureSpads);
+	else
 		Error_Handler();
-	
-	//参考SPADs校准：校准时周围5cm没有较近的目标，少红外光下室内校准，加盖校准需重新校准（常注释）
-  Status = VL53L0X_PerformRefSpadManagement(Dev, &refSpadCount, &isApertureSpads);
-	if(Status!=VL53L0X_ERROR_NONE)
+
+	 //温度校准（正常初始化也可使用）
+	if(Status == VL53L0X_ERROR_NONE)
+		Status = VL53L0X_PerformRefCalibration(Dev, &VhvSettings, &PhaseCal);
+	else
 		Error_Handler();
-	
-//	//偏移校准，较暗环境下把灰色物体（17%反射率）放在约100mm（官方建议140mm）校准距离处进行（常注释）
+//	//偏移校准，黑暗环境下把白色物体（85%反射率）放在约100mm（官方建议，可变）校准距离处进行（常注释）
 //	Status=VL53L0X_PerformOffsetCalibration(Dev, 100<<16, &OffsetMicroMeter);
 //	if(Status != VL53L0X_ERROR_NONE)
 //		Error_Handler();
 	
-	//  //串扰校准，较暗环境下把灰色物体（17%反射率）放在约450mm（对照实际情况曲线修改）校准距离处进行（常注释）
+//  //串扰校准，较暗环境下把灰色物体（17%反射率）放在约450mm（对照实际情况曲线修改）校准距离处进行（常注释）
 //	Status = VL53L0X_PerformXTalkCalibration(Dev, 450<<16, &XTalkCompensation);            
 //	if(Status != VL53L0X_ERROR_NONE)
 //		Error_Handler();
+
+		RangingLaserOpen();
 	
 	//数据连续获取模式设定（必须在数据设定后使用，否则只能读取一次数值）
-  Status = VL53L0X_SetDeviceMode(Dev, VL53L0X_DEVICEMODE_CONTINUOUS_RANGING);  //连续读取
-	if(Status!=VL53L0X_ERROR_NONE)
+	if(Status == VL53L0X_ERROR_NONE)
+		  Status = VL53L0X_SetDeviceMode(Dev, VL53L0X_DEVICEMODE_CONTINUOUS_RANGING);  //连续读取
+	else
 		Error_Handler();
 	//*****************************************
-	
-	RangingLaserOpen();
 	
 	//开启stm32外部中断
   HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
@@ -133,10 +138,6 @@ void RangingLaserOpen(void)
 //	if(Status!=VL53L0X_ERROR_NONE)
 //		Error_Handler();
 //	//启用串扰补偿
-//	VL53L0X_SetXTalkCompensationEnable(Dev, 1);
-//	if(Status!=VL53L0X_ERROR_NONE)
-//		Error_Handler();
-	
 //	Status = VL53L0X_SetXTalkCompensationEnable(Dev,1);
 //	if(Status!=VL53L0X_ERROR_NONE)
 //		Error_Handler();
