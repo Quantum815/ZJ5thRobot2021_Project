@@ -6,6 +6,7 @@
 #include "GraySensor.h"
 #include "DiffuseReflectionLaser.h"
 #include "RangingLaser.h"
+#include "MatrixKeyBoard.h"
 
 //LED
 #define LED_GPIO_PORT  GPIOC      
@@ -24,5 +25,8 @@ extern uint8_t GraySensorTransferFlag, GraySensorRecieveFlag;
 //漫反射激光传感器相关参数
 extern DiffuseReflectionLaser_Change_State Left_DFLaser_Change_State;
 extern DiffuseReflectionLaser_Change_State Right_DFLaser_Change_State;
+
+//矩阵键盘相关参数
+extern uint8_t KeyStateOrNum;
 
 #endif

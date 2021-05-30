@@ -115,5 +115,9 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
     case LEFT_DRLASER_GPIO_PIN: LeftDiffuseReflectionLaserChangeSet(); break;
     case RIGHT_DRLASER_GPIO_PIN: RightDiffuseReflectionLaserChangeSet(); break;
 		case RANGINGLASER_GPIO1_GPIO_PIN: RangingLaserDistanceProcess();break;
+		case COLUMN1_PIN: KeyStateOrNum = 1; break;
+		case COLUMN2_PIN: KeyStateOrNum = 2; break;
+		case COLUMN3_PIN: KeyStateOrNum = 3; break;
+		case COLUMN4_PIN: KeyStateOrNum = 4; break;
   }
 }
