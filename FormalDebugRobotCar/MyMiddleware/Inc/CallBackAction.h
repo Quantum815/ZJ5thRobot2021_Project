@@ -7,6 +7,11 @@
 #include "DiffuseReflectionLaser.h"
 #include "RangingLaser.h"
 #include "MatrixKeyBoard.h"
+#include "FSM.h"
+
+//状态机相关参数
+extern FSM_t CarFSM;
+extern FSMTable_t CarTable[];
 
 //陀螺仪相关参数
 extern uint8_t GyroOpenFlag;

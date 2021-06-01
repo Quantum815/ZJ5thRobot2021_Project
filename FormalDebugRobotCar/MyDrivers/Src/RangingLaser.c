@@ -27,11 +27,11 @@ const uint32_t refSpadCount = 3;
 const uint8_t isApertureSpads = 0;
 uint8_t VhvSettings;
 uint8_t PhaseCal;
-const int32_t OffsetMicroMeter = 12000;
+const int32_t OffsetMicroMeter = 24000;
 FixPoint1616_t XTalkCompensation;
 
 VL53L0X_Error Status = VL53L0X_ERROR_NONE;
-uint16_t RangingLaserDistance;
+volatile uint16_t RangingLaserDistance;
 
 /**
  ******************************************************************************
@@ -59,42 +59,36 @@ void RangingLaserInit(void)
 	VL53L0X_WaitDeviceBooted(Dev);
 	
 	//数据初始化
-	if(Status == VL53L0X_ERROR_NONE)
-		Status = VL53L0X_DataInit(Dev);
-	else
+	Status = VL53L0X_DataInit(Dev);
+	if(Status != VL53L0X_ERROR_NONE)
 		Error_Handler();
 	
   //静态初始化
-	if(Status == VL53L0X_ERROR_NONE)
-		Status = VL53L0X_StaticInit(Dev);
-	else
+	Status = VL53L0X_StaticInit(Dev);
+	if(Status != VL53L0X_ERROR_NONE)
 		Error_Handler();
 	//*****************************************	
 	
 
 	//数据函数类*******************************
 //	//参考SPADs校准：无需特殊环境要求，加盖校准需重新校准（常注释）
-//	if(Status == VL53L0X_ERROR_NONE)
-//		Status = VL53L0X_PerformRefSpadManagement(Dev, &refSpadCount, &isApertureSpads);
-//	else
+//	Status = VL53L0X_PerformRefSpadManagement(Dev, &refSpadCount, &isApertureSpads);
+//	if(Status != VL53L0X_ERROR_NONE)
 //		Error_Handler();
 
 	 //温度校准（正常初始化也可使用）
-	if(Status == VL53L0X_ERROR_NONE)
-		Status = VL53L0X_PerformRefCalibration(Dev, &VhvSettings, &PhaseCal);
-	else
+	Status = VL53L0X_PerformRefCalibration(Dev, &VhvSettings, &PhaseCal);
+	if(Status != VL53L0X_ERROR_NONE)
 		Error_Handler();
-	
+//	
 //	//偏移校准，黑暗环境下把白色物体（88%反射率）放在约100mm（官方建议）校准距离处进行（常注释）
-//	if(Status == VL53L0X_ERROR_NONE)	
 //		Status = VL53L0X_PerformOffsetCalibration(Dev, 100<<16, &OffsetMicroMeter);
-//	else
+//	if(Status != VL53L0X_ERROR_NONE)
 //		Error_Handler();
 	
-//  //串扰校准，较暗环境下把灰色物体（17%反射率）放在约450mm（对照实际情况曲线修改）校准距离处进行（常注释）
-//	if(Status == VL53L0X_ERROR_NONE)		
-//		Status = VL53L0X_PerformXTalkCalibration(Dev, 450<<16, &XTalkCompensation);
-//	else
+//  //串扰校准，较暗环境下把灰色物体（17%反射率）放在约450mm（对照实际情况曲线修改）校准距离处进行（常注释）		
+//	Status = VL53L0X_PerformXTalkCalibration(Dev, 450<<16, &XTalkCompensation);
+//	if(Status != VL53L0X_ERROR_NONE)
 //		Error_Handler();
 	//*****************************************	
 	
@@ -110,54 +104,46 @@ void RangingLaserInit(void)
 void RangingLaserOpen(void)
 {
 	//参数函数类*******************************
-	//设定参考SPADs的校准值
-	if(Status == VL53L0X_ERROR_NONE)
-		Status = VL53L0X_SetReferenceSpads(Dev, refSpadCount, isApertureSpads);
-	else
-		Error_Handler();
-	
-	//设定温度校准值
-	if(Status == VL53L0X_ERROR_NONE)	
-		Status = VL53L0X_SetRefCalibration(Dev, VhvSettings, PhaseCal);
-	else
-		Error_Handler();
+//	//设定参考SPADs的校准值
+//	Status = VL53L0X_SetReferenceSpads(Dev, refSpadCount, isApertureSpads);
+//	if(Status != VL53L0X_ERROR_NONE)
+//		Error_Handler();
+//	
+//	//设定温度校准值	
+//	Status = VL53L0X_SetRefCalibration(Dev, VhvSettings, PhaseCal);
+//	if(Status != VL53L0X_ERROR_NONE)
+//		Error_Handler();
 
-	//设定偏移校准值
-	if(Status == VL53L0X_ERROR_NONE)
-		Status = VL53L0X_SetOffsetCalibrationDataMicroMeter(Dev, OffsetMicroMeter);
-	else
-		Error_Handler();
-
+//	//设定偏移校准值
+//	Status = VL53L0X_SetOffsetCalibrationDataMicroMeter(Dev, OffsetMicroMeter);
+//	if(Status != VL53L0X_ERROR_NONE)
+//		Error_Handler();
+//
 //	//设定串扰校准值
-//	if(Status == VL53L0X_ERROR_NONE)
-//		Status = VL53L0X_SetXTalkCompensationRateMegaCps(Dev, XTalkCompensation);
-//	else
+//	Status = VL53L0X_SetXTalkCompensationRateMegaCps(Dev, XTalkCompensation);
+//	if(Status != VL53L0X_ERROR_NONE)
 //		Error_Handler();
 //	//启用串扰补偿
-//	if(Status == VL53L0X_ERROR_NONE)
-//		Status = VL53L0X_SetXTalkCompensationEnable(Dev, 1);
-//	else
+//	Status = VL53L0X_SetXTalkCompensationEnable(Dev, 1);
+//	if(Status != VL53L0X_ERROR_NONE)
 //		Error_Handler();
 	//*****************************************	
 	
 	//数据连续获取模式设定（必须在数据设定后使用，否则只能读取一次数值）
-	if(Status == VL53L0X_ERROR_NONE)
-		Status = VL53L0X_SetDeviceMode(Dev, VL53L0X_DEVICEMODE_CONTINUOUS_RANGING);  //连续读取
-	else
+	Status = VL53L0X_SetDeviceMode(Dev, VL53L0X_DEVICEMODE_CONTINUOUS_RANGING);  //连续读取
+	if(Status != VL53L0X_ERROR_NONE)
 		Error_Handler();
 	
 	//中断设置函数*****************************
 	//IO口状态设置
-	if(Status == VL53L0X_ERROR_NONE)
-		Status = VL53L0X_SetGpioConfig(Dev, 0, VL53L0X_DEVICEMODE_CONTINUOUS_RANGING, 
-			VL53L0X_GPIOFUNCTIONALITY_NEW_MEASURE_READY, VL53L0X_INTERRUPTPOLARITY_LOW);
-	else
+	Status = VL53L0X_SetGpioConfig(Dev, 0, VL53L0X_DEVICEMODE_CONTINUOUS_RANGING, 
+		VL53L0X_GPIOFUNCTIONALITY_NEW_MEASURE_READY, VL53L0X_INTERRUPTPOLARITY_LOW);
+	if(Status != VL53L0X_ERROR_NONE)
 		Error_Handler();
 	//*****************************************
 
-	if(Status == VL53L0X_ERROR_NONE)	
-		Status = VL53L0X_StartMeasurement(Dev);
-	else
+	Status = VL53L0X_StartMeasurement(Dev);
+	if(Status != VL53L0X_ERROR_NONE)
 		Error_Handler();
 }
 
@@ -166,9 +152,8 @@ void RangingLaserOpen(void)
 //未经检验，如非用不可，请联系YL测试功能完整性！！！
 void RangingLaserClose(void)
 {
-	if(Status == VL53L0X_ERROR_NONE)
-		Status = VL53L0X_StopMeasurement(Dev);
-	else
+	Status = VL53L0X_StopMeasurement(Dev);
+	if(Status != VL53L0X_ERROR_NONE)
 		Error_Handler();
 	RangingLaserDistance = 0;
 }
@@ -195,13 +180,15 @@ uint16_t RangingLaserDistanceGet(void)
 //测距激光传感器当前距离中断方式读取
 void RangingLaserInterruptDistanceProcess(void)
 {
-	if(Status == VL53L0X_ERROR_NONE)
-		Status = VL53L0X_GetRangingMeasurementData(Dev, &RangingData);
-	else
+	Status = VL53L0X_GetRangingMeasurementData(Dev, &RangingData);
+	if(Status != VL53L0X_ERROR_NONE)
 		Error_Handler();
 	
 	RangingLaserDistance = RangingData.RangeMilliMeter;
 	Status = VL53L0X_ClearInterruptMask(Dev, VL53L0X_REG_SYSTEM_INTERRUPT_GPIO_NEW_SAMPLE_READY);
+	if(Status != VL53L0X_ERROR_NONE)
+		Error_Handler();
+//	printf("%d %d %d\n", refSpadCount, isApertureSpads, OffsetMicroMeter);
 }
 
 //测距激光传感器当前距离轮询方式读取

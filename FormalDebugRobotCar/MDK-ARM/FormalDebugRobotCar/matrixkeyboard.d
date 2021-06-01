@@ -52,4 +52,5 @@ formaldebugrobotcar/matrixkeyboard.o: ..\MyDrivers\Src\MatrixKeyBoard.c \
   ..\MyDrivers\VL53L0X_1.0.2\Api\platform\inc\vl53l0x_types.h \
   ..\MyDrivers\VL53L0X_1.0.2\Api\platform\inc\vl53l0x_platform.h \
   ..\MyDrivers\VL53L0X_1.0.2\Api\core\inc\vl53l0x_def.h \
-  ..\MyDrivers\VL53L0X_1.0.2\Api\platform\inc\vl53l0x_platform_log.h
+  ..\MyDrivers\VL53L0X_1.0.2\Api\platform\inc\vl53l0x_platform_log.h \
+  ..\MyDrivers\Inc\GraySensor.h

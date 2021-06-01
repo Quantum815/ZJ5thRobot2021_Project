@@ -24,12 +24,8 @@
 //主程序初始化
 void UserInit(void)  
 {
-	//陀螺仪初始化
+	//陀螺仪初始化（必须在第一）
 	GyroInit();
-	//定时器开启
-	HAL_TIM_Base_Start_IT(&htim4);
-	HAL_TIM_Base_Start_IT(&htim3);
-	HAL_TIM_Base_Start_IT(&htim2);
 	//灰度传感器初始化
 	GraySensorInit();
 	//测距激光传感器初始化
@@ -40,6 +36,12 @@ void UserInit(void)
 	ServoMotorInit();
 	//矩阵键盘初始化
 	MatrixKeyBoardInit();
+	//状态机初始化
+	FSMInit(&CarFSM, A, CarTable);
+	//定时器开启
+	HAL_TIM_Base_Start_IT(&htim4);
+	HAL_TIM_Base_Start_IT(&htim3);
+	HAL_TIM_Base_Start_IT(&htim2);
 }
 
 //主程序循环
@@ -48,7 +50,7 @@ void UserLoop(void)
 	//测试
 //	DebugGyro();
 	
-	DebugGraySensor();
+//	DebugGraySensor();
 	
 //	DebugServoMotor();
 	

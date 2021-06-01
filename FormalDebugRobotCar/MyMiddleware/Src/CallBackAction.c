@@ -21,23 +21,23 @@
 //定时器中断
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-  //10ms 状态机,10ms读取传感器
+  //10ms 状态机
 	if(htim == &htim2)
 	{
-
+		FSMRun(&CarFSM);
 	}
   //10ms 传感器读取
 	if(htim == &htim3)
 	{
 		GraySensorFifteenAnalogValueGet();
 		DiffuseReflectionLaserStateJudge();
-		RangingLaserPollingDistanceProcess();
+//		RangingLaserPollingDistanceProcess();
 		MatrixKeyBoardConfirm();
 	}
   //500ms LED判断工作状态（完善）
 	if(htim == &htim4)
 	{
-		HAL_GPIO_TogglePin(LED_GPIO_PORT, LED_GPIO_PIN);
+//		HAL_GPIO_TogglePin(LED_GPIO_PORT, LED_GPIO_PIN);
 	}
 }
 
@@ -132,8 +132,8 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	}
 	
 	//测距激光传感器
-//	if(GPIO_Pin == RANGINGLASER_GPIO1_GPIO_PIN)
-//		RangingLaserInterruptDistanceProcess();
+	if(GPIO_Pin == RANGINGLASER_GPIO1_GPIO_PIN)
+		RangingLaserInterruptDistanceProcess();
 	
 	//矩阵键盘（基本完善）  6.1
 	if(GPIO_Pin == COLUMN1_PIN)

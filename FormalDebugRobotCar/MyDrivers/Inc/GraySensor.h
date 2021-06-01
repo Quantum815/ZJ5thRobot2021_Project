@@ -28,6 +28,8 @@ static uint8_t GraySensorGetFifteenSigleAnalogValue[2] = {0x00, 0xdb};  //∂¡»°µ•
 
 
 void GraySensorInit(void);
+void GraySensorConfigOpen(void);
+void GraySensorGetValueOpen(void);
 
 //≈‰÷√
 void GraySensorConfigTest(void);

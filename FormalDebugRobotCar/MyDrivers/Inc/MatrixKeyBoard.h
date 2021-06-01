@@ -3,6 +3,7 @@
 
 #include "gpio.h"
 #include "Miscellaneous.h"
+#include "GraySensor.h"
 
 //ÐÐ
 #define ROW1_GPIO_PORT     GPIOD

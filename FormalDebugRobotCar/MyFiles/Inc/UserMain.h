@@ -9,6 +9,11 @@
 #include "ServoMotor.h"
 #include "MatrixKeyBoard.h"
 #include "RangingLaser.h"
+#include "FSM.h"
+#include "UserFSM.h"
+
+extern FSM_t CarFSM;
+extern FSMTable_t CarTable[];
 
 void UserInit(void);
 void UserLoop(void);

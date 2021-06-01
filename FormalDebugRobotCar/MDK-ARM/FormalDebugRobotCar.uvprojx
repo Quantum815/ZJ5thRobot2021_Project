@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32H743xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;                           ../Drivers/STM32H7xx_HAL_Driver/Inc;                           ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;                           ../Drivers/CMSIS/Device/ST/STM32H7xx/Include;                           ../Drivers/CMSIS/Include;                           ..\MyFiles\Inc;                           ..\MyMiddleware\Inc;                           ..\MyDrivers\Inc;                           ..\MyDrivers\VL53L0X_1.0.2\Api\core\inc;                           ..\MyDrivers\VL53L0X_1.0.2\Api\platform\inc</IncludePath>
+              <IncludePath>../Core/Inc;                              ../Drivers/STM32H7xx_HAL_Driver/Inc;                              ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;                              ../Drivers/CMSIS/Device/ST/STM32H7xx/Include;                              ../Drivers/CMSIS/Include;                              ..\MyFiles\Inc;                              ..\MyMiddleware\Inc;                              ..\MyDrivers\Inc;                              ..\MyDrivers\VL53L0X_1.0.2\Api\core\inc;                              ..\MyDrivers\VL53L0X_1.0.2\Api\platform\inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -602,6 +602,11 @@
               <FilePath>..\MyFiles\Src\UserMain.c</FilePath>
             </File>
             <File>
+              <FileName>UserFSM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MyFiles\Src\UserFSM.c</FilePath>
+            </File>
+            <File>
               <FileName>UserParameter.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\MyFiles\Inc\UserParameter.h</FilePath>
@@ -741,6 +746,11 @@
               <FileType>1</FileType>
               <FilePath>..\MyMiddleware\Src\CallBackAction.c</FilePath>
             </File>
+            <File>
+              <FileName>LinePatrolAction.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MyMiddleware\Src\LinePatrolAction.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -750,6 +760,11 @@
               <FileName>DiffuseReflectionLaser.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\MyDrivers\Src\DiffuseReflectionLaser.c</FilePath>
+            </File>
+            <File>
+              <FileName>FSM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MyDrivers\Src\FSM.c</FilePath>
             </File>
             <File>
               <FileName>GraySensor.c</FileName>
@@ -777,14 +792,14 @@
               <FilePath>..\MyDrivers\Src\MatrixKeyBoard.c</FilePath>
             </File>
             <File>
-              <FileName>ServoMotor.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\MyDrivers\Src\ServoMotor.c</FilePath>
-            </File>
-            <File>
               <FileName>RangingLaser.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\MyDrivers\Src\RangingLaser.c</FilePath>
+            </File>
+            <File>
+              <FileName>ServoMotor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MyDrivers\Src\ServoMotor.c</FilePath>
             </File>
           </Files>
         </Group>

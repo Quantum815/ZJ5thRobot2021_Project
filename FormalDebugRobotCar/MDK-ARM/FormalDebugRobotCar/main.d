@@ -53,4 +53,6 @@ formaldebugrobotcar/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\MyDrivers\VL53L0X_1.0.2\Api\platform\inc\vl53l0x_platform.h \
   ..\MyDrivers\VL53L0X_1.0.2\Api\core\inc\vl53l0x_def.h \
   ..\MyDrivers\VL53L0X_1.0.2\Api\platform\inc\vl53l0x_platform_log.h \
-  ..\MyMiddleware\Inc\CallBackAction.h ..\MyDrivers\Inc\MatrixKeyBoard.h
+  ..\MyMiddleware\Inc\CallBackAction.h ..\MyDrivers\Inc\MatrixKeyBoard.h \
+  ..\MyDrivers\Inc\GraySensor.h ..\MyDrivers\Inc\FSM.h \
+  ..\MyFiles\Inc\UserFSM.h ..\MyFiles\Inc\UserMain.h

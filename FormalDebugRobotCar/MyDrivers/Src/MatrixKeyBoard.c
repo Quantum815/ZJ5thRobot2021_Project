@@ -14,7 +14,7 @@
 #include "MatrixKeyBoard.h"
 
 /* Define\Declare ------------------------------------------------------------*/
-uint8_t KeyState;  //0为无按键消抖，1-4为某行按键按下，5-8为某行按键消抖
+volatile uint8_t KeyState;  //0为无按键消抖，1-4为某行按键按下，5-8为某行按键消抖
 
 
 /**
@@ -35,34 +35,38 @@ void MatrixKeyBoardInit(void)
 //如下16个函数，R为行，C为列对应按键函数
 void R1C1ClipFunction(void)
 {
-
+	GraySensorConfigOpen();
+	GraySensorConfigLineLight();
 }
 
 void R1C2ClipFunction(void)
 {
-
+	GraySensorConfigOpen();
+	GraySensorConfigGroundLight();
 }
 void R1C3ClipFunction(void)
 {
-
+	GraySensorConfigOpen();
+	GraySensorConfigLineAd();
 }
 void R1C4ClipFunction(void)
 {
-
+	GraySensorConfigOpen();
+	GraySensorConfigGroundAd();
 }
 void R2C1ClipFunction(void)
 {
-
+	GraySensorGetValueOpen();
 }
 
 void R2C2ClipFunction(void)
 {
-
+	
 }
 
 void R2C3ClipFunction(void)
 {
-
+	
 }
 
 void R2C4ClipFunction(void)
@@ -87,7 +91,7 @@ void R3C3ClipFunction(void)
 
 void R3C4ClipFunction(void)
 {
-
+	
 }
 
 void R4C1ClipFunction(void)
