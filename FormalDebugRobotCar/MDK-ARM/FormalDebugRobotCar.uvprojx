@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32H743xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;                     ../Drivers/STM32H7xx_HAL_Driver/Inc;                     ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;                     ../Drivers/CMSIS/Device/ST/STM32H7xx/Include;                     ../Drivers/CMSIS/Include;                     ..\MyFiles\Inc;                     ..\MyMiddleware\Inc;                     ..\MyDrivers\Inc;                     ..\MyDrivers\VL53L0X_1.0.2\Api\core\inc;                     ..\MyDrivers\VL53L0X_1.0.2\Api\platform\inc</IncludePath>
+              <IncludePath>../Core/Inc;                           ../Drivers/STM32H7xx_HAL_Driver/Inc;                           ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;                           ../Drivers/CMSIS/Device/ST/STM32H7xx/Include;                           ../Drivers/CMSIS/Include;                           ..\MyFiles\Inc;                           ..\MyMiddleware\Inc;                           ..\MyDrivers\Inc;                           ..\MyDrivers\VL53L0X_1.0.2\Api\core\inc;                           ..\MyDrivers\VL53L0X_1.0.2\Api\platform\inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -597,21 +597,6 @@
               <FilePath>..\MyFiles\Src\Miscellaneous.c</FilePath>
             </File>
             <File>
-              <FileName>UserFsmCondition.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\MyFiles\Src\UserFsmCondition.c</FilePath>
-            </File>
-            <File>
-              <FileName>UserFsmFrame.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\MyFiles\Src\UserFsmFrame.c</FilePath>
-            </File>
-            <File>
-              <FileName>UserFsmJump.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\MyFiles\Src\UserFsmJump.c</FilePath>
-            </File>
-            <File>
               <FileName>UserMain.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\MyFiles\Src\UserMain.c</FilePath>
@@ -751,11 +736,6 @@
         <Group>
           <GroupName>Drivers/MyMiddleware</GroupName>
           <Files>
-            <File>
-              <FileName>BasicAction.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\MyMiddleware\Src\BasicAction.c</FilePath>
-            </File>
             <File>
               <FileName>CallBackAction.c</FileName>
               <FileType>1</FileType>

@@ -2,7 +2,7 @@
   ******************************************************************************
   * @file    RangingLaser.c
   * @author  YL
-  * @brief   测距激光传感器驱动（有待改进） 6.1
+  * @brief   测距激光传感器驱动（在运行约20s后距离数据不再更新，问题有待解决） 6.1
   *
   @verbatim
 	3.3V供电
@@ -47,12 +47,7 @@ void RangingLaserInit(void)
 	Dev->comms_type = 1;
 	Dev->comms_speed_khz = 400;
 
-	//关闭XSHUT(硬件待机模式的复位输入端，低电平有效)
-  HAL_GPIO_WritePin(RANGINGLASER_XSHUT_GPIO_PORT, RANGINGLASER_XSHUT_GPIO_PIN, GPIO_PIN_RESET);
-  HAL_Delay(20);
-	//使能XSHUT
-  HAL_GPIO_WritePin(RANGINGLASER_XSHUT_GPIO_PORT, RANGINGLASER_XSHUT_GPIO_PIN, GPIO_PIN_SET);
-  HAL_Delay(20);
+	//XSHUT(硬件待机模式的复位输入端）始终高电平不复位，设备处于工作状态
 
   //关闭stm32外部中断
   HAL_NVIC_DisableIRQ(EXTI9_5_IRQn);
@@ -153,11 +148,11 @@ void RangingLaserOpen(void)
 	
 	//中断设置函数*****************************
 	//IO口状态设置
-//	if(Status == VL53L0X_ERROR_NONE)
-//		Status = VL53L0X_SetGpioConfig(Dev, 0, VL53L0X_DEVICEMODE_CONTINUOUS_RANGING, 
-//			VL53L0X_GPIOFUNCTIONALITY_NEW_MEASURE_READY, VL53L0X_INTERRUPTPOLARITY_LOW);
-//	else
-//		Error_Handler();
+	if(Status == VL53L0X_ERROR_NONE)
+		Status = VL53L0X_SetGpioConfig(Dev, 0, VL53L0X_DEVICEMODE_CONTINUOUS_RANGING, 
+			VL53L0X_GPIOFUNCTIONALITY_NEW_MEASURE_READY, VL53L0X_INTERRUPTPOLARITY_LOW);
+	else
+		Error_Handler();
 	//*****************************************
 
 	if(Status == VL53L0X_ERROR_NONE)	
@@ -219,6 +214,7 @@ void RangingLaserPollingDistanceProcess(void)
 		{
 			VL53L0X_GetRangingMeasurementData(Dev, &RangingData);
 			RangingLaserDistance = RangingData.RangeMilliMeter;
+			VL53L0X_ClearInterruptMask(Dev, VL53L0X_REG_SYSTEM_INTERRUPT_GPIO_NEW_SAMPLE_READY);
 		}
 	}
 }
