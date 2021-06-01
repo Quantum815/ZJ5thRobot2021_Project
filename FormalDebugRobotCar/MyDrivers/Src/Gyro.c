@@ -2,7 +2,7 @@
   ******************************************************************************
   * @file    Gyro.c
   * @author  YL
-  * @brief   陀螺仪JY901S驱动（完善） 5.12
+  * @brief   陀螺仪JY901S驱动（完善） 6.1
   *
   @verbatim
 	(#) JY901S设置
@@ -28,7 +28,7 @@ static Gyro_AngleTypeDef *Gyro_Angle;
 
 uint8_t GyroOpenFlag;
 uint8_t GyroReceiveNum;
-uint8_t GyroReceiveBuffer[11];
+uint8_t GyroReceiveBuffer[11] = {1};  //防止首次校验和成立
 
 
 /**
@@ -47,15 +47,19 @@ void GyroInit(void)
 }
 
 //陀螺仪数据获取开启（必须在GyroClose()后使用）
+//目前采用循环DMA绝对不能使用该函数！！！！！！！！！
 void GyroOpen(void)  
 {
 	GyroOpenFlag = 1;
 	GyroReceiveNum = 0;
-	if(HAL_UART_Receive_DMA(&GyroUartHandle, &GyroReceiveBuffer[GyroReceiveNum], 1) != HAL_OK)
+	if(HAL_UART_Receive_DMA(&GyroUartHandle, &GyroReceiveBuffer[GyroReceiveNum], 11) != HAL_OK)
+	{
 		Error_Handler();
+	}
 }
 
 //陀螺仪数据获取关闭（必须在GyroOpen()后使用）
+//目前采用循环DMA绝对不能使用该函数！！！！！！！！！
 void GyroClose(void)  
 {
 	GyroOpenFlag = 0;

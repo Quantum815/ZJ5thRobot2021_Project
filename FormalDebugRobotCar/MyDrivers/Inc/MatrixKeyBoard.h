@@ -2,6 +2,7 @@
 #define MATRIXKEYBOARD_H_
 
 #include "gpio.h"
+#include "Miscellaneous.h"
 
 //ÐÐ
 #define ROW1_GPIO_PORT     GPIOD
@@ -22,7 +23,12 @@
 #define COLUMN4_GPIO_PORT        GPIOD
 #define COLUMN4_PIN              GPIO_PIN_7
 
-void MatrixKeyboardScanning(void);
+void MatrixKeyBoardInit(void);
+void MatrixKeyBoardConfirm(void);
+void MatrixKeyBoardCOLUMN1Confirm(void);
+void MatrixKeyBoardCOLUMN2Confirm(void);
+void MatrixKeyBoardCOLUMN3Confirm(void);
+void MatrixKeyBoardCOLUMN4Confirm(void);
 
 void R1C1ClipFunction(void);
 void R1C2ClipFunction(void);

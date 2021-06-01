@@ -37,7 +37,7 @@ void DebugGyro(void)
 //	for(i=0; i<11; i++)
 //		printf("%d ", GyroOneOfElevenReceiveBufferGet(i));
 //	printf("\n");
-	HAL_Delay(10);
+	HAL_Delay(50);
 }
 
 //»Ò¶È´«¸ÐÆ÷²âÊÔ
@@ -47,7 +47,7 @@ void DebugGraySensor(void)
 	for(i=0; i<14; i++)
 		printf("%d ", GraySensorOneOfFifteenReceiveValueGet(i));
 	printf("\n");
-	HAL_Delay(10);
+	HAL_Delay(50);
 }
 
 //¶æ»ú²âÊÔ
@@ -66,12 +66,12 @@ void DebugDiffuseReflectionLaser(void)
 {
 	printf("%d %d %d %d\n", LeftDiffuseReflectionLaserStateGet(), RightDiffuseReflectionLaserStateGet(), 
 	LeftDiffuseReflectionLaserIsChange(), RightDiffuseReflectionLaserIsChange());
-	HAL_Delay(10);
+	HAL_Delay(50);
 }
 
 //²â¾à¼¤¹â´«¸ÐÆ÷²âÊÔ
 void DebugRangingLaser(void)
 {
 	printf("%d\n", RangingLaserDistanceGet());
-	HAL_Delay(10);
+	HAL_Delay(50);
 }

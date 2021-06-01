@@ -27,15 +27,17 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 	}
   //10ms 传感器读取
-	else if(htim == &htim3)
+	if(htim == &htim3)
 	{
 		GraySensorFifteenAnalogValueGet();
 		DiffuseReflectionLaserStateJudge();
+//		RangingLaserPollingDistanceProcess();
+		MatrixKeyBoardConfirm();
 	}
   //500ms LED判断工作状态（完善）
-	else if(htim == &htim4)
+	if(htim == &htim4)
 	{
-		HAL_GPIO_TogglePin(LED_GPIO_PORT, LED_GPIO_PIN);
+//		HAL_GPIO_TogglePin(LED_GPIO_PORT, LED_GPIO_PIN);
 	}
 }
 
@@ -46,47 +48,57 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 //串口接收中断
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-	//陀螺仪（完善）  5.12
+	//陀螺仪（完善）  6.1
 	if(huart == &GyroUartHandle && GyroOpenFlag)
 	{
-		if(GyroReceiveNum == 0)
+		if(!GyroCheckSumJudge())
 		{
-			if(GyroReceiveBuffer[0] != 0x55)
-				GyroReceiveNum = 0;
-			else
-				GyroReceiveNum = 1;
-			if(HAL_UART_Receive_DMA(&GyroUartHandle, &GyroReceiveBuffer[GyroReceiveNum], 1) != HAL_OK)
-				Error_Handler();
-		}
-		else if(GyroReceiveNum == 1)
-		{
-			if(GyroReceiveBuffer[1] != 0x53)
-			{
-				GyroReceiveNum = 0;
-				if(HAL_UART_Receive_DMA(&GyroUartHandle, &GyroReceiveBuffer[GyroReceiveNum], 1) != HAL_OK)
-					Error_Handler();
-			}
-			else
-			{
-				GyroReceiveNum = 2;
-				if(HAL_UART_Receive_DMA(&GyroUartHandle, &GyroReceiveBuffer[GyroReceiveNum], 9) != HAL_OK)
-					Error_Handler();
-			}
-		}
-		else if(GyroReceiveNum == 2)
-    {
-			if(GyroCheckSumJudge())
-				GyroGetAllAngles();
-			GyroReceiveNum = 0;
-			if(HAL_UART_Receive_DMA(&GyroUartHandle, &GyroReceiveBuffer[GyroReceiveNum], 1) != HAL_OK)
-					Error_Handler();
-    }
+			HAL_NVIC_SystemReset();
+		}			
 		else
 		{
-			GyroReceiveNum = 0;
-			if(HAL_UART_Receive_DMA(&GyroUartHandle, &GyroReceiveBuffer[GyroReceiveNum], 1) != HAL_OK)
-					Error_Handler();
+			GyroGetAllAngles();
 		}
+		
+	//DMA正常模式代码（保留备用，请勿删除！！！！！！）
+//		if(GyroReceiveNum == 0)
+//		{
+//			if(GyroReceiveBuffer[0] != 0x55)
+//				GyroReceiveNum = 0;
+//			else
+//				GyroReceiveNum = 1;
+//			if(HAL_UART_Receive_DMA(&GyroUartHandle, &GyroReceiveBuffer[GyroReceiveNum], 1) != HAL_OK)
+//				Error_Handler();
+//		}
+//		else if(GyroReceiveNum == 1)
+//		{
+//			if(GyroReceiveBuffer[1] != 0x53)
+//			{
+//				GyroReceiveNum = 0;
+//				if(HAL_UART_Receive_DMA(&GyroUartHandle, &GyroReceiveBuffer[GyroReceiveNum], 1) != HAL_OK)
+//					Error_Handler();
+//			}
+//			else
+//			{
+//				GyroReceiveNum = 2;
+//				if(HAL_UART_Receive_DMA(&GyroUartHandle, &GyroReceiveBuffer[GyroReceiveNum], 9) != HAL_OK)
+//					Error_Handler();
+//			}
+//		}
+//		else if(GyroReceiveNum == 2)
+//    {
+//			if(GyroCheckSumJudge())
+//				GyroGetAllAngles();
+//			GyroReceiveNum = 0;
+//			if(HAL_UART_Receive_DMA(&GyroUartHandle, &GyroReceiveBuffer[GyroReceiveNum], 1) != HAL_OK)
+//					Error_Handler();
+//    }
+//		else
+//		{
+//			GyroReceiveNum = 0;
+//			if(HAL_UART_Receive_DMA(&GyroUartHandle, &GyroReceiveBuffer[GyroReceiveNum], 1) != HAL_OK)
+//					Error_Handler();
+//		}
 	}
 	//灰度传感器（完善）  5.12
 	if(huart == &GraySensorUartHandle)
@@ -110,14 +122,26 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
 	//漫反射激光传感器（基本完善）  5.23
-  switch(GPIO_Pin)
-  {
-    case LEFT_DRLASER_GPIO_PIN: LeftDiffuseReflectionLaserChangeSet(); break;
-    case RIGHT_DRLASER_GPIO_PIN: RightDiffuseReflectionLaserChangeSet(); break;
-		case RANGINGLASER_GPIO1_GPIO_PIN: RangingLaserDistanceProcess();break;
-		case COLUMN1_PIN: KeyStateOrNum = 1; break;
-		case COLUMN2_PIN: KeyStateOrNum = 2; break;
-		case COLUMN3_PIN: KeyStateOrNum = 3; break;
-		case COLUMN4_PIN: KeyStateOrNum = 4; break;
-  }
+  if(GPIO_Pin == LEFT_DRLASER_GPIO_PIN)
+	{
+		LeftDiffuseReflectionLaserChangeSet();
+	}
+	else if(GPIO_Pin == RIGHT_DRLASER_GPIO_PIN)
+	{
+		RightDiffuseReflectionLaserChangeSet();
+	}
+	
+	//测距激光传感器
+	if(GPIO_Pin == RANGINGLASER_GPIO1_GPIO_PIN)
+		RangingLaserInterruptDistanceProcess();
+	
+	//矩阵键盘
+	if(GPIO_Pin == COLUMN1_PIN)
+		KeyState = 1;
+	else if(GPIO_Pin == COLUMN2_PIN)
+		KeyState = 2;
+	else if(GPIO_Pin == COLUMN3_PIN)
+		KeyState = 3;
+	else if(GPIO_Pin == COLUMN4_PIN)
+		KeyState = 4;
 }

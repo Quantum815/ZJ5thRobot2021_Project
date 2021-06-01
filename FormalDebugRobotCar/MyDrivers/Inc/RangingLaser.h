@@ -3,6 +3,8 @@
 
 #include "i2c.h"
 #include "vl53l0x_api.h"
+#include "stdio.h"
+#include "Miscellaneous.h"
 
 #define RANGINGLASER_I2C3_SCL_GPIO_PORT GPIOA
 #define RANGINGLASER_I2C3_SCL_GPIO_PIN  GPIO_PIN_8
@@ -17,6 +19,7 @@ void RangingLaserInit(void);
 void RangingLaserOpen(void);
 void RangingLaserClose(void);
 uint16_t RangingLaserDistanceGet(void);
-void RangingLaserDistanceProcess(void);
+void RangingLaserInterruptDistanceProcess(void);
+void RangingLaserPollingDistanceProcess(void);
 
 #endif

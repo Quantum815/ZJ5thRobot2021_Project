@@ -2,6 +2,8 @@
 #define GYRO_H_
 
 #include "usart.h"
+#include "stdio.h"
+#include "Miscellaneous.h"
 
 #define GYRO_USART_TX_GPIO_PORT  GPIOE      
 #define GYRO_USART_TX_GPIO_PIN   GPIO_PIN_1

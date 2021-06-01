@@ -30,7 +30,7 @@ void ServoMotorInit(void)
 	ServoMotorAngleSet(SHAKE_HEAD_SERVO_CHANNEL, 90);
 }
 
-//舵机角度设置
+//舵机角度设置 范围：0~180度
 void ServoMotorAngleSet(uint32_t channel, uint8_t angle)
 {
 	__HAL_TIM_SET_COMPARE(&htim1, channel, 5+angle/9);

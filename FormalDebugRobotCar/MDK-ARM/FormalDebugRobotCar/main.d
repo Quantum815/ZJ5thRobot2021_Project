@@ -40,7 +40,8 @@ formaldebugrobotcar/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Core\Inc\tim.h ..\Core\Inc\usart.h ..\Core\Inc\gpio.h \
   ..\MyFiles\Inc\UserMain.h ..\MyFiles\Inc\Miscellaneous.h \
   C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
-  ..\MyDrivers\Inc\Gyro.h ..\MyDrivers\Inc\GraySensor.h \
+  ..\MyDrivers\Inc\Gyro.h ..\MyFiles\Inc\Miscellaneous.h \
+  ..\MyDrivers\Inc\GraySensor.h \
   C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\MyDrivers\Inc\DiffuseReflectionLaser.h \
   ..\MyDrivers\Inc\ServoMotor.h ..\MyDrivers\Inc\RangingLaser.h \
@@ -52,5 +53,4 @@ formaldebugrobotcar/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\MyDrivers\VL53L0X_1.0.2\Api\platform\inc\vl53l0x_platform.h \
   ..\MyDrivers\VL53L0X_1.0.2\Api\core\inc\vl53l0x_def.h \
   ..\MyDrivers\VL53L0X_1.0.2\Api\platform\inc\vl53l0x_platform_log.h \
-  ..\MyMiddleware\Inc\CallBackAction.h ..\MyFiles\Inc\Miscellaneous.h \
-  ..\MyDrivers\Inc\MatrixKeyBoard.h
+  ..\MyMiddleware\Inc\CallBackAction.h ..\MyDrivers\Inc\MatrixKeyBoard.h

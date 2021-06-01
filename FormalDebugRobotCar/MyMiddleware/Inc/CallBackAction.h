@@ -8,10 +8,6 @@
 #include "RangingLaser.h"
 #include "MatrixKeyBoard.h"
 
-//LED
-#define LED_GPIO_PORT  GPIOC      
-#define LED_GPIO_PIN   GPIO_PIN_13 
-
 //陀螺仪相关参数
 extern uint8_t GyroOpenFlag;
 extern uint8_t GyroReceiveNum;
@@ -27,6 +23,6 @@ extern DiffuseReflectionLaser_Change_State Left_DFLaser_Change_State;
 extern DiffuseReflectionLaser_Change_State Right_DFLaser_Change_State;
 
 //矩阵键盘相关参数
-extern uint8_t KeyStateOrNum;
+extern uint8_t KeyState;
 
 #endif
