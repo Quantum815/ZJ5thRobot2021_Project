@@ -12,9 +12,9 @@ enum CarState  //״̬
 	C
 };
 
-void AA(void);
-void BB(void);
-void CC(void);
+void AA(FSM_t* FSM);
+void BB(FSM_t* FSM);
+void CC(FSM_t* FSM);
 
 uint8_t Axxx(void);
 uint8_t Bxxx(void);

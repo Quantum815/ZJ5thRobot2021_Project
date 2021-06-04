@@ -26,17 +26,17 @@ FSMTable_t CarTable[] =
 };
 
 
-void AA(void)
+void AA(FSM_t* FSM)
 {
 	HAL_GPIO_WritePin(LED_GPIO_PORT, LED_GPIO_PIN, GPIO_PIN_RESET);
 }
 
-void BB(void)
+void BB(FSM_t* FSM)
 {
 	HAL_GPIO_WritePin(LED_GPIO_PORT, LED_GPIO_PIN, GPIO_PIN_SET);
 }
 
-void CC(void)
+void CC(FSM_t* FSM)
 {
 	HAL_GPIO_WritePin(LED_GPIO_PORT, LED_GPIO_PIN, GPIO_PIN_RESET);
 }
