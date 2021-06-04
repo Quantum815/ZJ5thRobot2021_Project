@@ -34,7 +34,7 @@ void FSMRun(FSM_t *fsm)
 {
 	uint8_t curState = fsm->CurState;  //状态机当前状态
 	FSMTable_t *fsmTable = fsm->FsmTable;  //状态机状态表
-	void (*eventAction)(FSM_t*) = fsmTable[curState].EventAction;  //状态机当前状态执行函数
+	void (*eventAction)(void) = fsmTable[curState].EventAction;  //状态机当前状态执行函数
 	uint8_t (*eventJumpCondition)(void) = fsmTable[curState].EventJumpCondition;  //状态机跳转事件条件函数
 	uint8_t size = fsm->Size;  //状态表状态数
 	
@@ -43,7 +43,7 @@ void FSMRun(FSM_t *fsm)
 		fsm->CurState = fsmTable[curState].NextState;
 		eventAction = fsmTable[fsm->CurState].EventAction;
 	}
-	eventAction(fsm);
+	eventAction();
 }
 
 //状态机间跳转  返回1或0
