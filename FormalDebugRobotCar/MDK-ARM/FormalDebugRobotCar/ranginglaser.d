@@ -52,4 +52,8 @@ formaldebugrobotcar/ranginglaser.o: ..\MyDrivers\Src\RangingLaser.c \
   ..\MyFiles\Inc\Miscellaneous.h ..\Core\Inc\usart.h \
   ..\MyDrivers\Inc\Gyro.h ..\MyDrivers\Inc\GraySensor.h \
   ..\MyDrivers\Inc\DiffuseReflectionLaser.h ..\Core\Inc\gpio.h \
-  ..\MyDrivers\Inc\ServoMotor.h ..\Core\Inc\tim.h
+  ..\MyDrivers\Inc\ServoMotor.h ..\Core\Inc\tim.h \
+  ..\MyDrivers\ILI9341\Inc\LCD.h ..\Core\Inc\spi.h \
+  ..\MyDrivers\ILI9341\Inc\Gui.h ..\Drivers\CMSIS\DSP\Include\arm_math.h \
+  ..\Drivers\CMSIS\Include\cmsis_compiler.h \
+  C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\float.h

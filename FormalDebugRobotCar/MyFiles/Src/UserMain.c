@@ -25,45 +25,45 @@
 void UserInit(void)  
 {
 	//陀螺仪初始化（必须在第一）
-//	GyroInit();
+	GyroInit();		
 	//屏幕初始化
-	ILI9341_Init();
-	ILI9341_Fill_Screen(GRAY1);
-	ILI9341_Set_Rotation(SCREEN_HORIZONTAL_1);
-	Gui_DrawFont_GBK24(20, 15, BLACK, WHITE, (uint8_t*)"System initializing......");
-//	//灰度传感器初始化
-//	GraySensorInit();
-//	//测距激光传感器初始化
-//	RangingLaserInit();
-//	//漫反射激光传感器初始化
-//	DiffuseReflectionLaserInit();
-//	//舵机初始化
-//	ServoMotorInit();
-//	//矩阵键盘初始化
-//	MatrixKeyBoardInit();
-//	//状态机初始化
-//	FSMInit(&CarFSM, A, CarTable);
-//	//定时器开启
+	Lcd_Init();
+  Lcd_Clear(BLACK);
+	LcdAppendList((uint8_t*)"System initializing......");
+	
+	//灰度传感器初始化
+	GraySensorInit();
+	//测距激光传感器初始化
+	RangingLaserInit();
+	//漫反射激光传感器初始化
+	DiffuseReflectionLaserInit();
+	//舵机初始化
+	ServoMotorInit();
+	//矩阵键盘初始化
+	MatrixKeyBoardInit();
+	//状态机初始化
+	FSMInit(&CarFSM, A, CarTable);
+	//定时器开启
 	HAL_TIM_Base_Start_IT(&htim4);
-//	HAL_TIM_Base_Start_IT(&htim3);
-//	HAL_TIM_Base_Start_IT(&htim2);
+	HAL_TIM_Base_Start_IT(&htim3);
+	HAL_TIM_Base_Start_IT(&htim2);
 	//初始化结束刷屏
-	HAL_Delay(5000);
-	ILI9341_Fill_Screen(WHITE);
+	Lcd_Clear(BLACK);
 }
 
 //主程序循环
 void UserLoop(void)  
 {
-	//测试
+	//测试（屏幕反应挺迟钝的参考用）
 //	DebugGyro();
-	
+//	
 //	DebugGraySensor();
-	
+//	
 //	DebugServoMotor();
-	
+//	
 //	DebugDiffuseReflectionLaser();
 	
-//	DebugRangingLaser();
+	DebugRangingLaser();
+
 }
 

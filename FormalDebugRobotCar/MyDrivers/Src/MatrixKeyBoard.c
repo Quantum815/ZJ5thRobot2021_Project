@@ -35,28 +35,24 @@ void MatrixKeyBoardInit(void)
 //如下16个函数，R为行，C为列对应按键函数
 void R1C1ClipFunction(void)
 {
-	GraySensorConfigOpen();
-	GraySensorConfigLineLight();
+
 }
 
 void R1C2ClipFunction(void)
 {
-	GraySensorConfigOpen();
-	GraySensorConfigGroundLight();
+
 }
 void R1C3ClipFunction(void)
 {
-	GraySensorConfigOpen();
-	GraySensorConfigLineAd();
+
 }
 void R1C4ClipFunction(void)
 {
-	GraySensorConfigOpen();
-	GraySensorConfigGroundAd();
+
 }
 void R2C1ClipFunction(void)
 {
-	GraySensorGetValueOpen();
+
 }
 
 void R2C2ClipFunction(void)

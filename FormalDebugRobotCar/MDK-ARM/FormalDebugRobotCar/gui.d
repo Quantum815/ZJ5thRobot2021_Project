@@ -39,10 +39,10 @@ formaldebugrobotcar/gui.o: ..\MyDrivers\ILI9341\Src\Gui.c \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h \
-  ..\MyDrivers\ILI9341\Inc\ILI9341_STM32_Driver.h ..\Core\Inc\gpio.h \
-  ..\MyDrivers\ILI9341\Inc\Gui.h ..\Drivers\CMSIS\DSP\Include\arm_math.h \
+  ..\MyDrivers\ILI9341\Inc\LCD.h ..\MyDrivers\ILI9341\Inc\Gui.h \
+  ..\Drivers\CMSIS\DSP\Include\arm_math.h \
   ..\Drivers\CMSIS\Include\cmsis_compiler.h \
   C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\float.h \
-  ..\MyDrivers\ILI9341\Inc\font.h \
+  ..\MyDrivers\ILI9341\Inc\Font.h \
   C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h

@@ -1,7 +1,7 @@
 #include "spi.h"
-#include "ILI9341_STM32_Driver.h"
+#include "LCD.h"
 #include "Gui.h"
-#include "font.h"
+#include "Font.h"
 #include <stdio.h>
 
 uint16_t Adc_table[2048];
@@ -451,7 +451,7 @@ void LcdAppendList(uint8_t * List)
 	static uint8_t* ListGet[15];
 	if(AppendListNum<=14)
 	{
-		Gui_DrawFont_GBK16(0,AppendListNum*16,WHITE,GRAY2,List);
+		Gui_DrawFont_GBK16(0,AppendListNum*16,WHITE,BLACK,List);
 		ListGet[AppendListNum]=List;
 		AppendListNum++;
 	}
@@ -475,7 +475,7 @@ void LcdAppendList(uint8_t * List)
 	}
 		
 }
-void ClearReaginSet(int Bx,int By,int Ex,int Ey, uint16_t colour)
+void ClearReaginSet(int Bx,int By,int Ex,int Ey)
 {
 	static int Y;
 	Y=By;
@@ -483,7 +483,7 @@ void ClearReaginSet(int Bx,int By,int Ex,int Ey, uint16_t colour)
 	{
 		for(int X=Bx;X<=Ex;X++)
 		{
-			Gui_DrawPoint(X,Y,colour);
+			Gui_DrawPoint(X,Y,BLACK);
 		}
 		Y++;
 	}

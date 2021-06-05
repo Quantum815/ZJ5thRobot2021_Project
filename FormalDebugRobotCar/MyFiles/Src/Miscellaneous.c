@@ -13,14 +13,8 @@
 /* Includes ------------------------------------------------------------------*/
 #include "Miscellaneous.h"
 
-int fputc(int ch, FILE *f)
-{	
-  /* Place your implementation of fputc here */
-  /* e.g. write a character to the UART4 and Loop until the end of transmission */
-  HAL_UART_Transmit(&DebugUartHandle, (uint8_t *)&ch, 1, 0xFFFF);
-
-  return ch;
-}
+/* Define\Declare ------------------------------------------------------------*/
+uint8_t buffer[40];
 
 
 /**
@@ -32,22 +26,25 @@ int fputc(int ch, FILE *f)
 //ÍÓÂÝÒÇÊý¾Ý²âÊÔ
 void DebugGyro(void)
 {
-	int i;
-	printf("%lf %lf %lf\n", GyroRollAngleGet(), GyroPitchAngleGet(), GyroYawAngleGet());
-//	for(i=0; i<11; i++)
-//		printf("%d ", GyroOneOfElevenReceiveBufferGet(i));
-//	printf("\n");
-	HAL_Delay(50);
+//	memset(buffer, 0x00, sizeof(buffer));
+	sprintf((char*)buffer, "Angle: %.3lf  %.3lf  %.3lf", GyroRollAngleGet(), GyroPitchAngleGet(), GyroYawAngleGet());
+	Gui_DrawFont_GBK16(5, 5, WHITE, BLACK, buffer);
 }
 
 //»Ò¶È´«¸ÐÆ÷²âÊÔ
 void DebugGraySensor(void)
 {
+	uint8_t temp[15];
 	int i;
-	for(i=0; i<14; i++)
-		printf("%d ", GraySensorOneOfFifteenReceiveValueGet(i));
-	printf("\n");
-	HAL_Delay(50);
+	for(i=0; i<15; i++)
+		temp[i] = GraySensorOneOfFifteenReceiveValueGet(i);
+//	memset(buffer, 0x00, sizeof(buffer));
+	sprintf((char*)buffer, "GraySensor: %d  %d  %d  %d  %d  ", temp[0], temp[1], temp[2], temp[3], temp[4]);
+	Gui_DrawFont_GBK16(5, 25, WHITE, BLACK, buffer);
+	sprintf((char*)buffer, "%d  %d  %d  %d  %d  ", temp[5], temp[6], temp[7], temp[8], temp[9]);
+	Gui_DrawFont_GBK16(100, 45, WHITE, BLACK, buffer);
+	sprintf((char*)buffer, "%d  %d  %d  %d  %d  ", temp[10], temp[11], temp[12], temp[13], temp[14]);
+	Gui_DrawFont_GBK16(100, 65, WHITE, BLACK, buffer);
 }
 
 //¶æ»ú²âÊÔ
@@ -64,14 +61,15 @@ void DebugServoMotor(void)
 //Âþ·´Éä¼¤¹â´«¸ÐÆ÷²âÊÔ
 void DebugDiffuseReflectionLaser(void)
 {
-	printf("%d %d %d %d\n", LeftDiffuseReflectionLaserStateGet(), RightDiffuseReflectionLaserStateGet(), 
-	LeftDiffuseReflectionLaserIsChange(), RightDiffuseReflectionLaserIsChange());
-	HAL_Delay(50);
+//	memset(buffer, 0x00, sizeof(buffer));
+	sprintf((char*)buffer, "DRLaser: %d  %d  ", LeftDiffuseReflectionLaserStateGet(), RightDiffuseReflectionLaserStateGet());
+	Gui_DrawFont_GBK16(5, 85, WHITE, BLACK, buffer);
 }
 
 //²â¾à¼¤¹â´«¸ÐÆ÷²âÊÔ
 void DebugRangingLaser(void)
 {
-	printf("%d\n", RangingLaserDistanceGet());
-	HAL_Delay(50);
+//	memset(buffer, 0x00, sizeof(buffer));
+	sprintf((char*)buffer, "RangingLaser: %d  ", RangingLaserDistanceGet());
+	Gui_DrawFont_GBK16(5, 105, WHITE, BLACK, buffer);
 }

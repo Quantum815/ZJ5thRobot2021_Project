@@ -11,8 +11,7 @@
 #include "RangingLaser.h"
 #include "FSM.h"
 #include "UserFSM.h"
-#include "ILI9341_STM32_Driver.h"
-#include "ILI9341_GFX.h"
+#include "LCD.h"
 #include "Gui.h"
 
 extern FSM_t CarFSM;

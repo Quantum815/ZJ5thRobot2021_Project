@@ -55,4 +55,8 @@ formaldebugrobotcar/matrixkeyboard.o: ..\MyDrivers\Src\MatrixKeyBoard.c \
   ..\MyDrivers\VL53L0X_1.0.2\Api\platform\inc\vl53l0x_platform.h \
   ..\MyDrivers\VL53L0X_1.0.2\Api\core\inc\vl53l0x_def.h \
   ..\MyDrivers\VL53L0X_1.0.2\Api\platform\inc\vl53l0x_platform_log.h \
+  ..\MyDrivers\ILI9341\Inc\LCD.h ..\Core\Inc\spi.h \
+  ..\MyDrivers\ILI9341\Inc\Gui.h ..\Drivers\CMSIS\DSP\Include\arm_math.h \
+  ..\Drivers\CMSIS\Include\cmsis_compiler.h \
+  C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\float.h \
   ..\MyDrivers\Inc\GraySensor.h

@@ -39,6 +39,6 @@ formaldebugrobotcar/ili9341_gfx.o: ..\MyDrivers\ILI9341\Src\ILI9341_GFX.c \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h \
-  ..\Core\Inc\gpio.h ..\Core\Inc\main.h ..\Core\Inc\spi.h \
+  ..\Core\Inc\gpio.h ..\Core\Inc\main.h \
   ..\MyDrivers\ILI9341\Inc\ILI9341_GFX.h \
-  ..\MyDrivers\ILI9341\Inc\5x5_font.h
+  ..\MyDrivers\ILI9341\Inc\5x5_font.h ..\Core\Inc\spi.h

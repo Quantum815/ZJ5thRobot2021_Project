@@ -55,10 +55,9 @@ formaldebugrobotcar/userfsm.o: ..\MyFiles\Src\UserFSM.c \
   ..\MyDrivers\VL53L0X_1.0.2\Api\platform\inc\vl53l0x_platform.h \
   ..\MyDrivers\VL53L0X_1.0.2\Api\core\inc\vl53l0x_def.h \
   ..\MyDrivers\VL53L0X_1.0.2\Api\platform\inc\vl53l0x_platform_log.h \
-  ..\MyMiddleware\Inc\CallBackAction.h ..\MyDrivers\Inc\MatrixKeyBoard.h \
-  ..\MyDrivers\Inc\GraySensor.h ..\MyFiles\Inc\UserFSM.h \
-  ..\MyDrivers\ILI9341\Inc\ILI9341_STM32_Driver.h ..\Core\Inc\spi.h \
-  ..\MyDrivers\ILI9341\Inc\ILI9341_GFX.h ..\MyDrivers\ILI9341\Inc\Gui.h \
-  ..\Drivers\CMSIS\DSP\Include\arm_math.h \
+  ..\MyDrivers\ILI9341\Inc\LCD.h ..\Core\Inc\spi.h \
+  ..\MyDrivers\ILI9341\Inc\Gui.h ..\Drivers\CMSIS\DSP\Include\arm_math.h \
   ..\Drivers\CMSIS\Include\cmsis_compiler.h \
-  C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\float.h
+  C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\float.h \
+  ..\MyMiddleware\Inc\CallBackAction.h ..\MyDrivers\Inc\MatrixKeyBoard.h \
+  ..\MyDrivers\Inc\GraySensor.h ..\MyFiles\Inc\UserFSM.h

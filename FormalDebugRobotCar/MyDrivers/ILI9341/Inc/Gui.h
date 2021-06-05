@@ -20,7 +20,7 @@ void LCD_OUTPUT_Float(uint16_t LineX, uint16_t LineY, char *string,float32_t str
 void LCD_OUTPUT_Wave(void);
 void LCD_OUTPUT_FFT(void);
 void LcdAppendList(uint8_t * List);
-void ClearReaginSet(int Bx,int By,int Ex,int Ey, uint16_t colour);
+void ClearReaginSet(int Bx,int By,int Ex,int Ey);
 #ifdef __cplusplus
 }
 #endif

@@ -54,8 +54,6 @@
 "formaldebugrobotcar\vl53l0x_platform.o"
 "formaldebugrobotcar\vl53l0x_platform_log.o"
 "formaldebugrobotcar\gui.o"
-"formaldebugrobotcar\ili9341_gfx.o"
-"formaldebugrobotcar\ili9341_stm32_driver.o"
 "formaldebugrobotcar\lcd.o"
 --strict --scatter "FormalDebugRobotCar\FormalDebugRobotCar.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
