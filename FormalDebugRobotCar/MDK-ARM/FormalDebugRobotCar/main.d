@@ -58,4 +58,9 @@ formaldebugrobotcar/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\MyDrivers\VL53L0X_1.0.2\Api\platform\inc\vl53l0x_platform_log.h \
   ..\MyMiddleware\Inc\CallBackAction.h ..\MyDrivers\Inc\MatrixKeyBoard.h \
   ..\MyDrivers\Inc\GraySensor.h ..\MyDrivers\Inc\FSM.h \
-  ..\MyFiles\Inc\UserFSM.h ..\MyFiles\Inc\UserMain.h
+  ..\MyFiles\Inc\UserFSM.h ..\MyFiles\Inc\UserMain.h \
+  ..\MyDrivers\ILI9341\Inc\ILI9341_STM32_Driver.h \
+  ..\MyDrivers\ILI9341\Inc\ILI9341_GFX.h ..\MyDrivers\ILI9341\Inc\Gui.h \
+  ..\Drivers\CMSIS\DSP\Include\arm_math.h \
+  ..\Drivers\CMSIS\Include\cmsis_compiler.h \
+  C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\float.h
