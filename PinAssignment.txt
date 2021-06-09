@@ -1,4 +1,4 @@
-调试口  TX-PB13  RX-PB12  UART5（考虑是否和图像口合并）
+调试口  TX-PB13  RX-PB12  UART5（和图像口合并）
 左漫反射激光  PA12
 右漫反射激光  PA3
 灰度传感器  TX-PB10  RX-PB11  UART3
@@ -10,6 +10,6 @@
 右手臂舵机  PE9
 摇头舵机  PE11
 矩阵键盘  行 PD0~PD3  列 PD4~PD7
-图像信息通讯  未定SPI，I2C或Serial（暂留SPI1）
+图像信息通讯  TX-PB13  RX-PB12 UART5
 核心板LED  PC13
 有源蜂鸣器  PE2
