@@ -1,15 +1,17 @@
-调试口  TX-PB13  RX-PB12  UART5（和图像口合并）
-左漫反射激光  PA12
-右漫反射激光  PA3
-灰度传感器  TX-PB10  RX-PB11  UART3
-陀螺仪  TX-PE1 RX-PE0  UART8
-左侧电机驱动  TX-PB14  RX-PB15  UART1
-右侧电机驱动  TX-PA0  RX-PA1  UART4
-测距激光  SCL-PA8  SDA-PC9  I2C3 / GPIO1  PC8 / XSHUT  PC7
-左手臂舵机  PE13
-右手臂舵机  PE9
-摇头舵机  PE11
-矩阵键盘  行 PD0~PD3  列 PD4~PD7
-图像信息通讯  TX-PB13  RX-PB12 UART5
-核心板LED  PC13
-有源蜂鸣器  PE2
+调试口  TX-PB13  RX-PB12  UART5    ****
+左漫反射激光  PA12    ****
+右漫反射激光  PA3    ****
+灰度传感器  TX-PB10  RX-PB11  UART3    ****
+陀螺仪  TX-PE1 RX-PE0  UART8    ****
+左侧电机驱动  TX-PB14  RX-PB15  UART1  RST-PD8    ****
+右侧电机驱动  TX-PA0  RX-PA1  UART4  RST-PA2    ****
+测距激光  SCL-PA8  SDA-PC9  I2C3 / GPIO1  PC8 / XSHUT  PC7    ****
+左手臂舵机  PE13    ****
+右手臂舵机  PE9    ****
+摇头舵机  PE11    ****
+矩阵键盘  行 PD0~PD3  列 PD4~PD7    ****
+图像信息通讯  TX-PE8  RX-PE7 UART7    ****
+核心板LED  PC13    ****
+屏幕 MOSI-PA7  MISO-PA6  SCK-PA5  SPI1  CS-PB0  DC-PC5  RST-PC4    ****
+补光板  PB1  PB2    ****
+

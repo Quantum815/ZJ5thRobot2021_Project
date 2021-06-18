@@ -62,4 +62,5 @@ formaldebugrobotcar/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\float.h \
   ..\MyMiddleware\Inc\CallBackAction.h ..\MyDrivers\Inc\MatrixKeyBoard.h \
   ..\MyDrivers\Inc\GraySensor.h ..\MyDrivers\Inc\FSM.h \
-  ..\MyFiles\Inc\UserFSM.h ..\MyFiles\Inc\UserMain.h
+  ..\MyFiles\Inc\UserFSM.h ..\MyFiles\Inc\UserMain.h \
+  ..\MyFiles\Inc\UserFSM.h

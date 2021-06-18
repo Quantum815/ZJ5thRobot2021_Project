@@ -26,7 +26,6 @@
 /* Define\Declare ------------------------------------------------------------*/
 static Gyro_AngleTypeDef *Gyro_Angle;
 
-uint8_t GyroOpenFlag;
 uint8_t GyroReceiveNum;
 uint8_t GyroReceiveBuffer[11] = {1};  //防止首次校验和成立
 
@@ -43,27 +42,9 @@ void GyroInit(void)
 	Gyro_Angle->RollAngle = 0;
 	Gyro_Angle->PitchAngle = 0;
 	Gyro_Angle->YawAngle = 0;
-	GyroOpen();
-}
-
-//陀螺仪数据获取开启（必须在GyroClose()后使用）
-//目前采用循环DMA绝对不能使用该函数！！！！！！！！！
-void GyroOpen(void)  
-{
-	GyroOpenFlag = 1;
 	GyroReceiveNum = 0;
-	if(HAL_UART_Receive_DMA(&GyroUartHandle, &GyroReceiveBuffer[GyroReceiveNum], 11) != HAL_OK)
-	{
-		Error_Handler();
-	}
-}
-
-//陀螺仪数据获取关闭（必须在GyroOpen()后使用）
-//目前采用循环DMA绝对不能使用该函数！！！！！！！！！
-void GyroClose(void)  
-{
-	GyroOpenFlag = 0;
-	GyroReceiveNum = 0;
+	HAL_UART_Receive_DMA(&GyroUartHandle, &GyroReceiveBuffer[GyroReceiveNum], 11);
+	
 }
 
 //脚本获取滚动角左负右正 -80~+80

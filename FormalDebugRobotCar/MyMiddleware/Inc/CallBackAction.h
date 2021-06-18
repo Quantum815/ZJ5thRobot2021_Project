@@ -8,13 +8,13 @@
 #include "RangingLaser.h"
 #include "MatrixKeyBoard.h"
 #include "FSM.h"
+#include "UserFSM.h"
 
 //状态机相关参数
 extern FSM_t CarFSM;
 extern FSMTable_t CarTable[];
 
 //陀螺仪相关参数
-extern uint8_t GyroOpenFlag;
 extern uint8_t GyroReceiveNum;
 extern uint8_t GyroReceiveBuffer[11];
 
@@ -29,5 +29,8 @@ extern DiffuseReflectionLaser_Change_State Right_DFLaser_Change_State;
 
 //矩阵键盘相关参数
 extern uint8_t KeyState;
+
+//状态机相关参数
+extern FSM_t CarFSM;
 
 #endif

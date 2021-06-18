@@ -60,4 +60,6 @@ formaldebugrobotcar/callbackaction.o: \
   ..\Drivers\CMSIS\Include\cmsis_compiler.h \
   C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\float.h \
   ..\MyDrivers\Inc\MatrixKeyBoard.h ..\MyDrivers\Inc\GraySensor.h \
-  ..\MyDrivers\Inc\FSM.h ..\Core\Inc\main.h ..\Core\Inc\dma.h
+  ..\MyDrivers\Inc\FSM.h ..\Core\Inc\main.h ..\MyFiles\Inc\UserFSM.h \
+  ..\MyFiles\Inc\UserMain.h ..\MyFiles\Inc\Miscellaneous.h \
+  ..\MyFiles\Inc\UserFSM.h ..\Core\Inc\dma.h
