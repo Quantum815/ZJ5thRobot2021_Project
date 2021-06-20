@@ -17,6 +17,7 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
+#include "InductiveMotor.h"
 
 //定时器中断
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
@@ -24,20 +25,21 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   //10ms 状态机
 	if(htim == &htim2)
 	{
-		FSMRun(&CarFSM);
+//		FSMRun(&CarFSM);
 	}
   //10ms 传感器读取
 	if(htim == &htim3)
 	{
-		GraySensorFifteenAnalogValueGet();
-		DiffuseReflectionLaserStateJudge();
+//		GraySensorFifteenAnalogValueGet();
+//		DiffuseReflectionLaserStateJudge();
 //		RangingLaserPollingDistanceProcess();
-		MatrixKeyBoardConfirm();
+//		MatrixKeyBoardConfirm();
 	}
   //500ms LED判断工作状态（完善）
 	if(htim == &htim4)
 	{
-//		HAL_GPIO_TogglePin(LED_GPIO_PORT, LED_GPIO_PIN);
+		DebugMotor();
+		HAL_GPIO_TogglePin(LED_GPIO_PORT, LED_GPIO_PIN);
 	}
 }
 
