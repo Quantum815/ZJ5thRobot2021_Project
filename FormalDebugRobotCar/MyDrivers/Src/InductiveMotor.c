@@ -11,9 +11,6 @@
 **/
 
 /* Includes ------------------------------------------------------------------*/
-<<<<<<< Updated upstream
-#include "InductiveMotor.h"
-=======
 #include "InductiveMotor.h"
 
 uint8_t leftMotorTxBuf[5]= {0x00};
@@ -132,4 +129,3 @@ void DebugMotor(void)
 		StopMotor();
 	}
 }
->>>>>>> Stashed changes
