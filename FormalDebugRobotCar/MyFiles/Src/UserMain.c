@@ -24,31 +24,31 @@
 //主程序初始化
 void UserInit(void)  
 {
-	//陀螺仪初始化（必须在第一）
-	GyroInit();		
-	//屏幕初始化
-	Lcd_Init();
-  Lcd_Clear(BLACK);
-	LcdAppendList((uint8_t*)"System initializing......");
-	
-	//灰度传感器初始化
-	GraySensorInit();
-	//测距激光传感器初始化
-	RangingLaserInit();
-	//漫反射激光传感器初始化
-	DiffuseReflectionLaserInit();
-	//舵机初始化
-	ServoMotorInit();
-	//矩阵键盘初始化
-	MatrixKeyBoardInit();
-	//状态机初始化
-	FSMInit(&CarFSM, A, CarTable);
+//	//陀螺仪初始化（必须在第一）
+//	GyroInit();		
+//	//屏幕初始化
+//	Lcd_Init();
+//  Lcd_Clear(BLACK);
+//	LcdAppendList((uint8_t*)"System initializing......");
+//	
+//	//灰度传感器初始化
+//	GraySensorInit();
+//	//测距激光传感器初始化
+//	RangingLaserInit();
+//	//漫反射激光传感器初始化
+//	DiffuseReflectionLaserInit();
+//	//舵机初始化
+//	ServoMotorInit();
+//	//矩阵键盘初始化
+//	MatrixKeyBoardInit();
+//	//状态机初始化
+//	FSMInit(&CarFSM, A, CarTable);
 	//定时器开启
 	HAL_TIM_Base_Start_IT(&htim4);
 	HAL_TIM_Base_Start_IT(&htim3);
 	HAL_TIM_Base_Start_IT(&htim2);
 	//初始化结束刷屏
-	Lcd_Clear(BLACK);
+//	Lcd_Clear(BLACK);
 }
 
 //主程序循环
