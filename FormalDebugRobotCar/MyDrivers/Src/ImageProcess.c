@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
-  * @file    RaspberryPi.c
-  * @author  YL
+  * @file    ImageProcess.c
+  * @author  何志远
   * @brief   图像数据驱动
   *
   @verbatim

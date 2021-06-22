@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
   * @file    InductiveMotor.c
-  * @author  YL
-  * @brief   无刷有感电机驱动（单）
+  * @author  何志远
+  * @brief   无刷有感电机驱动（单侧）
   *
   @verbatim
 	
@@ -13,6 +13,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "InductiveMotor.h"
 
+/* Define\Declare ------------------------------------------------------------*/
 uint8_t leftMotorTxBuf[5]= {0x00};
 uint8_t rightMotorTxBuf[5]= {0x00};
 
@@ -24,12 +25,12 @@ void MotorInit(void)
 	rightMotorTxBuf[0] = 0xee;
 	rightMotorTxBuf[1] = 0xee;
 	
-	HAL_GPIO_WritePin(LEFTMOTOR_RST_GPIO_PORT, LEFTMOTOR_RST_GPIO_PIN, 0);
+	HAL_GPIO_WritePin(LEFTMOTOR_RST_GPIO_PORT, LEFTMOTOR_RST_GPIO_PIN, GPIO_PIN_RESET);
 	HAL_Delay(2);
-	HAL_GPIO_WritePin(LEFTMOTOR_RST_GPIO_PORT, LEFTMOTOR_RST_GPIO_PIN, 1);
-	HAL_GPIO_WritePin(RIGHTMOTOR_RST_GPIO_PORT, RIGHTMOTOR_RST_GPIO_PIN, 0);
+	HAL_GPIO_WritePin(LEFTMOTOR_RST_GPIO_PORT, LEFTMOTOR_RST_GPIO_PIN, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(RIGHTMOTOR_RST_GPIO_PORT, RIGHTMOTOR_RST_GPIO_PIN, GPIO_PIN_RESET);
 	HAL_Delay(2);
-	HAL_GPIO_WritePin(RIGHTMOTOR_RST_GPIO_PORT, RIGHTMOTOR_RST_GPIO_PIN, 1);
+	HAL_GPIO_WritePin(RIGHTMOTOR_RST_GPIO_PORT, RIGHTMOTOR_RST_GPIO_PIN, GPIO_PIN_SET);
 }
 
 //设置某侧电机速度，单位 转/分钟，立即生效

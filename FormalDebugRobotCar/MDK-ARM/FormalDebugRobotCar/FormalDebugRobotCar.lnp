@@ -37,6 +37,7 @@
 "formaldebugrobotcar\system_stm32h7xx.o"
 "formaldebugrobotcar\callbackaction.o"
 "formaldebugrobotcar\linepatrolaction.o"
+"formaldebugrobotcar\armheadaction.o"
 "formaldebugrobotcar\diffusereflectionlaser.o"
 "formaldebugrobotcar\fsm.o"
 "formaldebugrobotcar\graysensor.o"
@@ -53,8 +54,6 @@
 "formaldebugrobotcar\vl53l0x_api_strings.o"
 "formaldebugrobotcar\vl53l0x_platform.o"
 "formaldebugrobotcar\vl53l0x_platform_log.o"
-"formaldebugrobotcar\gui.o"
-"formaldebugrobotcar\lcd.o"
 --library_type=microlib --strict --scatter "FormalDebugRobotCar\FormalDebugRobotCar.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
   * @file    Miscellaneous.c
-  * @author  YL
+  * @author  俞立
   * @brief   不易分类的模块及接口
   *
 	@verbatim
@@ -35,8 +35,8 @@ int fputc(int ch, FILE *f)
 void DebugGyro(void)
 {
 //	memset(buffer, 0x00, sizeof(buffer));
-	sprintf((char*)buffer, "Angle: %.3lf  %.3lf  %.3lf", GyroRollAngleGet(), GyroPitchAngleGet(), GyroYawAngleGet());
-	Gui_DrawFont_GBK16(5, 5, WHITE, BLACK, buffer);
+//	sprintf((char*)buffer, "Angle: %.3lf  %.3lf  %.3lf", GyroRollAngleGet(), GyroPitchAngleGet(), GyroYawAngleGet());
+//	Gui_DrawFont_GBK16(5, 5, WHITE, BLACK, buffer);
 }
 
 //灰度传感器测试
@@ -47,12 +47,12 @@ void DebugGraySensor(void)
 	for(i=0; i<15; i++)
 		temp[i] = GraySensorOneOfFifteenReceiveValueGet(i);
 //	memset(buffer, 0x00, sizeof(buffer));
-	sprintf((char*)buffer, "GraySensor: %d  %d  %d  %d  %d  ", temp[0], temp[1], temp[2], temp[3], temp[4]);
-	Gui_DrawFont_GBK16(5, 25, WHITE, BLACK, buffer);
-	sprintf((char*)buffer, "%d  %d  %d  %d  %d  ", temp[5], temp[6], temp[7], temp[8], temp[9]);
-	Gui_DrawFont_GBK16(100, 45, WHITE, BLACK, buffer);
-	sprintf((char*)buffer, "%d  %d  %d  %d  %d  ", temp[10], temp[11], temp[12], temp[13], temp[14]);
-	Gui_DrawFont_GBK16(100, 65, WHITE, BLACK, buffer);
+//	sprintf((char*)buffer, "GraySensor: %d  %d  %d  %d  %d  ", temp[0], temp[1], temp[2], temp[3], temp[4]);
+//	Gui_DrawFont_GBK16(5, 25, WHITE, BLACK, buffer);
+//	sprintf((char*)buffer, "%d  %d  %d  %d  %d  ", temp[5], temp[6], temp[7], temp[8], temp[9]);
+//	Gui_DrawFont_GBK16(100, 45, WHITE, BLACK, buffer);
+//	sprintf((char*)buffer, "%d  %d  %d  %d  %d  ", temp[10], temp[11], temp[12], temp[13], temp[14]);
+//	Gui_DrawFont_GBK16(100, 65, WHITE, BLACK, buffer);
 }
 
 //舵机测试
@@ -70,14 +70,14 @@ void DebugServoMotor(void)
 void DebugDiffuseReflectionLaser(void)
 {
 //	memset(buffer, 0x00, sizeof(buffer));
-	sprintf((char*)buffer, "DRLaser: %d  %d  ", LeftDiffuseReflectionLaserStateGet(), RightDiffuseReflectionLaserStateGet());
-	Gui_DrawFont_GBK16(5, 85, WHITE, BLACK, buffer);
+//	sprintf((char*)buffer, "DRLaser: %d  %d  ", LeftDiffuseReflectionLaserStateGet(), RightDiffuseReflectionLaserStateGet());
+//	Gui_DrawFont_GBK16(5, 85, WHITE, BLACK, buffer);
 }
 
 //测距激光传感器测试
 void DebugRangingLaser(void)
 {
 //	memset(buffer, 0x00, sizeof(buffer));
-	sprintf((char*)buffer, "RangingLaser: %d  ", RangingLaserDistanceGet());
-	Gui_DrawFont_GBK16(5, 105, WHITE, BLACK, buffer);
+//	sprintf((char*)buffer, "RangingLaser: %d  ", RangingLaserDistanceGet());
+//	Gui_DrawFont_GBK16(5, 105, WHITE, BLACK, buffer);
 }

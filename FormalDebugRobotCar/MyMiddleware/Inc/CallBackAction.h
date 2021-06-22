@@ -22,15 +22,11 @@ extern uint8_t GyroReceiveBuffer[11];
 extern uint8_t GraySensorReceiveBuffer[18];
 extern uint8_t GraySensorTransferFlag, GraySensorRecieveFlag;
 
-
 //漫反射激光传感器相关参数
 extern DiffuseReflectionLaser_Change_State Left_DFLaser_Change_State;
 extern DiffuseReflectionLaser_Change_State Right_DFLaser_Change_State;
 
 //矩阵键盘相关参数
 extern uint8_t KeyState;
-
-//状态机相关参数
-extern FSM_t CarFSM;
 
 #endif

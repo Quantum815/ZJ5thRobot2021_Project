@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * @file    LinePatrolAction.c
+  * @file    ArmHeadAction.c
   * @author  俞立
-  * @brief   巡线动作
+  * @brief   摇头举手动作
   *
 	@verbatim
 	
@@ -11,4 +11,4 @@
 **/
 
 /* Includes ------------------------------------------------------------------*/
-#include "LinePatrolAction.h"
+#include "ArmHeadAction.h"

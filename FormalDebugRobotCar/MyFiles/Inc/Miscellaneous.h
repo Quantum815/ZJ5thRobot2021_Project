@@ -8,8 +8,6 @@
 #include "DiffuseReflectionLaser.h"
 #include "ServoMotor.h"
 #include "RangingLaser.h"
-#include "LCD.h"
-#include "Gui.h"
 
 //À¶ÑÀµ÷ÊÔ¿Ú
 #define BLUETEETH_UART5_TX_GPIO_PORT  GPIOB      

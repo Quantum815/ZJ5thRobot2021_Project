@@ -26,10 +26,7 @@ static uint8_t GraySensorGetFifteenDigitalValue[2] = {0x00, 0xd8};  //读取15路数
 static uint8_t GraySensorGetFifteenAnalogValue[2] = {0x00, 0xd9};  //读取15路模拟量
 static uint8_t GraySensorGetFifteenSigleAnalogValue[2] = {0x00, 0xdb};  //读取单模拟量值
 
-
 void GraySensorInit(void);
-void GraySensorConfigOpen(void);
-void GraySensorGetValueOpen(void);
 
 //配置
 void GraySensorConfigTest(void);

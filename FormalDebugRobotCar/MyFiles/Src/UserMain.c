@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
   * @file    UserMain.c
-  * @author  YL
+  * @author  俞立，何志远，葛子磊
   * @brief   主程序
   *
 	@verbatim
@@ -26,10 +26,6 @@ void UserInit(void)
 {
 //	//陀螺仪初始化（必须在第一）
 //	GyroInit();		
-//	//屏幕初始化
-//	Lcd_Init();
-//  Lcd_Clear(BLACK);
-//	LcdAppendList((uint8_t*)"System initializing......");
 //	
 //	//灰度传感器初始化
 //	GraySensorInit();
@@ -47,8 +43,6 @@ void UserInit(void)
 	HAL_TIM_Base_Start_IT(&htim4);
 	HAL_TIM_Base_Start_IT(&htim3);
 	HAL_TIM_Base_Start_IT(&htim2);
-	//初始化结束刷屏
-//	Lcd_Clear(BLACK);
 }
 
 //主程序循环

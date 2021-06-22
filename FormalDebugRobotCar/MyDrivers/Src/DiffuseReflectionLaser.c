@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
   * @file    DiffuseReflectionLaser.c
-  * @author  YL
+  * @author  俞立
   * @brief   漫反射激光传感器驱动（基本完善）
   *
   @verbatim
@@ -78,7 +78,7 @@ DiffuseReflectionLaser_Change_State RightDiffuseReflectionLaserIsChange(void)
 **/
 void DiffuseReflectionLaserStateJudge(void)
 {
-	static int16_t CorrectFlag = 0;
+	static uint16_t CorrectFlag = 0;
 
 	//如果读到左边电平改变
 	if(LeftDiffuseReflectionLaserIsChange())

@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
   * @file    GraySensor.c
-  * @author  YL
+  * @author  俞立
   * @brief   灰度传感器S515驱动（基本完善） 5.3
   *
   @verbatim
@@ -20,7 +20,6 @@
 /* Define\Declare ------------------------------------------------------------*/
 static uint8_t GraySensorReceiveBuffer[18];
 uint8_t GraySensorTransferFlag, GraySensorRecieveFlag;
-uint8_t GraySensorConfigOrGetValueFlag;  //0为配置，1为测值
 
 /**
  ******************************************************************************
@@ -33,21 +32,7 @@ void GraySensorInit(void)
 {
 	GraySensorTransferFlag = 1;
 	GraySensorRecieveFlag = 1;
-	GraySensorConfigOpen();
-	GraySensorConfigTest();
-	GraySensorGetValueOpen();
-}
-
-//灰度传感器打开配置（使用后才可配置）
-void GraySensorConfigOpen(void)
-{
-	GraySensorConfigOrGetValueFlag = 0;
-}
-
-//灰度传感器打开测值（使用后才可测值）
-void GraySensorGetValueOpen(void)
-{
-	GraySensorConfigOrGetValueFlag = 1;
+	GraySensorManualConfigLight(75);
 }
 
 //配置 1~7
@@ -103,7 +88,7 @@ void GraySensorConfigGroundLight(void)
 	}
 }
 
-//手动设置亮度
+//手动设置亮度  范围0-100，建议不超过75，LDO会发烫
 void GraySensorManualConfigLight(uint8_t light)
 {
 	uint8_t GraySensorLightConfiguration[3] = {0x00, 0xc6, light};
@@ -181,120 +166,102 @@ void GraySensorManualConfigThresholdValue(uint8_t num, uint8_t threshold)
 //读取15路阈值
 void GraySensorFifteenThresholdValueGet(void)  
 {
-	if(GraySensorConfigOrGetValueFlag == 1)
+	if(GraySensorRecieveFlag == 1)
 	{
-		if(GraySensorRecieveFlag == 1)
-		{
-			GraySensorRecieveFlag = 0;
-			if(HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorReceiveBuffer, 18) != HAL_OK)
-				Error_Handler();
-		}
-		if(GraySensorTransferFlag == 1)
-		{
-			GraySensorTransferFlag = 0;
-			if(HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorGetFifteenThresholdValue, 2) != HAL_OK)
-				Error_Handler();
-		}
+		GraySensorRecieveFlag = 0;
+		if(HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorReceiveBuffer, 18) != HAL_OK)
+			Error_Handler();
+	}
+	if(GraySensorTransferFlag == 1)
+	{
+		GraySensorTransferFlag = 0;
+		if(HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorGetFifteenThresholdValue, 2) != HAL_OK)
+			Error_Handler();
 	}
 }
 
 //读取15路设置线值
 void GraySensorFifteenLineValueGet(void)  
 {
-	if(GraySensorConfigOrGetValueFlag == 1)
+	if(GraySensorRecieveFlag == 1)
 	{
-		if(GraySensorRecieveFlag == 1)
-		{
-			GraySensorRecieveFlag = 0;
-			if(HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorReceiveBuffer, 18) != HAL_OK)
-				Error_Handler();
-		}
-		if(GraySensorTransferFlag == 1)
-		{
-			GraySensorTransferFlag = 0;
-			if(HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorGetFifteenLineValue, 2) != HAL_OK)
-				Error_Handler();
-		}
+		GraySensorRecieveFlag = 0;
+		if(HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorReceiveBuffer, 18) != HAL_OK)
+			Error_Handler();
+	}
+	if(GraySensorTransferFlag == 1)
+	{
+		GraySensorTransferFlag = 0;
+		if(HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorGetFifteenLineValue, 2) != HAL_OK)
+			Error_Handler();
 	}
 }
 
 //读取15路设置地值
 void GraySensorFifteenGroundValueGet(void)  
 {
-	if(GraySensorConfigOrGetValueFlag == 1)
+	if(GraySensorRecieveFlag == 1)
 	{
-		if(GraySensorRecieveFlag == 1)
-		{
-			GraySensorRecieveFlag = 0;
-			if(HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorReceiveBuffer, 18) != HAL_OK)
-				Error_Handler();
-		}
-		if(GraySensorTransferFlag == 1)
-		{
-			GraySensorTransferFlag = 0;
-			if(HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorGetFifteenGroundValue, 2) != HAL_OK)
-				Error_Handler();
-		}
+		GraySensorRecieveFlag = 0;
+		if(HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorReceiveBuffer, 18) != HAL_OK)
+			Error_Handler();
+	}
+	if(GraySensorTransferFlag == 1)
+	{
+		GraySensorTransferFlag = 0;
+		if(HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorGetFifteenGroundValue, 2) != HAL_OK)
+			Error_Handler();
 	}
 }
 
 //读取15路数字量
 void GraySensorFifteenDigitalValueGet(void)  
 {
-	if(GraySensorConfigOrGetValueFlag == 1)
+	if(GraySensorRecieveFlag == 1)
 	{
-		if(GraySensorRecieveFlag == 1)
-		{
-			GraySensorRecieveFlag = 0;
-			if(HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorReceiveBuffer, 5) != HAL_OK)
-				Error_Handler();
-		}
-		if(GraySensorTransferFlag == 1)
-		{
-			GraySensorTransferFlag = 0;
-			if(HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorGetFifteenDigitalValue, 2) != HAL_OK)
-				Error_Handler();
-		}
+		GraySensorRecieveFlag = 0;
+		if(HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorReceiveBuffer, 5) != HAL_OK)
+			Error_Handler();
+	}
+	if(GraySensorTransferFlag == 1)
+	{
+		GraySensorTransferFlag = 0;
+		if(HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorGetFifteenDigitalValue, 2) != HAL_OK)
+			Error_Handler();
 	}
 }
 
 //读取15路模拟量
 void GraySensorFifteenAnalogValueGet(void)  
 {
-	if(GraySensorConfigOrGetValueFlag == 1)
+	if(GraySensorRecieveFlag == 1)
 	{
-		if(GraySensorRecieveFlag == 1)
-		{
-			GraySensorRecieveFlag = 0;
-			if(HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorReceiveBuffer, 18) != HAL_OK)
-				Error_Handler();
-		}
-		if(GraySensorTransferFlag == 1)
-		{
-			GraySensorTransferFlag = 0;
-			if(HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorGetFifteenAnalogValue, 2) != HAL_OK)
-				Error_Handler();
-		}
+		GraySensorRecieveFlag = 0;
+		if(HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorReceiveBuffer, 18) != HAL_OK)
+			Error_Handler();
+	}
+	if(GraySensorTransferFlag == 1)
+	{
+		GraySensorTransferFlag = 0;
+		if(HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorGetFifteenAnalogValue, 2) != HAL_OK)
+			Error_Handler();
 	}
 }
 
 //读取单模拟量值
 void GraySensorSingleAnalogValueGet(void)  
 {
-	if(GraySensorConfigOrGetValueFlag == 1)
+	if(GraySensorRecieveFlag == 1)
 	{
-		if(GraySensorRecieveFlag == 1)
-		{
-			GraySensorRecieveFlag = 0;
-			if(HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorReceiveBuffer, 5) != HAL_OK)
-				Error_Handler();
-		}
-		if(GraySensorTransferFlag == 1)
-		{
-			GraySensorTransferFlag = 0;
-			if(HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorGetFifteenSigleAnalogValue, 2) != HAL_OK)
-				Error_Handler();
-		}
+		GraySensorRecieveFlag = 0;
+		if(HAL_UART_Receive_DMA(&GraySensorUartHandle, GraySensorReceiveBuffer, 5) != HAL_OK)
+			Error_Handler();
+	}
+	if(GraySensorTransferFlag == 1)
+	{
+		GraySensorTransferFlag = 0;
+		if(HAL_UART_Transmit_DMA(&GraySensorUartHandle, GraySensorGetFifteenSigleAnalogValue, 2) != HAL_OK)
+			Error_Handler();
 	}
 }
 

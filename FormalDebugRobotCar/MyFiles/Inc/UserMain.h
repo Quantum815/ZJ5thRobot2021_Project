@@ -11,8 +11,6 @@
 #include "RangingLaser.h"
 #include "FSM.h"
 #include "UserFSM.h"
-#include "LCD.h"
-#include "Gui.h"
 
 extern FSM_t CarFSM;
 extern FSMTable_t CarTable[];
