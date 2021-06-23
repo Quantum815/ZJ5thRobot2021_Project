@@ -47,6 +47,7 @@
 "formaldebugrobotcar\matrixkeyboard.o"
 "formaldebugrobotcar\ranginglaser.o"
 "formaldebugrobotcar\servomotor.o"
+"formaldebugrobotcar\pid.o"
 "formaldebugrobotcar\vl53l0x_api.o"
 "formaldebugrobotcar\vl53l0x_api_calibration.o"
 "formaldebugrobotcar\vl53l0x_api_core.o"

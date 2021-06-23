@@ -24,8 +24,7 @@
 #include "Gyro.h"
 
 /* Define\Declare ------------------------------------------------------------*/
-static Gyro_AngleTypeDef *Gyro_Angle;
-
+Gyro_AngleTypeDef *Gyro_Angle;
 uint8_t GyroReceiveNum;
 uint8_t GyroReceiveBuffer[11] = {1};  //防止首次校验和成立
 

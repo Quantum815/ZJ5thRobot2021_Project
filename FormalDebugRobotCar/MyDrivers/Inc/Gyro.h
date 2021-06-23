@@ -12,15 +12,15 @@
 
 #define GyroUartHandle huart8
 
-typedef struct
+typedef struct 
 {
-	double RollAngle;  //¹ö¶¯½Ç
+	double RollAngle;   //¹ö¶¯½Ç
 	
 	double PitchAngle;  //¸©Ñö½Ç
 	
-	double YawAngle;  //Æ«º½½Ç
+	double YawAngle;    //Æ«º½½Ç
 	
-} Gyro_AngleTypeDef;
+}Gyro_AngleTypeDef;
 
 void GyroInit(void);
 double GyroRollAngleGet(void);

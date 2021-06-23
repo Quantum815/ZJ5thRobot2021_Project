@@ -32,7 +32,7 @@ void GraySensorInit(void)
 {
 	GraySensorTransferFlag = 1;
 	GraySensorRecieveFlag = 1;
-	GraySensorManualConfigLight(75);
+	GraySensorManualConfigLight(70);
 }
 
 //≈‰÷√ 1~7

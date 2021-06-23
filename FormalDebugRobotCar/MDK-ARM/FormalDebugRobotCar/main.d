@@ -59,4 +59,5 @@ formaldebugrobotcar/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\MyMiddleware\Inc\CallBackAction.h ..\MyDrivers\Inc\MatrixKeyBoard.h \
   ..\MyDrivers\Inc\GraySensor.h ..\MyDrivers\Inc\FSM.h \
   ..\MyFiles\Inc\UserFSM.h ..\MyFiles\Inc\UserMain.h \
-  ..\MyFiles\Inc\UserFSM.h
+  ..\MyMiddleware\Inc\LinePatrolAction.h ..\MyDrivers\Inc\PID.h \
+  ..\MyDrivers\Inc\InductiveMotor.h ..\MyFiles\Inc\UserFSM.h
