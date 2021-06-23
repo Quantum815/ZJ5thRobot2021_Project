@@ -38,7 +38,8 @@ void UserInit(void)
 	
 	//各类PID初始化
 	PIDInit(&Pid_NormalSpeedLinePatrol, 0.000001, 0, 100, 10, 500, 0.1, 0.1);  //参数都得调过，现在随便写的
-	
+	PIDInit(&Pid_Turn, 0.000001, 0, 100, 10, 500, 0.1, 0.1); 
+
 	
 //	//状态机初始化
 //	FSMInit(&CarFSM, A, CarTable);

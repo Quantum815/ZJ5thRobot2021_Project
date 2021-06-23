@@ -1,5 +1,7 @@
-formaldebugrobotcar/stm32h7xx_hal_exti.o: \
-  ..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_exti.c \
+formaldebugrobotcar/turnaroundaction.o: \
+  FormalDebugRobotCar\TurnAroundAction.c \
+  FormalDebugRobotCar\TurnAroundAction.h ..\MyDrivers\Inc\Gyro.h \
+  ..\Core\Inc\usart.h ..\Core\Inc\main.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h \
   ..\Core\Inc\stm32h7xx_hal_conf.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc.h \
@@ -36,4 +38,19 @@ formaldebugrobotcar/stm32h7xx_hal_exti.o: \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart.h \
-  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h
+  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
+  ..\MyFiles\Inc\Miscellaneous.h ..\MyDrivers\Inc\GraySensor.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
+  ..\MyDrivers\Inc\DiffuseReflectionLaser.h ..\Core\Inc\gpio.h \
+  ..\MyDrivers\Inc\ServoMotor.h ..\Core\Inc\tim.h \
+  ..\MyDrivers\Inc\RangingLaser.h ..\Core\Inc\i2c.h \
+  ..\MyDrivers\VL53L0X_1.0.2\Api\core\inc\vl53l0x_api.h \
+  ..\MyDrivers\VL53L0X_1.0.2\Api\core\inc\vl53l0x_api_strings.h \
+  ..\MyDrivers\VL53L0X_1.0.2\Api\core\inc\vl53l0x_def.h \
+  ..\MyDrivers\VL53L0X_1.0.2\Api\core\inc\vl53l0x_device.h \
+  ..\MyDrivers\VL53L0X_1.0.2\Api\platform\inc\vl53l0x_types.h \
+  ..\MyDrivers\VL53L0X_1.0.2\Api\platform\inc\vl53l0x_platform.h \
+  ..\MyDrivers\VL53L0X_1.0.2\Api\core\inc\vl53l0x_def.h \
+  ..\MyDrivers\VL53L0X_1.0.2\Api\platform\inc\vl53l0x_platform_log.h \
+  ..\MyDrivers\Inc\InductiveMotor.h ..\MyDrivers\Inc\PID.h

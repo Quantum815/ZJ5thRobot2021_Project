@@ -18,6 +18,7 @@ extern FSM_t CarFSM;
 extern FSMTable_t CarTable[];
 
 extern Pid_ArgumentTypeDef Pid_NormalSpeedLinePatrol;
+extern Pid_ArgumentTypeDef Pid_Turn;
 
 void UserInit(void);
 void UserLoop(void);
