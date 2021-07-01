@@ -23,17 +23,17 @@
 //摇头动作 （先左摇60度，再右摇120度，最后回到原位）
 void ShakeHead()
 {
-    int16_t minitimeA = 0;
+    static uint16_t minitimeA = 0;
     minitimeA++;
     if((minitimeA>=198)&&(minitimeA<=200))
     {
         ServoMotorAngleSet(TIM_CHANNEL_2,30);
     }
-    if((minitimeA>398)&&(minitimeA<=400))
+    if((minitimeA>398)&&(minitimeA<=600))
     {
         ServoMotorAngleSet(TIM_CHANNEL_2,150);
     }
-    if(minitimeA>400)
+    if(minitimeA>800)
     {
         minitimeA=0;
         ServoMotorAngleSet(TIM_CHANNEL_2,90);
@@ -42,7 +42,7 @@ void ShakeHead()
 //表示判断的举手动作 （两只手臂先后举起下降） 
 void UpHand()
 {
-    int16_t minitimeB = 0;
+    static int16_t minitimeB = 0;
     minitimeB++;
     if((minitimeB>=198)&&(minitimeB<=200))
     {

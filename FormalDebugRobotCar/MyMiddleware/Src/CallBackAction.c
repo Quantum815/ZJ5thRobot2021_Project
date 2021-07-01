@@ -38,7 +38,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   //500ms LEDÅÐ¶Ï¹¤×÷×´Ì¬£¨ÍêÉÆ£©
 	if(htim == &htim4)
 	{
-		DebugMotor();
+//		DebugMotor();
 		HAL_GPIO_TogglePin(LED_GPIO_PORT, LED_GPIO_PIN);
 	}
 }
