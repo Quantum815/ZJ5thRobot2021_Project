@@ -25,12 +25,46 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   //10ms 状态机
 	if(htim == &htim2)
 	{
+		static uint16_t i = 0;
+		static uint8_t flag = 0;
+		if(!flag)
+		{
+			int16_t LSpeed = -500;
+			int16_t RSpeed = 500;
+			SetMotorSpeed(LMOTOR, &LSpeed);
+			SetMotorSpeed(RMOTOR, &RSpeed);
+			LSpeed = Current2Torque(-10);
+			RSpeed = Current2Torque(10);
+			SetMotorSpeed(LMOTOR, &LSpeed);
+			SetMotorSpeed(RMOTOR, &RSpeed);
+			StartMotor();
+			flag = 1;
+		}
+		if(i <= 400)
+		{
+			i++;
+			int16_t LSpeed = -500;
+			int16_t RSpeed = 500;
+			SetMotorSpeed(LMOTOR, &LSpeed);
+			SetMotorSpeed(RMOTOR, &RSpeed);
+			LSpeed = Current2Torque(-10);
+			RSpeed = Current2Torque(10);
+			SetMotorSpeed(LMOTOR, &LSpeed);
+			SetMotorSpeed(RMOTOR, &RSpeed);
+//			NormalLineSpeedPatrol(300);
+		}
+		else
+		{
+			StopMotor();
+		}
+			
+		
 //		FSMRun(&CarFSM);
 	}
   //10ms 传感器读取
 	if(htim == &htim3)
 	{
-//		GraySensorFifteenAnalogValueGet();
+		GraySensorFifteenAnalogValueGet();
 //		DiffuseReflectionLaserStateJudge();
 //		RangingLaserPollingDistanceProcess();
 //		MatrixKeyBoardConfirm();
@@ -106,6 +140,11 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 	if(huart == &GraySensorUartHandle)
 	{
 		GraySensorRecieveFlag = 1;
+	}
+	if(huart == &BlueTeethUartHandle)
+	{
+		StopMotor();
+		while(1);
 	}
 }
 

@@ -18,7 +18,7 @@
 #include "GraySensor.h"
 
 /* Define\Declare ------------------------------------------------------------*/
-static uint8_t GraySensorReceiveBuffer[18];
+uint8_t GraySensorReceiveBuffer[18];
 uint8_t GraySensorTransferFlag, GraySensorRecieveFlag;
 
 /**
@@ -32,7 +32,7 @@ void GraySensorInit(void)
 {
 	GraySensorTransferFlag = 1;
 	GraySensorRecieveFlag = 1;
-	GraySensorManualConfigLight(70);
+	GraySensorManualConfigLight(75);
 }
 
 //ÅäÖÃ 1~7
@@ -267,7 +267,7 @@ void GraySensorSingleAnalogValueGet(void)
 
 uint8_t GraySensorOneOfFifteenReceiveValueGet(uint8_t num)    //¶ÁÈ¡»Ò¶È´«¸ĞÆ÷15Â·Ä³Ò»Î» num·¶Î§0~14
 {
-	if(num >= 0 && num <=14)
+	if(num >= 0 && num <= 14)
 		return GraySensorReceiveBuffer[num+3];
 	else
 		return 1;

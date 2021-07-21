@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
   * @file    InductiveMotor.c
-  * @author  何志远
+  * @author  何志远，俞立
   * @brief   无刷有感电机驱动（单侧）
   *
   @verbatim
@@ -24,13 +24,6 @@ void MotorInit(void)
 	leftMotorTxBuf[1] = 0xee;
 	rightMotorTxBuf[0] = 0xee;
 	rightMotorTxBuf[1] = 0xee;
-	
-	HAL_GPIO_WritePin(LEFTMOTOR_RST_GPIO_PORT, LEFTMOTOR_RST_GPIO_PIN, GPIO_PIN_RESET);
-	HAL_Delay(2);
-	HAL_GPIO_WritePin(LEFTMOTOR_RST_GPIO_PORT, LEFTMOTOR_RST_GPIO_PIN, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(RIGHTMOTOR_RST_GPIO_PORT, RIGHTMOTOR_RST_GPIO_PIN, GPIO_PIN_RESET);
-	HAL_Delay(2);
-	HAL_GPIO_WritePin(RIGHTMOTOR_RST_GPIO_PORT, RIGHTMOTOR_RST_GPIO_PIN, GPIO_PIN_SET);
 }
 
 //设置某侧电机速度，单位 转/分钟，立即生效
@@ -38,15 +31,14 @@ void SetMotorSpeed(uint8_t targetMotor, int16_t* Speed)
 {
 	switch(targetMotor)
 	{
-		case LMOTOR:
-      
+		case LMOTOR:    
 			leftMotorTxBuf[2] = *(uint8_t*) Speed;
 			leftMotorTxBuf[3] = *((uint8_t*) Speed + 1);
 			leftMotorTxBuf[4] = 0xbb;
 			HAL_UART_Transmit(&LEFTMOTORUartHandle, leftMotorTxBuf, sizeof(leftMotorTxBuf), 0xff);
 			break;
 		case RMOTOR:
-      
+			*Speed = -(*Speed);
 			rightMotorTxBuf[2] = *(uint8_t*) Speed;
 			rightMotorTxBuf[3] = *((uint8_t*) Speed + 1);
 			rightMotorTxBuf[4] = 0xbb;
@@ -57,6 +49,7 @@ void SetMotorSpeed(uint8_t targetMotor, int16_t* Speed)
 		case ALLMOTOR:
 			leftMotorTxBuf[2] = *(uint8_t*) Speed;
 			leftMotorTxBuf[3] = *((uint8_t*) Speed + 1);
+			*Speed = -(*Speed);
 			rightMotorTxBuf[2] = *(uint8_t*) Speed;
 			rightMotorTxBuf[3] = *((uint8_t*) Speed + 1);
 			leftMotorTxBuf[4] = 0xbb;
@@ -89,11 +82,26 @@ void StopMotor(void)
 //调试用代码
 void DebugMotor(void)
 {
-	static uint8_t flag = 0;
+	static uint16_t flag = 0;
+//	int16_t LSpeed = 1000;
+//  int16_t RSpeed = 1000;
+//	flag++;
+//	if(flag <= 1)
+//	{
+//		MotorInit();
+//	}
+//	if(flag <= 2)
+//	{
+//		SetMotorSpeed(LMOTOR, &LSpeed);
+//	}
+//	if(flag <= 500)
+//	{
+//		StopMotor();
+//	}
 	static uint8_t initFlag = 0;
 	static uint8_t timeFlag = 0;
-	int16_t LSpeed = 1500;
-  int16_t RSpeed = -1500;
+	int16_t LSpeed = 1000;
+  int16_t RSpeed = 1000;
 	if(timeFlag <= 15)
 	{
 		if(initFlag == 0)
@@ -129,4 +137,16 @@ void DebugMotor(void)
 	{
 		StopMotor();
 	}
+}
+
+int16_t Current2Torque(double Di)
+{
+	int16_t torque;
+	
+	if(fabs(Di) <= 16)
+		torque = Di * 65536 * 0.01 * 5.1 / 3.3;
+	else
+		torque = 0;
+	
+	return torque;
 }

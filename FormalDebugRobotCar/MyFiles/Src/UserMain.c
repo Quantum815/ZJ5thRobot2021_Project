@@ -18,11 +18,13 @@
 //主程序初始化
 void UserInit(void)  
 {
-//	//陀螺仪初始化（必须在第一）
-//	GyroInit();		
-//	
-//	//灰度传感器初始化
-//	GraySensorInit();
+	uint8_t StopMotorBuffer[10];
+	
+	//陀螺仪初始化（必须在第一）
+	GyroInit();		
+
+	//灰度传感器初始化
+	GraySensorInit();
 	
 //	//测距激光传感器初始化
 //	RangingLaserInit();
@@ -31,15 +33,17 @@ void UserInit(void)
 //	DiffuseReflectionLaserInit();
 	
 //	//舵机初始化
-//	ServoMotorInit();
+	ServoMotorInit();
 	
 //	//矩阵键盘初始化
 //	MatrixKeyBoardInit();
 	
 	//各类PID初始化
-	PIDInit(&Pid_NormalSpeedLinePatrol, 0.000001, 0, 100, 10, 500, 0.1, 0.1);  //参数都得调过，现在随便写的
-	PIDInit(&Pid_Turn, 0.000001, 0, 100, 10, 500, 0.1, 0.1); 
+//	PIDInit(&Pid_NormalSpeedLinePatrol, 0, 0.000000, 100, 0, 0, 0, 0);  //参数都得调过，现在随便写的
+//	PIDInit(&Pid_Turn, 0.000001, 0, 100, 10, 500, 0.1, 0.1); 
 
+	//电机初始化
+	MotorInit();
 	
 //	//状态机初始化
 //	FSMInit(&CarFSM, A, CarTable);
@@ -48,21 +52,25 @@ void UserInit(void)
 	HAL_TIM_Base_Start_IT(&htim4);
 	HAL_TIM_Base_Start_IT(&htim3);
 	HAL_TIM_Base_Start_IT(&htim2);
+	
+	//蓝牙紧急停车
+//	HAL_UART_Receive_IT(&BlueTeethUartHandle, StopMotorBuffer, 1);
 }
 
 //主程序循环
 void UserLoop(void)  
-{
-	//测试（屏幕反应挺迟钝的参考用）
+{	
+	//测试
 //	DebugGyro();
 //	
 //	DebugGraySensor();
+//	HAL_Delay(200);
 //	
 //	DebugServoMotor();
-//	
+	
 //	DebugDiffuseReflectionLaser();
 	
-	DebugRangingLaser();
+//	DebugRangingLaser();
 
 }
 

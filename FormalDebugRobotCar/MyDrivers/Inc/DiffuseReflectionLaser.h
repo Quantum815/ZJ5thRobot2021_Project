@@ -7,7 +7,7 @@
 #define LEFT_DRLASER_GPIO_PIN   GPIO_PIN_12
 #define RIGHT_DRLASER_GPIO_PIN  GPIO_PIN_3
 
-#define CORRECT_TIME 5000 //轮询错误数据矫正时间  单位：ms
+#define CORRECT_TIME 2000 //轮询错误数据矫正时间  单位：ms
 
 typedef enum
 {

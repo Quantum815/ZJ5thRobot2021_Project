@@ -6,6 +6,7 @@
 #include "InductiveMotor.h"
 #include "Miscellaneous.h"
 
+void NormalLineSpeedPatrol(double current);
 double GraySensorBiasGet(void);
 
 #endif

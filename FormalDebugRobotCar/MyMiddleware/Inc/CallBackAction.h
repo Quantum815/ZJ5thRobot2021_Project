@@ -7,8 +7,10 @@
 #include "DiffuseReflectionLaser.h"
 #include "RangingLaser.h"
 #include "MatrixKeyBoard.h"
+#include "InductiveMotor.h"
 #include "FSM.h"
 #include "UserFSM.h"
+#include "LinePatrolAction.h"
 
 //状态机相关参数
 extern FSM_t CarFSM;
@@ -20,6 +22,7 @@ extern uint8_t GyroReceiveBuffer[11];
 
 //灰度传感器相关参数
 extern uint8_t GraySensorReceiveBuffer[18];
+extern uint8_t GraySensorAnalogValue[15];
 extern uint8_t GraySensorTransferFlag, GraySensorRecieveFlag;
 
 //漫反射激光传感器相关参数

@@ -54,8 +54,8 @@ formaldebugrobotcar/callbackaction.o: \
   ..\MyDrivers\VL53L0X_1.0.2\Api\core\inc\vl53l0x_def.h \
   ..\MyDrivers\VL53L0X_1.0.2\Api\platform\inc\vl53l0x_platform_log.h \
   ..\MyDrivers\Inc\MatrixKeyBoard.h ..\MyDrivers\Inc\GraySensor.h \
-  ..\MyDrivers\Inc\FSM.h ..\Core\Inc\main.h ..\MyFiles\Inc\UserFSM.h \
-  ..\MyFiles\Inc\UserMain.h ..\MyFiles\Inc\Miscellaneous.h \
-  ..\MyMiddleware\Inc\LinePatrolAction.h ..\MyDrivers\Inc\PID.h \
-  ..\MyDrivers\Inc\InductiveMotor.h ..\MyFiles\Inc\UserFSM.h \
-  ..\Core\Inc\dma.h
+  ..\MyDrivers\Inc\InductiveMotor.h ..\MyDrivers\Inc\FSM.h \
+  ..\Core\Inc\main.h ..\MyFiles\Inc\UserFSM.h ..\MyFiles\Inc\UserMain.h \
+  ..\MyFiles\Inc\Miscellaneous.h ..\MyMiddleware\Inc\LinePatrolAction.h \
+  ..\MyDrivers\Inc\PID.h ..\MyFiles\Inc\UserFSM.h \
+  ..\MyMiddleware\Inc\LinePatrolAction.h ..\Core\Inc\dma.h

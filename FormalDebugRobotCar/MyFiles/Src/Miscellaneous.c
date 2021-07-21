@@ -42,27 +42,26 @@ void DebugGyro(void)
 //灰度传感器测试
 void DebugGraySensor(void)
 {
-	uint8_t temp[15];
 	int i;
 	for(i=0; i<15; i++)
-		temp[i] = GraySensorOneOfFifteenReceiveValueGet(i);
-//	memset(buffer, 0x00, sizeof(buffer));
-//	sprintf((char*)buffer, "GraySensor: %d  %d  %d  %d  %d  ", temp[0], temp[1], temp[2], temp[3], temp[4]);
-//	Gui_DrawFont_GBK16(5, 25, WHITE, BLACK, buffer);
-//	sprintf((char*)buffer, "%d  %d  %d  %d  %d  ", temp[5], temp[6], temp[7], temp[8], temp[9]);
-//	Gui_DrawFont_GBK16(100, 45, WHITE, BLACK, buffer);
-//	sprintf((char*)buffer, "%d  %d  %d  %d  %d  ", temp[10], temp[11], temp[12], temp[13], temp[14]);
-//	Gui_DrawFont_GBK16(100, 65, WHITE, BLACK, buffer);
+		printf("%d ", GraySensorOneOfFifteenReceiveValueGet(i));
+	printf("\n");
 }
 
 //舵机测试
 void DebugServoMotor(void)
 {
-	ServoMotorAngleSet(SHAKE_HEAD_SERVO_CHANNEL, 180);
-	HAL_Delay(200);
 	ServoMotorAngleSet(SHAKE_HEAD_SERVO_CHANNEL, 0);
-	HAL_Delay(400);
-	ServoMotorAngleSet(SHAKE_HEAD_SERVO_CHANNEL, 90);
+	ServoMotorAngleSet(LEFT_ARM_SERVO_CHANNEL, 0);
+	ServoMotorAngleSet(RIGHT_ARM_SERVO_CHANNEL, 0);
+//	HAL_Delay(200);
+//	ServoMotorAngleSet(SHAKE_HEAD_SERVO_CHANNEL, 0);
+//	ServoMotorAngleSet(LEFT_ARM_SERVO_CHANNEL, 0);
+//	ServoMotorAngleSet(RIGHT_ARM_SERVO_CHANNEL, 0);
+//	HAL_Delay(400);
+//	ServoMotorAngleSet(SHAKE_HEAD_SERVO_CHANNEL, 90);
+//	ServoMotorAngleSet(LEFT_ARM_SERVO_CHANNEL, 90);
+//	ServoMotorAngleSet(RIGHT_ARM_SERVO_CHANNEL, 90);
 	HAL_Delay(5000);
 }
 

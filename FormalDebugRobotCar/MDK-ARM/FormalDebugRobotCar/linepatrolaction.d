@@ -1,9 +1,8 @@
 formaldebugrobotcar/linepatrolaction.o: \
   ..\MyMiddleware\Src\LinePatrolAction.c \
   ..\MyMiddleware\Inc\LinePatrolAction.h ..\MyDrivers\Inc\PID.h \
-  C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\math.h \
-  ..\MyDrivers\Inc\GraySensor.h \
-  C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
+  ..\MyFiles\Inc\Miscellaneous.h \
+  C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
   ..\Core\Inc\usart.h ..\Core\Inc\main.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h \
   ..\Core\Inc\stm32h7xx_hal_conf.h \
@@ -22,6 +21,7 @@ formaldebugrobotcar/linepatrolaction.o: \
   ..\Drivers\CMSIS\Device\ST\STM32H7xx\Include\system_stm32h7xx.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h \
   C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
+  C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\math.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_gpio.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_gpio_ex.h \
@@ -41,10 +41,9 @@ formaldebugrobotcar/linepatrolaction.o: \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h \
-  ..\MyDrivers\Inc\InductiveMotor.h ..\Core\Inc\gpio.h \
-  ..\MyFiles\Inc\Miscellaneous.h \
-  C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
-  ..\MyDrivers\Inc\Gyro.h ..\MyDrivers\Inc\DiffuseReflectionLaser.h \
+  ..\MyDrivers\Inc\Gyro.h ..\MyDrivers\Inc\GraySensor.h \
+  C:\Program\ Files\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
+  ..\MyDrivers\Inc\DiffuseReflectionLaser.h ..\Core\Inc\gpio.h \
   ..\MyDrivers\Inc\ServoMotor.h ..\Core\Inc\tim.h \
   ..\MyDrivers\Inc\RangingLaser.h ..\Core\Inc\i2c.h \
   ..\MyDrivers\VL53L0X_1.0.2\Api\core\inc\vl53l0x_api.h \
@@ -54,4 +53,5 @@ formaldebugrobotcar/linepatrolaction.o: \
   ..\MyDrivers\VL53L0X_1.0.2\Api\platform\inc\vl53l0x_types.h \
   ..\MyDrivers\VL53L0X_1.0.2\Api\platform\inc\vl53l0x_platform.h \
   ..\MyDrivers\VL53L0X_1.0.2\Api\core\inc\vl53l0x_def.h \
-  ..\MyDrivers\VL53L0X_1.0.2\Api\platform\inc\vl53l0x_platform_log.h
+  ..\MyDrivers\VL53L0X_1.0.2\Api\platform\inc\vl53l0x_platform_log.h \
+  ..\MyDrivers\Inc\InductiveMotor.h
